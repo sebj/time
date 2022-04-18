@@ -1,0 +1,50 @@
+import kotlin.jvm.JvmName
+
+private fun <Unit : TimeUnit> TimePeriod<*>.first(unit: Unit) = TimePeriod(instant = firstInstant(), unit = unit)
+private fun <Unit : TimeUnit> TimePeriod<*>.last(unit: Unit): TimePeriod<Unit> {
+    return TimePeriod(instant = range().endInclusive, unit = unit)
+        .applying(TimeDifference(count = -1, unit = unit))
+}
+
+fun TimePeriod<Year>.firstMonth() = first(Month)
+fun TimePeriod<Year>.lastMonth() = last(Month)
+@JvmName("yearFirstDay")
+fun TimePeriod<Year>.firstDay() = first(Day)
+@JvmName("yearLastDay")
+fun TimePeriod<Year>.lastDay() = last(Day)
+
+@JvmName("monthFirstDay")
+fun TimePeriod<Month>.firstDay() = first(Day)
+@JvmName("monthLastDay")
+fun TimePeriod<Month>.lastDay() = last(Day)
+@JvmName("monthFirstHour")
+fun TimePeriod<Month>.firstHour() = first(Hour)
+@JvmName("monthLastHour")
+fun TimePeriod<Month>.lastHour() = last(Hour)
+
+@JvmName("dayFirstHour")
+fun TimePeriod<Day>.firstHour() = first(Hour)
+@JvmName("dayLastHour")
+fun TimePeriod<Day>.lastHour() = last(Hour)
+@JvmName("dayFirstMinute")
+fun TimePeriod<Day>.firstMinute() = first(Minute)
+@JvmName("dayLastMinute")
+fun TimePeriod<Day>.lastMinute() = last(Minute)
+@JvmName("dayFirstSecond")
+fun TimePeriod<Day>.firstSecond() = first(Second)
+@JvmName("dayLastSecond")
+fun TimePeriod<Day>.lastSecond() = last(Second)
+
+@JvmName("hourFirstMinute")
+fun TimePeriod<Hour>.firstMinute() = first(Minute)
+@JvmName("hourLastMinute")
+fun TimePeriod<Hour>.lastMinute() = last(Minute)
+@JvmName("hourFirstSecond")
+fun TimePeriod<Hour>.firstSecond() = first(Second)
+@JvmName("hourLastSecond")
+fun TimePeriod<Hour>.lastSecond() = last(Second)
+
+@JvmName("minuteFirstSecond")
+fun TimePeriod<Minute>.firstSecond() = first(Second)
+@JvmName("minuteLastSecond")
+fun TimePeriod<Minute>.lastSecond() = last(Second)

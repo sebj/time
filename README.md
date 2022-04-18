@@ -1,0 +1,76 @@
+# ⏱ Time
+
+[![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE) [![Build & Test](https://github.com/sebj/time/workflows/Build%20and%20Test/badge.svg)](https://github.com/sebj/time/actions/workflows/build-and-test.yml)
+
+A multiplatform Kotlin library filling in the gaps of [`kotlinx-datetime`](https://github.com/Kotlin/kotlinx-datetime) with additional time-safe APIs for time periods, as equivalents to those found in the Swift library of the same name([`time`](https://github.com/davedelong/time)).
+
+Supported `TimePeriod` units:
+* Year
+* Month
+* Day
+* Hour
+* Minute
+* Second
+* Nanosecond
+
+## ⬇️ Installation
+
+Add the dependency:
+
+```kotlin
+dependencies { 
+  implementation("me.sebj:time:0.1.0")
+}
+```
+
+## 💡 Usage Examples
+
+### Fetching the Current Time Period
+
+```kotlin
+val clock = Clock.System
+val now = clock.thisInstant()
+val today = clock.today()
+val month = clock.thisMonth()
+```
+
+### Retrieving Components
+
+Retrieve larger less-precise components for a time period:
+```kotlin
+val today: TimePeriod<Day> = Clock.System.today()
+val year = today.year // Ex: 2022
+val month = today.month // Ex: 4
+val day = today.day // Ex: 18
+```
+
+### Retrieving TimePeriods
+
+Retrieve smaller more-precise time periods for a given time period:
+```kotlin
+val clock = Clock.System
+
+val firstDayOfMonth = clock.thisMonth().firstDay()
+val lastHourOfDay = clock.today().lastHour()
+val firstDayOfYear = clock.thisYear().firstDay()
+```
+
+### Iterating Over TimePeriods
+
+```kotlin
+val clock = Clock.System
+
+val thisMonth = clock.thisMonth()
+val daysInThisMonth = thisMonth.days()
+
+for (day in daysInThisMonth) {
+    // …
+}
+
+val thisHour = clock.thisHour()
+val minutesInThisHour = thisHour.minutes()
+
+for (minute in minutesInThisHour) {
+    // …
+}
+```
