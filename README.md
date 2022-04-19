@@ -19,7 +19,8 @@ Add the dependency:
 
 ```kotlin
 dependencies { 
-  implementation("me.sebj:time:0.1.0")
+    // Coming soon!
+    // implementation("")
 }
 ```
 
