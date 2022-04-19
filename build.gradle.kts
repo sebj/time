@@ -102,3 +102,15 @@ kotlin {
         }
     }
 }
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "me.sebj"
+            artifactId = "time"
+            version = "0.1.0"
+
+            from(components["java"])
+        }
+    }
+}

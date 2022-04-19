@@ -18,9 +18,16 @@ Supported `TimePeriod` units:
 Add the dependency:
 
 ```kotlin
-dependencies { 
-    // Coming soon!
-    // implementation("")
+repositories {
+    maven {
+        url = uri("https://jitpack.io")
+    }
+}
+```
+
+```kotlin
+dependencies {
+    implementation("com.github.sebj:time:0.1.0")
 }
 ```
 
