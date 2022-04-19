@@ -11,7 +11,6 @@ internal fun <Unit : TimeUnit> TimePeriod<Unit>.previous(unit: TimeUnit) = offse
 
 // Second
 
-
 val <Unit : SecondOrSmaller> TimePeriod<Unit>.nextSecond
     get() = next(Second)
 val <Unit : SecondOrSmaller> TimePeriod<Unit>.previousSecond
