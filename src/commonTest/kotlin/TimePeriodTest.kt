@@ -67,7 +67,7 @@ class TimePeriodTest {
 
     @Test
     fun nextMonth() {
-        val day = TimePeriod.day(year = 2022, month = Month.MARCH, dayOfMonth = 25).nextMonth()
+        val day = TimePeriod.day(year = 2022, month = Month.MARCH, dayOfMonth = 25).nextMonth
 
         assertEquals(
             expected = Month.APRIL,
