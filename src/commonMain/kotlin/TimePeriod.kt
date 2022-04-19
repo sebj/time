@@ -72,7 +72,7 @@ private fun <Unit : TimeUnit> Instant.dateTimeComponents(unit: Unit): DateTimeCo
     }
 }
 
-class TimePeriod<Unit : TimeUnit> internal constructor(
+data class TimePeriod<Unit : TimeUnit> internal constructor(
     internal val dateTimeComponents: DateTimeComponents,
     internal val unit: Unit
 ) : Comparable<TimePeriod<Unit>> {

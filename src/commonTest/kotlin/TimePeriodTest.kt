@@ -13,6 +13,13 @@ import kotlin.time.Duration.Companion.days
 class TimePeriodTest {
 
     @Test
+    fun equality() {
+        val clock = Clock.System
+        assertEquals(clock.today(), clock.today())
+        assertEquals(clock.today(), clock.tomorrow().previousDay)
+    }
+
+    @Test
     fun toLocalDate() {
         assertEquals(
             expected = Clock.System.todayAt(TimeZone.UTC),
