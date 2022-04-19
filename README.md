@@ -1,6 +1,7 @@
 # ⏱ Time
 
-[![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE) [![Build & Test](https://github.com/sebj/time/workflows/Build%20and%20Test/badge.svg)](https://github.com/sebj/time/actions/workflows/build-and-test.yml)
+[![MIT License](https://img.shields.io/github/license/sebj/time)](LICENSE)
+[![Build & Test](https://github.com/sebj/time/workflows/Build%20and%20Test/badge.svg)](https://github.com/sebj/time/actions/workflows/build-and-test.yml)
 
 A multiplatform Kotlin library filling in the gaps of [`kotlinx-datetime`](https://github.com/Kotlin/kotlinx-datetime) with additional time-safe APIs for time periods, as equivalents to those found in the Swift library of the same name([`time`](https://github.com/davedelong/time)).
 
@@ -15,8 +16,7 @@ Supported `TimePeriod` units:
 
 ## ⬇️ Installation
 
-Add the dependency:
-
+Add the JitPack repository to your Gradle build file:
 ```kotlin
 repositories {
     maven {
@@ -25,7 +25,8 @@ repositories {
 }
 ```
 
-```kotlin
+Add the dependency:
+```
 dependencies {
     implementation("com.github.sebj:time:0.1.0")
 }
