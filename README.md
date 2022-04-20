@@ -59,9 +59,9 @@ Retrieve smaller more-precise time periods for a given time period:
 ```kotlin
 val clock = Clock.System
 
-val firstDayOfMonth = clock.thisMonth().firstDay()
-val lastHourOfDay = clock.today().lastHour()
-val firstDayOfYear = clock.thisYear().firstDay()
+val firstDayOfMonth: TimePeriod<Day> = clock.thisMonth().firstDay
+val lastHourOfDay: TimePeriod<Hour> = clock.today().lastHour
+val firstDayOfYear: TimePeriod<Day> = clock.thisYear().firstDay
 ```
 
 ### Iterating Over TimePeriods
@@ -70,14 +70,14 @@ val firstDayOfYear = clock.thisYear().firstDay()
 val clock = Clock.System
 
 val thisMonth = clock.thisMonth()
-val daysInThisMonth = thisMonth.days()
+val daysInThisMonth = thisMonth.days
 
 for (day in daysInThisMonth) {
     // …
 }
 
 val thisHour = clock.thisHour()
-val minutesInThisHour = thisHour.minutes()
+val minutesInThisHour = thisHour.minutes
 
 for (minute in minutesInThisHour) {
     // …
