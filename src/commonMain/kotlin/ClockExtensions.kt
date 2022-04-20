@@ -5,7 +5,7 @@ import kotlinx.datetime.Clock
  */
 fun Clock.thisInstant() = now()
 
-private fun <Unit : TimeUnit> Clock.thisPeriod(unit: Unit) = TimePeriod(instant = now(), unit = unit)
+private fun <Unit : TimeUnit> Clock.thisPeriod(unit: Unit) = TimePeriod(now(), unit)
 
 /**
  * Retrieve the current year of the [Clock].

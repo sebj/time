@@ -9,6 +9,16 @@ private fun <Unit : TimeUnit> TimePeriod<Unit>.offset(count: Int, unit: TimeUnit
 internal fun <Unit : TimeUnit> TimePeriod<Unit>.next(unit: TimeUnit) = offset(1, unit)
 internal fun <Unit : TimeUnit> TimePeriod<Unit>.previous(unit: TimeUnit) = offset(-1, unit)
 
+// Nanosecond
+
+val <Unit : NanosecondOrSmaller> TimePeriod<Unit>.nextNanosecond
+    get() = next(Nanosecond)
+val <Unit : NanosecondOrSmaller> TimePeriod<Unit>.previousNanosecond
+    get() = previous(Nanosecond)
+
+fun <Unit : NanosecondOrSmaller> TimePeriod<Unit>.addingNanoseconds(count: Int) = applying(TimeDifference.nanoseconds(count))
+fun <Unit : NanosecondOrSmaller> TimePeriod<Unit>.subtractingNanoseconds(count: Int) = applying(TimeDifference.nanoseconds(-count))
+
 // Second
 
 val <Unit : SecondOrSmaller> TimePeriod<Unit>.nextSecond

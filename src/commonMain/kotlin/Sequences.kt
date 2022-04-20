@@ -1,12 +1,12 @@
 import kotlin.jvm.JvmName
 
-internal fun <OutUnit : TimeUnit, LimitValue : Comparable<LimitValue>> TimePeriod<*>.generateSequence(
+private fun <OutUnit : TimeUnit, LimitValue : Comparable<LimitValue>> TimePeriod<*>.generateSequence(
     outUnit: OutUnit,
     limitValueTransform: (DateTimeComponents) -> Comparable<LimitValue>?
 ): Sequence<TimePeriod<OutUnit>> {
     val start = firstInstant()
     val endValue = limitValueTransform(components)
-    return generateSequence(TimePeriod(start, unit = outUnit)) { timePeriod ->
+    return generateSequence(TimePeriod(start, outUnit)) { timePeriod ->
         timePeriod.next(outUnit).takeUnless { limitValueTransform(it.components) != endValue }
     }
 }

@@ -1,9 +1,9 @@
 import kotlin.jvm.JvmName
 
-private fun <Unit : TimeUnit> TimePeriod<*>.first(unit: Unit) = TimePeriod(instant = firstInstant(), unit = unit)
+private fun <Unit : TimeUnit> TimePeriod<*>.first(unit: Unit) = TimePeriod(firstInstant(), unit)
 private fun <Unit : TimeUnit> TimePeriod<*>.last(unit: Unit): TimePeriod<Unit> {
-    return TimePeriod(instant = range().endInclusive, unit = unit)
-        .applying(TimeDifference(count = -1, unit = unit))
+    return TimePeriod(range().endInclusive, unit)
+        .applying(TimeDifference(-1, unit))
 }
 
 fun TimePeriod<Year>.firstMonth() = first(Month)
