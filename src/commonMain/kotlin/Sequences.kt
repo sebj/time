@@ -11,24 +11,25 @@ private fun <OutUnit : TimeUnit, LimitValue : Comparable<LimitValue>> TimePeriod
     }
 }
 
-@JvmName("minuteSeconds")
-fun TimePeriod<Minute>.seconds() = generateSequence(Second) { it.minute }
+@get:JvmName("minuteSeconds")
+val TimePeriod<Minute>.seconds get() = generateSequence(Second) { it.minute }
 
-@JvmName("hourSeconds")
-fun TimePeriod<Hour>.seconds() = generateSequence(Second) { it.hour }
-@JvmName("hourMinutes")
-fun TimePeriod<Hour>.minutes() = generateSequence(Minute) { it.hour }
+@get:JvmName("hourSeconds")
+val TimePeriod<Hour>.seconds get() = generateSequence(Second) { it.hour }
+@get:JvmName("hourMinutes")
+val TimePeriod<Hour>.minutes get() = generateSequence(Minute) { it.hour }
 
-@JvmName("dayMinutes")
-fun TimePeriod<Day>.minutes() = generateSequence(Minute) { it.dayOfMonth }
-@JvmName("dayHours")
-fun TimePeriod<Day>.hours() = generateSequence(Hour) { it.dayOfMonth }
+@get:JvmName("dayMinutes")
+val TimePeriod<Day>.minutes get() = generateSequence(Minute) { it.dayOfMonth }
+@get:JvmName("dayHours")
+val TimePeriod<Day>.hours get() = generateSequence(Hour) { it.dayOfMonth }
 
-@JvmName("monthHours")
-fun TimePeriod<Month>.hours() = generateSequence(Hour) { it.month }
-@JvmName("monthDays")
-fun TimePeriod<Month>.days() = generateSequence(Day) { it.month }
+@get:JvmName("monthHours")
+val TimePeriod<Month>.hours get() = generateSequence(Hour) { it.month }
+@get:JvmName("monthDays")
+val TimePeriod<Month>.days get() = generateSequence(Day) { it.month }
 
-fun TimePeriod<Year>.months() = generateSequence(Month) { it.year }
-@JvmName("yearDays")
-fun TimePeriod<Year>.days() = generateSequence(Day) { it.year }
+val TimePeriod<Year>.months get() = generateSequence(Month) { it.year }
+
+@get:JvmName("yearDays")
+val TimePeriod<Year>.days get() = generateSequence(Day) { it.year }

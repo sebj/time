@@ -295,9 +295,9 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
             is Minute -> 1.minutes
             is Hour -> 1.hours
             is Day -> 1.days
-            is Month -> (this as TimePeriod<Month>).days().count().days
+            is Month -> (this as TimePeriod<Month>).days.count().days
             else -> {
-                (this as TimePeriod<Year>).months().fold(0) { daysSum, month -> daysSum + month.days().count() }.days
+                (this as TimePeriod<Year>).months.fold(0) { daysSum, month -> daysSum + month.days.count() }.days
             }
         }
 
