@@ -73,16 +73,22 @@ private fun <Unit : TimeUnit> Instant.dateTimeComponents(unit: Unit): DateTimeCo
 }
 
 data class TimePeriod<Unit : TimeUnit> internal constructor(
-    internal val dateTimeComponents: DateTimeComponents,
+    internal val components: DateTimeComponents,
     internal val unit: Unit
 ) : Comparable<TimePeriod<Unit>> {
 
-    internal constructor(instant: Instant, unit: Unit) : this(instant.dateTimeComponents(unit), unit)
+    internal constructor(instant: Instant, unit: Unit) : this(instant.dateTimeComponents(unit).restrictComponents(unit), unit)
 
     companion object {
 
-        fun nanosecond(instant: Instant) = TimePeriod(instant = instant, unit = Nanosecond)
-        fun nanosecond(dateTimeComponents: DateTimeComponents) = TimePeriod(dateTimeComponents = dateTimeComponents, unit = Nanosecond)
+        internal fun nanosecond(dateTimeComponents: DateTimeComponents) = TimePeriod(
+            components = dateTimeComponents,
+            unit = Nanosecond
+        )
+        fun nanosecond(instant: Instant) = TimePeriod(
+            instant = instant,
+            unit = Nanosecond
+        )
         fun nanosecond(
             year: Int,
             month: kotlinx.datetime.Month,
@@ -91,7 +97,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
             minute: Int,
             second: Int,
             nanosecond: Int
-        ) = TimePeriod(
+        ) = nanosecond(
             DateTimeComponents(
                 year = year,
                 month = month,
@@ -100,12 +106,17 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
                 minute = minute,
                 second = second,
                 nanosecond = nanosecond
-            ),
-            unit = Nanosecond
+            )
         )
 
-        fun second(instant: Instant) = TimePeriod(instant = instant, unit = Second)
-        fun second(dateTimeComponents: DateTimeComponents) = TimePeriod(dateTimeComponents = dateTimeComponents, unit = Second)
+        internal fun second(dateTimeComponents: DateTimeComponents) = TimePeriod(
+            components = dateTimeComponents.restrictComponents(Second),
+            unit = Second
+        )
+        fun second(instant: Instant) = TimePeriod(
+            instant = instant,
+            unit = Second
+        )
         fun second(
             year: Int,
             month: kotlinx.datetime.Month,
@@ -113,7 +124,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
             hour: Int,
             minute: Int,
             second: Int
-        ) = TimePeriod(
+        ) = second(
             DateTimeComponents(
                 year = year,
                 month = month,
@@ -121,50 +132,99 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
                 hour = hour,
                 minute = minute,
                 second = second
-            ),
-            unit = Day
+            )
         )
 
-        fun minute(instant: Instant) = TimePeriod(instant = instant, unit = Minute)
-        fun minute(dateTimeComponents: DateTimeComponents) = TimePeriod(dateTimeComponents = dateTimeComponents, unit = Minute)
+        internal fun minute(dateTimeComponents: DateTimeComponents) = TimePeriod(
+            components = dateTimeComponents.restrictComponents(Minute),
+            unit = Minute
+        )
+        fun minute(instant: Instant) = TimePeriod(
+            instant = instant,
+            unit = Minute
+        )
         fun minute(
             year: Int,
             month: kotlinx.datetime.Month,
             dayOfMonth: Int,
             hour: Int,
             minute: Int
-        ) = TimePeriod(
+        ) = minute(
             DateTimeComponents(
                 year = year,
                 month = month,
                 dayOfMonth = dayOfMonth,
                 hour = hour,
                 minute = minute
-            ),
-            unit = Day
+            )
         )
 
-        fun hour(instant: Instant) = TimePeriod(instant = instant, unit = Hour)
-        fun hour(dateTimeComponents: DateTimeComponents) = TimePeriod(dateTimeComponents = dateTimeComponents, unit = Hour)
-        fun hour(year: Int, month: kotlinx.datetime.Month, dayOfMonth: Int, hour: Int) = TimePeriod(
-            DateTimeComponents(year = year, month = month, dayOfMonth = dayOfMonth, hour = hour),
-            unit = Day
+        internal fun hour(dateTimeComponents: DateTimeComponents) = TimePeriod(
+            components = dateTimeComponents.restrictComponents(Hour),
+            unit = Hour
+        )
+        fun hour(instant: Instant) = TimePeriod(
+            instant = instant,
+            unit = Hour
+        )
+        fun hour(
+            year: Int,
+            month: kotlinx.datetime.Month,
+            dayOfMonth: Int,
+            hour: Int
+        ) = hour(
+            DateTimeComponents(
+                year = year,
+                month = month,
+                dayOfMonth = dayOfMonth,
+                hour = hour
+            )
         )
 
-        fun day(instant: Instant) = TimePeriod(instant = instant, unit = Day)
-        fun day(dateTimeComponents: DateTimeComponents) = TimePeriod(dateTimeComponents = dateTimeComponents, unit = Day)
-        fun day(year: Int, month: kotlinx.datetime.Month, dayOfMonth: Int) = TimePeriod(
-            DateTimeComponents(year = year, month = month, dayOfMonth = dayOfMonth),
+        internal fun day(dateTimeComponents: DateTimeComponents) = TimePeriod(
+            components = dateTimeComponents.restrictComponents(Day),
             unit = Day
         )
+        fun day(instant: Instant) = TimePeriod(
+            instant = instant,
+            unit = Day
+        )
+        fun day(
+            year: Int,
+            month: kotlinx.datetime.Month,
+            dayOfMonth: Int
+        ) = day(
+            DateTimeComponents(
+                year = year,
+                month = month,
+                dayOfMonth = dayOfMonth
+            )
+        )
 
-        fun month(instant: Instant) = TimePeriod(instant = instant, unit = Month)
-        fun month(dateTimeComponents: DateTimeComponents) = TimePeriod(dateTimeComponents = dateTimeComponents, unit = Month)
-        fun month(year: Int, month: kotlinx.datetime.Month) = TimePeriod(DateTimeComponents(year = year, month = month), unit = Month)
+        internal fun month(dateTimeComponents: DateTimeComponents) = TimePeriod(
+            components = dateTimeComponents.restrictComponents(Month),
+            unit = Month
+        )
+        fun month(instant: Instant) = TimePeriod(
+            instant = instant,
+            unit = Month
+        )
+        fun month(year: Int, month: kotlinx.datetime.Month) = month(
+            DateTimeComponents(
+                year = year,
+                month = month
+            )
+        )
 
-        fun year(instant: Instant) = TimePeriod(instant = instant, unit = Year)
-        fun year(dateTimeComponents: DateTimeComponents) = TimePeriod(dateTimeComponents = dateTimeComponents, unit = Year)
-        fun year(year: Int) = TimePeriod(DateTimeComponents(year = year), unit = Year)
+        internal fun year(dateTimeComponents: DateTimeComponents) = TimePeriod(
+            components = dateTimeComponents.restrictComponents(Year),
+            unit = Year
+        )
+        fun year(instant: Instant) = TimePeriod(
+            instant = instant,
+            unit = Year
+        )
+        fun year(year: Int) = year(DateTimeComponents(year = year))
     }
 
     fun <DifferenceUnit : TimeUnit> applying(difference: TimeDifference<DifferenceUnit>): TimePeriod<Unit> {
@@ -191,35 +251,35 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
                 TimePeriod(instant = newInstant, unit = unit)
             }
             is Month -> {
-                val month = requireNotNull(dateTimeComponents.month)
+                val month = requireNotNull(components.month)
                 val newMonthIndex = (month.ordinal + difference.count + 12) % 12
                 val newMonth = kotlinx.datetime.Month.values()[newMonthIndex]
                 val yearOffset = floor((month.ordinal + difference.count).toDouble() / 12.0)
 
-                val newComponents = dateTimeComponents.copy(
-                    year = dateTimeComponents.year + yearOffset.toInt(),
+                val newComponents = components.copy(
+                    year = components.year + yearOffset.toInt(),
                     month = newMonth
                 )
 
-                TimePeriod(dateTimeComponents = newComponents, unit = unit)
+                TimePeriod(components = newComponents, unit = unit)
             }
             else -> {
-                val newComponents = dateTimeComponents.copy(
-                    year = dateTimeComponents.year + difference.count
+                val newComponents = components.copy(
+                    year = components.year + difference.count
                 )
-                TimePeriod(dateTimeComponents = newComponents, unit = unit)
+                TimePeriod(components = newComponents, unit = unit)
             }
         }
     }
 
     fun firstInstant(): Instant {
-        val populatedComponents = dateTimeComponents.copy(
-            month = dateTimeComponents.month ?: kotlinx.datetime.Month.JANUARY,
-            dayOfMonth = dateTimeComponents.dayOfMonth ?: 1,
-            hour = dateTimeComponents.hour ?: 0,
-            minute = dateTimeComponents.minute ?: 0,
-            second = dateTimeComponents.second ?: 0,
-            nanosecond = dateTimeComponents.nanosecond ?: 0
+        val populatedComponents = components.copy(
+            month = components.month ?: kotlinx.datetime.Month.JANUARY,
+            dayOfMonth = components.dayOfMonth ?: 1,
+            hour = components.hour ?: 0,
+            minute = components.minute ?: 0,
+            second = components.second ?: 0,
+            nanosecond = components.nanosecond ?: 0
         )
 
         return populatedComponents.toLocalDateTime().toInstant(UtcOffset.ZERO)
@@ -245,7 +305,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         return start..end
     }
 
-    override fun compareTo(other: TimePeriod<Unit>) = dateTimeComponents.compareTo(other.dateTimeComponents)
+    override fun compareTo(other: TimePeriod<Unit>) = components.compareTo(other.components)
 }
 
 fun <Unit : HourOrSmaller> TimePeriod<Unit>.toLocalDateTime(timeZone: TimeZone) = firstInstant().toLocalDateTime(timeZone)
