@@ -11,8 +11,14 @@ internal fun <Unit : TimeUnit> TimePeriod<Unit>.previous(unit: TimeUnit) = offse
 
 // Nanosecond
 
+/**
+ * Create a new [TimePeriod] by moving forward one nanosecond.
+ */
 val <Unit : NanosecondOrSmaller> TimePeriod<Unit>.nextNanosecond
     get() = next(Nanosecond)
+/**
+ * Create a new [TimePeriod] by moving backward one nanosecond.
+ */
 val <Unit : NanosecondOrSmaller> TimePeriod<Unit>.previousNanosecond
     get() = previous(Nanosecond)
 
@@ -21,8 +27,14 @@ fun <Unit : NanosecondOrSmaller> TimePeriod<Unit>.subtractingNanoseconds(count: 
 
 // Second
 
+/**
+ * Create a new [TimePeriod] by moving forward one second.
+ */
 val <Unit : SecondOrSmaller> TimePeriod<Unit>.nextSecond
     get() = next(Second)
+/**
+ * Create a new [TimePeriod] by moving backward one second.
+ */
 val <Unit : SecondOrSmaller> TimePeriod<Unit>.previousSecond
     get() = previous(Second)
 
@@ -31,8 +43,14 @@ fun <Unit : SecondOrSmaller> TimePeriod<Unit>.subtractingSeconds(count: Int) = a
 
 // Minute
 
+/**
+ * Create a new [TimePeriod] by moving forward one minute.
+ */
 val <Unit : MinuteOrSmaller> TimePeriod<Unit>.nextMinute
     get() = next(Minute)
+/**
+ * Create a new [TimePeriod] by moving backward one minute.
+ */
 val <Unit : MinuteOrSmaller> TimePeriod<Unit>.previousMinute
     get() = previous(Minute)
 
@@ -41,8 +59,14 @@ fun <Unit : MinuteOrSmaller> TimePeriod<Unit>.subtractingMinutes(count: Int) = a
 
 // Hour
 
+/**
+ * Create a new [TimePeriod] by moving forward one hour.
+ */
 val <Unit : HourOrSmaller> TimePeriod<Unit>.nextHour
     get() = next(Hour)
+/**
+ * Create a new [TimePeriod] by moving backward one hour.
+ */
 val <Unit : HourOrSmaller> TimePeriod<Unit>.previousHour
     get() = previous(Hour)
 
@@ -51,8 +75,14 @@ fun <Unit : HourOrSmaller> TimePeriod<Unit>.subtractingHours(count: Int) = apply
 
 // Day
 
+/**
+ * Create a new [TimePeriod] by moving forward one day.
+ */
 val <Unit : DayOrSmaller> TimePeriod<Unit>.nextDay
     get() = next(Day)
+/**
+ * Create a new [TimePeriod] by moving backward one day.
+ */
 val <Unit : DayOrSmaller> TimePeriod<Unit>.previousDay
     get() = previous(Day)
 
@@ -61,8 +91,14 @@ fun <Unit : DayOrSmaller> TimePeriod<Unit>.subtractingDays(count: Int) = applyin
 
 // Month
 
+/**
+ * Create a new [TimePeriod] by moving forward one month.
+ */
 val <Unit : MonthOrSmaller> TimePeriod<Unit>.nextMonth
     get() = next(Month)
+/**
+ * Create a new [TimePeriod] by moving backward one month.
+ */
 val <Unit : MonthOrSmaller> TimePeriod<Unit>.previousMonth
     get() = previous(Month)
 
@@ -71,8 +107,14 @@ fun <Unit : MonthOrSmaller> TimePeriod<Unit>.subtractingMonths(count: Int) = app
 
 // Year
 
+/**
+ * Create a new [TimePeriod] by moving forward one year.
+ */
 val <Unit : YearOrSmaller> TimePeriod<Unit>.nextYear
     get() = next(Year)
+/**
+ * Create a new [TimePeriod] by moving backward one year.
+ */
 val <Unit : YearOrSmaller> TimePeriod<Unit>.previousYear
     get() = previous(Year)
 
