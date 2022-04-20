@@ -5,9 +5,11 @@ import kotlin.test.assertEquals
 
 class SequencesTest {
 
+    private val clock = Clock.System
+
     @Test
     fun minuteSeconds() {
-        val minute = Clock.System.thisMinute()
+        val minute = clock.thisMinute()
         val seconds = minute.seconds()
         assertEquals(expected = 60, actual = seconds.count())
         assertEquals(expected = 0, actual = seconds.first().second)
@@ -16,7 +18,7 @@ class SequencesTest {
 
     @Test
     fun hourMinutes() {
-        val hour = Clock.System.thisHour()
+        val hour = clock.thisHour()
         val minutes = hour.minutes()
         assertEquals(expected = 60, actual = minutes.count())
         assertEquals(expected = 0, actual = minutes.first().minute)
@@ -34,7 +36,7 @@ class SequencesTest {
 
     @Test
     fun yearMonths() {
-        val year = Clock.System.thisYear()
+        val year = clock.thisYear()
         val months = year.months().toList()
         assertEquals(expected = 12, actual = months.count())
         assertEquals(expected = Month.JANUARY, actual = months.first().month)

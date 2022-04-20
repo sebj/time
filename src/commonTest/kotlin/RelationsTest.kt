@@ -4,26 +4,28 @@ import kotlin.test.assertEquals
 
 class RelationsTest {
 
+    private val clock = Clock.System
+
     @Test
     fun before() {
         assertEquals(
             expected = true,
-            actual = Clock.System.thisSecond().before(Clock.System.nextSecond())
+            actual = clock.thisSecond().before(clock.nextSecond())
         )
 
         assertEquals(
             expected = true,
-            actual = Clock.System.previousDay().before(Clock.System.nextDay())
+            actual = clock.previousDay().before(clock.nextDay())
         )
 
         assertEquals(
             expected = true,
-            actual = Clock.System.thisMonth().before(Clock.System.nextMonth())
+            actual = clock.thisMonth().before(clock.nextMonth())
         )
 
         assertEquals(
             expected = true,
-            actual = Clock.System.previousYear().before(Clock.System.thisYear())
+            actual = clock.previousYear().before(clock.thisYear())
         )
     }
 
@@ -31,42 +33,42 @@ class RelationsTest {
     fun after() {
         assertEquals(
             expected = true,
-            actual = Clock.System.nextSecond().after(Clock.System.thisSecond())
+            actual = clock.nextSecond().after(clock.thisSecond())
         )
 
         assertEquals(
             expected = false,
-            actual = Clock.System.thisSecond().after(Clock.System.thisSecond())
+            actual = clock.thisSecond().after(clock.thisSecond())
         )
 
         assertEquals(
             expected = true,
-            actual = Clock.System.nextDay().after(Clock.System.previousDay())
+            actual = clock.nextDay().after(clock.previousDay())
         )
 
         assertEquals(
             expected = false,
-            actual = Clock.System.nextDay().after(Clock.System.nextDay())
+            actual = clock.nextDay().after(clock.nextDay())
         )
 
         assertEquals(
             expected = true,
-            actual = Clock.System.nextMonth().after(Clock.System.thisMonth())
+            actual = clock.nextMonth().after(clock.thisMonth())
         )
 
         assertEquals(
             expected = false,
-            actual = Clock.System.thisMonth().after(Clock.System.thisMonth())
+            actual = clock.thisMonth().after(clock.thisMonth())
         )
 
         assertEquals(
             expected = true,
-            actual = Clock.System.thisYear().after(Clock.System.previousYear())
+            actual = clock.thisYear().after(clock.previousYear())
         )
 
         assertEquals(
             expected = false,
-            actual = Clock.System.thisYear().after(Clock.System.thisYear())
+            actual = clock.thisYear().after(clock.thisYear())
         )
     }
 
@@ -74,12 +76,12 @@ class RelationsTest {
     fun minuteContainsSecond() {
         assertEquals(
             expected = true,
-            actual = Clock.System.thisMinute().contains(Clock.System.thisSecond())
+            actual = clock.thisMinute().contains(clock.thisSecond())
         )
 
         assertEquals(
             expected = false,
-            actual = Clock.System.previousMinute().contains(Clock.System.thisSecond())
+            actual = clock.previousMinute().contains(clock.thisSecond())
         )
     }
 
@@ -87,17 +89,17 @@ class RelationsTest {
     fun hourContains() {
         assertEquals(
             expected = true,
-            actual = Clock.System.thisHour().contains(Clock.System.thisSecond())
+            actual = clock.thisHour().contains(clock.thisSecond())
         )
 
         assertEquals(
             expected = true,
-            actual = Clock.System.thisHour().contains(Clock.System.thisMinute())
+            actual = clock.thisHour().contains(clock.thisMinute())
         )
 
         assertEquals(
             expected = false,
-            actual = Clock.System.previousHour().contains(Clock.System.thisSecond())
+            actual = clock.previousHour().contains(clock.thisSecond())
         )
     }
 
@@ -105,22 +107,22 @@ class RelationsTest {
     fun dayContains() {
         assertEquals(
             expected = true,
-            actual = Clock.System.thisDay().contains(Clock.System.thisSecond())
+            actual = clock.thisDay().contains(clock.thisSecond())
         )
 
         assertEquals(
             expected = true,
-            actual = Clock.System.thisDay().contains(Clock.System.thisMinute())
+            actual = clock.thisDay().contains(clock.thisMinute())
         )
 
         assertEquals(
             expected = true,
-            actual = Clock.System.thisDay().contains(Clock.System.thisHour())
+            actual = clock.thisDay().contains(clock.thisHour())
         )
 
         assertEquals(
             expected = false,
-            actual = Clock.System.previousDay().contains(Clock.System.thisSecond())
+            actual = clock.previousDay().contains(clock.thisSecond())
         )
     }
 
@@ -128,32 +130,32 @@ class RelationsTest {
     fun monthContains() {
         assertEquals(
             expected = true,
-            actual = Clock.System.thisMonth().contains(Clock.System.thisSecond())
+            actual = clock.thisMonth().contains(clock.thisSecond())
         )
 
         assertEquals(
             expected = true,
-            actual = Clock.System.thisMonth().contains(Clock.System.thisMinute())
+            actual = clock.thisMonth().contains(clock.thisMinute())
         )
 
         assertEquals(
             expected = true,
-            actual = Clock.System.thisMonth().contains(Clock.System.today())
+            actual = clock.thisMonth().contains(clock.today())
         )
 
         assertEquals(
             expected = false,
-            actual = Clock.System.previousMonth().contains(Clock.System.thisSecond())
+            actual = clock.previousMonth().contains(clock.thisSecond())
         )
 
         assertEquals(
             expected = false,
-            actual = Clock.System.previousMonth().contains(Clock.System.thisMinute())
+            actual = clock.previousMonth().contains(clock.thisMinute())
         )
 
         assertEquals(
             expected = false,
-            actual = Clock.System.previousMonth().contains(Clock.System.today())
+            actual = clock.previousMonth().contains(clock.today())
         )
     }
 }

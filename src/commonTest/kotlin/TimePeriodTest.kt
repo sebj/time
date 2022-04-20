@@ -12,9 +12,11 @@ import kotlin.time.Duration.Companion.days
 
 class TimePeriodTest {
 
+    private val clock = Clock.System
+
     @Test
     fun equality() {
-        val clock = Clock.System
+        val clock = clock
         assertEquals(clock.today(), clock.today())
         assertEquals(clock.today(), clock.tomorrow().previousDay)
     }
@@ -22,14 +24,14 @@ class TimePeriodTest {
     @Test
     fun toLocalDate() {
         assertEquals(
-            expected = Clock.System.todayAt(TimeZone.UTC),
-            actual = Clock.System.today().toLocalDate(TimeZone.UTC)
+            expected = clock.todayAt(TimeZone.UTC),
+            actual = clock.today().toLocalDate(TimeZone.UTC)
         )
     }
 
     @Test
     fun toLocalDateTime() {
-        val clock = Clock.System
+        val clock = clock
         val expected = clock.thisInstant().toLocalDateTime(TimeZone.UTC)
         val actual = clock.thisNanosecond().toLocalDateTime(TimeZone.UTC)
 
@@ -43,8 +45,8 @@ class TimePeriodTest {
     @Test
     fun applyDaysDifference() {
         val timeZone = TimeZone.UTC
-        val expectedTomorrow = Clock.System.now().plus(1.days).toLocalDateTime(timeZone).date
-        val actualTomorrow = Clock.System.thisHour().addingDays(1).toLocalDate(timeZone)
+        val expectedTomorrow = clock.now().plus(1.days).toLocalDateTime(timeZone).date
+        val actualTomorrow = clock.thisHour().addingDays(1).toLocalDate(timeZone)
 
         assertEquals(
             expected = expectedTomorrow,
