@@ -3,11 +3,11 @@ private fun <Unit : TimeUnit> TimePeriod<Unit>.offset(count: Int, unit: TimeUnit
         return this
     }
 
-    return applying(TimeDifference(count = count, unit = unit))
+    return applying(TimeDifference(count, unit))
 }
 
-internal fun <Unit : TimeUnit> TimePeriod<Unit>.next(unit: TimeUnit) = offset(1, unit = unit)
-internal fun <Unit : TimeUnit> TimePeriod<Unit>.previous(unit: TimeUnit) = offset(count = -1, unit = unit)
+internal fun <Unit : TimeUnit> TimePeriod<Unit>.next(unit: TimeUnit) = offset(1, unit)
+internal fun <Unit : TimeUnit> TimePeriod<Unit>.previous(unit: TimeUnit) = offset(-1, unit)
 
 // Second
 
@@ -16,8 +16,8 @@ val <Unit : SecondOrSmaller> TimePeriod<Unit>.nextSecond
 val <Unit : SecondOrSmaller> TimePeriod<Unit>.previousSecond
     get() = previous(Second)
 
-fun <Unit : SecondOrSmaller> TimePeriod<Unit>.addingSeconds(seconds: Int) = applying(TimeDifference.seconds(seconds))
-fun <Unit : SecondOrSmaller> TimePeriod<Unit>.subtractingSeconds(seconds: Int) = applying(TimeDifference.seconds(-seconds))
+fun <Unit : SecondOrSmaller> TimePeriod<Unit>.addingSeconds(count: Int) = applying(TimeDifference.seconds(count))
+fun <Unit : SecondOrSmaller> TimePeriod<Unit>.subtractingSeconds(count: Int) = applying(TimeDifference.seconds(-count))
 
 // Minute
 
@@ -26,8 +26,8 @@ val <Unit : MinuteOrSmaller> TimePeriod<Unit>.nextMinute
 val <Unit : MinuteOrSmaller> TimePeriod<Unit>.previousMinute
     get() = previous(Minute)
 
-fun <Unit : MinuteOrSmaller> TimePeriod<Unit>.addingMinutes(minutes: Int) = applying(TimeDifference.minutes(minutes))
-fun <Unit : MinuteOrSmaller> TimePeriod<Unit>.subtractingMinutes(minutes: Int) = applying(TimeDifference.minutes(-minutes))
+fun <Unit : MinuteOrSmaller> TimePeriod<Unit>.addingMinutes(count: Int) = applying(TimeDifference.minutes(count))
+fun <Unit : MinuteOrSmaller> TimePeriod<Unit>.subtractingMinutes(count: Int) = applying(TimeDifference.minutes(-count))
 
 // Hour
 
@@ -36,8 +36,8 @@ val <Unit : HourOrSmaller> TimePeriod<Unit>.nextHour
 val <Unit : HourOrSmaller> TimePeriod<Unit>.previousHour
     get() = previous(Hour)
 
-fun <Unit : HourOrSmaller> TimePeriod<Unit>.addingHours(hours: Int) = applying(TimeDifference.hours(hours))
-fun <Unit : HourOrSmaller> TimePeriod<Unit>.subtractingHours(hours: Int) = applying(TimeDifference.hours(-hours))
+fun <Unit : HourOrSmaller> TimePeriod<Unit>.addingHours(count: Int) = applying(TimeDifference.hours(count))
+fun <Unit : HourOrSmaller> TimePeriod<Unit>.subtractingHours(count: Int) = applying(TimeDifference.hours(-count))
 
 // Day
 
@@ -46,8 +46,8 @@ val <Unit : DayOrSmaller> TimePeriod<Unit>.nextDay
 val <Unit : DayOrSmaller> TimePeriod<Unit>.previousDay
     get() = previous(Day)
 
-fun <Unit : DayOrSmaller> TimePeriod<Unit>.addingDays(days: Int) = applying(TimeDifference.days(days))
-fun <Unit : DayOrSmaller> TimePeriod<Unit>.subtractingDays(days: Int) = applying(TimeDifference.days(-days))
+fun <Unit : DayOrSmaller> TimePeriod<Unit>.addingDays(count: Int) = applying(TimeDifference.days(count))
+fun <Unit : DayOrSmaller> TimePeriod<Unit>.subtractingDays(count: Int) = applying(TimeDifference.days(-count))
 
 // Month
 
@@ -56,8 +56,8 @@ val <Unit : MonthOrSmaller> TimePeriod<Unit>.nextMonth
 val <Unit : MonthOrSmaller> TimePeriod<Unit>.previousMonth
     get() = previous(Month)
 
-fun <Unit : MonthOrSmaller> TimePeriod<Unit>.adding(months: Int) = applying(TimeDifference.months(months))
-fun <Unit : MonthOrSmaller> TimePeriod<Unit>.subtractingMonths(months: Int) = applying(TimeDifference.months(-months))
+fun <Unit : MonthOrSmaller> TimePeriod<Unit>.adding(count: Int) = applying(TimeDifference.months(count))
+fun <Unit : MonthOrSmaller> TimePeriod<Unit>.subtractingMonths(count: Int) = applying(TimeDifference.months(-count))
 
 // Year
 
@@ -66,5 +66,5 @@ val <Unit : YearOrSmaller> TimePeriod<Unit>.nextYear
 val <Unit : YearOrSmaller> TimePeriod<Unit>.previousYear
     get() = previous(Year)
 
-fun <Unit : YearOrSmaller> TimePeriod<Unit>.addingYears(years: Int) = applying(TimeDifference.years(years))
-fun <Unit : YearOrSmaller> TimePeriod<Unit>.subtractingYears(years: Int) = applying(TimeDifference.years(-years))
+fun <Unit : YearOrSmaller> TimePeriod<Unit>.addingYears(count: Int) = applying(TimeDifference.years(count))
+fun <Unit : YearOrSmaller> TimePeriod<Unit>.subtractingYears(count: Int) = applying(TimeDifference.years(-count))
