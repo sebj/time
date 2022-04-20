@@ -1,6 +1,7 @@
 import kotlinx.datetime.Clock
 import kotlin.test.Test
-import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class RelationsTest {
 
@@ -8,154 +9,55 @@ class RelationsTest {
 
     @Test
     fun before() {
-        assertEquals(
-            expected = true,
-            actual = clock.thisSecond().before(clock.nextSecond())
-        )
-
-        assertEquals(
-            expected = true,
-            actual = clock.previousDay().before(clock.nextDay())
-        )
-
-        assertEquals(
-            expected = true,
-            actual = clock.thisMonth().before(clock.nextMonth())
-        )
-
-        assertEquals(
-            expected = true,
-            actual = clock.previousYear().before(clock.thisYear())
-        )
+        assertTrue(clock.thisSecond().before(clock.nextSecond()))
+        assertTrue(clock.previousDay().before(clock.nextDay()))
+        assertTrue(clock.thisMonth().before(clock.nextMonth()))
+        assertTrue(clock.previousYear().before(clock.thisYear()))
     }
 
     @Test
     fun after() {
-        assertEquals(
-            expected = true,
-            actual = clock.nextSecond().after(clock.thisSecond())
-        )
+        assertTrue(clock.nextSecond().after(clock.thisSecond()))
+        assertFalse(clock.thisSecond().after(clock.thisSecond()))
 
-        assertEquals(
-            expected = false,
-            actual = clock.thisSecond().after(clock.thisSecond())
-        )
+        assertTrue(clock.nextDay().after(clock.previousDay()))
+        assertFalse(clock.nextDay().after(clock.nextDay()))
 
-        assertEquals(
-            expected = true,
-            actual = clock.nextDay().after(clock.previousDay())
-        )
+        assertTrue(clock.nextMonth().after(clock.thisMonth()))
+        assertFalse(clock.thisMonth().after(clock.thisMonth()))
 
-        assertEquals(
-            expected = false,
-            actual = clock.nextDay().after(clock.nextDay())
-        )
-
-        assertEquals(
-            expected = true,
-            actual = clock.nextMonth().after(clock.thisMonth())
-        )
-
-        assertEquals(
-            expected = false,
-            actual = clock.thisMonth().after(clock.thisMonth())
-        )
-
-        assertEquals(
-            expected = true,
-            actual = clock.thisYear().after(clock.previousYear())
-        )
-
-        assertEquals(
-            expected = false,
-            actual = clock.thisYear().after(clock.thisYear())
-        )
+        assertTrue(clock.thisYear().after(clock.previousYear()))
+        assertFalse(clock.thisYear().after(clock.thisYear()))
     }
 
     @Test
     fun minuteContainsSecond() {
-        assertEquals(
-            expected = true,
-            actual = clock.thisMinute().contains(clock.thisSecond())
-        )
-
-        assertEquals(
-            expected = false,
-            actual = clock.previousMinute().contains(clock.thisSecond())
-        )
+        assertTrue(clock.thisMinute().contains(clock.thisSecond()))
+        assertFalse(clock.previousMinute().contains(clock.thisSecond()))
     }
 
     @Test
     fun hourContains() {
-        assertEquals(
-            expected = true,
-            actual = clock.thisHour().contains(clock.thisSecond())
-        )
-
-        assertEquals(
-            expected = true,
-            actual = clock.thisHour().contains(clock.thisMinute())
-        )
-
-        assertEquals(
-            expected = false,
-            actual = clock.previousHour().contains(clock.thisSecond())
-        )
+        assertTrue(clock.thisHour().contains(clock.thisSecond()))
+        assertTrue(clock.thisHour().contains(clock.thisMinute()))
+        assertFalse(clock.previousHour().contains(clock.thisSecond()))
     }
 
     @Test
     fun dayContains() {
-        assertEquals(
-            expected = true,
-            actual = clock.thisDay().contains(clock.thisSecond())
-        )
-
-        assertEquals(
-            expected = true,
-            actual = clock.thisDay().contains(clock.thisMinute())
-        )
-
-        assertEquals(
-            expected = true,
-            actual = clock.thisDay().contains(clock.thisHour())
-        )
-
-        assertEquals(
-            expected = false,
-            actual = clock.previousDay().contains(clock.thisSecond())
-        )
+        assertTrue(clock.thisDay().contains(clock.thisSecond()))
+        assertTrue(clock.thisDay().contains(clock.thisMinute()))
+        assertTrue(clock.thisDay().contains(clock.thisHour()))
+        assertFalse(clock.previousDay().contains(clock.thisSecond()))
     }
 
     @Test
     fun monthContains() {
-        assertEquals(
-            expected = true,
-            actual = clock.thisMonth().contains(clock.thisSecond())
-        )
-
-        assertEquals(
-            expected = true,
-            actual = clock.thisMonth().contains(clock.thisMinute())
-        )
-
-        assertEquals(
-            expected = true,
-            actual = clock.thisMonth().contains(clock.today())
-        )
-
-        assertEquals(
-            expected = false,
-            actual = clock.previousMonth().contains(clock.thisSecond())
-        )
-
-        assertEquals(
-            expected = false,
-            actual = clock.previousMonth().contains(clock.thisMinute())
-        )
-
-        assertEquals(
-            expected = false,
-            actual = clock.previousMonth().contains(clock.today())
-        )
+        assertTrue(clock.thisMonth().contains(clock.thisSecond()))
+        assertTrue(clock.thisMonth().contains(clock.thisMinute()))
+        assertTrue(clock.thisMonth().contains(clock.today()))
+        assertFalse(clock.previousMonth().contains(clock.thisSecond()))
+        assertFalse(clock.previousMonth().contains(clock.thisMinute()))
+        assertFalse(clock.previousMonth().contains(clock.today()))
     }
 }
