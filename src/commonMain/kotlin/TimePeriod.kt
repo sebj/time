@@ -10,70 +10,8 @@ import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.nanoseconds
 import kotlin.time.Duration.Companion.seconds
 
-private fun <Unit : TimeUnit> Instant.dateTimeComponents(unit: Unit): DateTimeComponents {
-    val dateTime = toLocalDateTime(TimeZone.UTC)
-    return when (unit) {
-        is Nanosecond -> {
-            DateTimeComponents(
-                year = dateTime.year,
-                month = dateTime.month,
-                dayOfMonth = dateTime.dayOfMonth,
-                hour = dateTime.hour,
-                minute = dateTime.minute,
-                second = dateTime.second,
-                nanosecond = dateTime.nanosecond
-            )
-        }
-        is Second -> {
-            DateTimeComponents(
-                year = dateTime.year,
-                month = dateTime.month,
-                dayOfMonth = dateTime.dayOfMonth,
-                hour = dateTime.hour,
-                minute = dateTime.minute,
-                second = dateTime.second
-            )
-        }
-        is Minute -> {
-            DateTimeComponents(
-                year = dateTime.year,
-                month = dateTime.month,
-                dayOfMonth = dateTime.dayOfMonth,
-                hour = dateTime.hour,
-                minute = dateTime.minute
-            )
-        }
-        is Hour -> {
-            DateTimeComponents(
-                year = dateTime.year,
-                month = dateTime.month,
-                dayOfMonth = dateTime.dayOfMonth,
-                hour = dateTime.hour
-            )
-        }
-        is Day -> {
-            DateTimeComponents(
-                year = dateTime.year,
-                month = dateTime.month,
-                dayOfMonth = dateTime.dayOfMonth
-            )
-        }
-        is Month -> {
-            DateTimeComponents(
-                year = dateTime.year,
-                month = dateTime.month
-            )
-        }
-        else -> {
-            DateTimeComponents(
-                year = dateTime.year
-            )
-        }
-    }
-}
-
 data class TimePeriod<Unit : TimeUnit> internal constructor(
-    internal val components: DateTimeComponents,
+    val components: DateTimeComponents,
     internal val unit: Unit
 ) : Comparable<TimePeriod<Unit>> {
 
@@ -81,7 +19,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
 
     companion object {
 
-        internal fun nanosecond(dateTimeComponents: DateTimeComponents) = TimePeriod(
+        private fun nanosecond(dateTimeComponents: DateTimeComponents) = TimePeriod(
             components = dateTimeComponents,
             unit = Nanosecond
         )
@@ -232,23 +170,23 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         return when (difference.unit) {
             is Nanosecond -> {
                 val newInstant = instant.plus(difference.count.nanoseconds)
-                TimePeriod(instant = newInstant, unit = unit)
+                TimePeriod(newInstant, unit)
             }
             is Second -> {
                 val newInstant = instant.plus(difference.count.seconds)
-                TimePeriod(instant = newInstant, unit = unit)
+                TimePeriod(newInstant, unit)
             }
             is Minute -> {
                 val newInstant = instant.plus(difference.count.minutes)
-                TimePeriod(instant = newInstant, unit = unit)
+                TimePeriod(newInstant, unit)
             }
             is Hour -> {
                 val newInstant = instant.plus(difference.count.hours)
-                TimePeriod(instant = newInstant, unit = unit)
+                TimePeriod(newInstant, unit)
             }
             is Day -> {
                 val newInstant = instant.plus(difference.count.days)
-                TimePeriod(instant = newInstant, unit = unit)
+                TimePeriod(newInstant, unit)
             }
             is Month -> {
                 val month = requireNotNull(components.month)
@@ -261,13 +199,13 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
                     month = newMonth
                 )
 
-                TimePeriod(components = newComponents, unit = unit)
+                TimePeriod(newComponents, unit)
             }
             else -> {
                 val newComponents = components.copy(
                     year = components.year + difference.count
                 )
-                TimePeriod(components = newComponents, unit = unit)
+                TimePeriod(newComponents, unit)
             }
         }
     }
@@ -285,28 +223,94 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         return populatedComponents.toLocalDateTime().toInstant(UtcOffset.ZERO)
     }
 
-    fun range(): ClosedRange<Instant> {
-        val start = firstInstant()
+    /**
+     * Retrieve the range of [Instant]s described by this [TimePeriod].
+     */
+    val range: ClosedRange<Instant>
+        get() {
+            val start = firstInstant()
 
-        @Suppress("UNCHECKED_CAST")
-        val unitLength = when (unit) {
-            is Nanosecond -> 1.nanoseconds
-            is Second -> 1.seconds
-            is Minute -> 1.minutes
-            is Hour -> 1.hours
-            is Day -> 1.days
-            is Month -> (this as TimePeriod<Month>).days.count().days
-            else -> {
-                (this as TimePeriod<Year>).months.fold(0) { daysSum, month -> daysSum + month.days.count() }.days
+            @Suppress("UNCHECKED_CAST")
+            val unitLength = when (unit) {
+                is Nanosecond -> 1.nanoseconds
+                is Second -> 1.seconds
+                is Minute -> 1.minutes
+                is Hour -> 1.hours
+                is Day -> 1.days
+                is Month -> (this as TimePeriod<Month>).days.count().days
+                else -> {
+                    (this as TimePeriod<Year>).months.fold(0) { daysSum, month -> daysSum + month.days.count() }.days
+                }
             }
-        }
 
-        val end = firstInstant().plus(unitLength)
-        return start..end
-    }
+            val end = firstInstant().plus(unitLength)
+            return start..end
+        }
 
     override fun compareTo(other: TimePeriod<Unit>) = components.compareTo(other.components)
 }
 
 fun <Unit : HourOrSmaller> TimePeriod<Unit>.toLocalDateTime(timeZone: TimeZone) = firstInstant().toLocalDateTime(timeZone)
 fun <Unit : DayOrSmaller> TimePeriod<Unit>.toLocalDate(timeZone: TimeZone) = firstInstant().toLocalDateTime(timeZone).date
+
+private fun <Unit : TimeUnit> Instant.dateTimeComponents(unit: Unit): DateTimeComponents {
+    val dateTime = toLocalDateTime(TimeZone.UTC)
+    return when (unit) {
+        is Nanosecond -> {
+            DateTimeComponents(
+                year = dateTime.year,
+                month = dateTime.month,
+                dayOfMonth = dateTime.dayOfMonth,
+                hour = dateTime.hour,
+                minute = dateTime.minute,
+                second = dateTime.second,
+                nanosecond = dateTime.nanosecond
+            )
+        }
+        is Second -> {
+            DateTimeComponents(
+                year = dateTime.year,
+                month = dateTime.month,
+                dayOfMonth = dateTime.dayOfMonth,
+                hour = dateTime.hour,
+                minute = dateTime.minute,
+                second = dateTime.second
+            )
+        }
+        is Minute -> {
+            DateTimeComponents(
+                year = dateTime.year,
+                month = dateTime.month,
+                dayOfMonth = dateTime.dayOfMonth,
+                hour = dateTime.hour,
+                minute = dateTime.minute
+            )
+        }
+        is Hour -> {
+            DateTimeComponents(
+                year = dateTime.year,
+                month = dateTime.month,
+                dayOfMonth = dateTime.dayOfMonth,
+                hour = dateTime.hour
+            )
+        }
+        is Day -> {
+            DateTimeComponents(
+                year = dateTime.year,
+                month = dateTime.month,
+                dayOfMonth = dateTime.dayOfMonth
+            )
+        }
+        is Month -> {
+            DateTimeComponents(
+                year = dateTime.year,
+                month = dateTime.month
+            )
+        }
+        else -> {
+            DateTimeComponents(
+                year = dateTime.year
+            )
+        }
+    }
+}

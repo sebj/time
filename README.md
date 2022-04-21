@@ -45,17 +45,24 @@ val month = clock.thisMonth()
 
 ### Retrieving Components
 
-Retrieve larger less-precise components for a time period:
+Retrieve component values for a time period:
 ```kotlin
 val today: TimePeriod<Day> = Clock.System.today()
 val year = today.year // Ex: 2022
-val month = today.month // Ex: 4
+val month = today.month // Ex: APRIL
 val day = today.day // Ex: 18
 ```
 
 ### Retrieving TimePeriods
 
-Retrieve smaller more-precise time periods for a given time period:
+Retrieve larger less-precise time periods for a time period:
+```kotlin
+val today: TimePeriod<Day> = Clock.System.today()
+val month: TimePeriod<Month> = today.monthPeriod
+val year: TimePeriod<Month> = today.yearPeriod
+```
+
+Retrieve smaller more-precise time periods for a time period:
 ```kotlin
 val clock = Clock.System
 

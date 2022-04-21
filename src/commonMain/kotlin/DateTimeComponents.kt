@@ -1,7 +1,7 @@
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 
-internal data class DateTimeComponents(
+data class DateTimeComponents internal constructor(
     val year: Int,
     val month: kotlinx.datetime.Month? = null,
     val dayOfMonth: Int? = null,
@@ -24,6 +24,7 @@ internal data class DateTimeComponents(
     )
 }
 
+@Throws(IllegalStateException::class)
 internal fun DateTimeComponents.toLocalDate(): LocalDate {
     if (month != null && dayOfMonth != null) {
         return LocalDate(
@@ -36,6 +37,7 @@ internal fun DateTimeComponents.toLocalDate(): LocalDate {
     throw IllegalStateException("Missing year, month and/or day components")
 }
 
+@Throws(IllegalStateException::class)
 internal fun DateTimeComponents.toLocalDateTime(): LocalDateTime {
     if (month != null && dayOfMonth != null && hour != null) {
         return LocalDateTime(

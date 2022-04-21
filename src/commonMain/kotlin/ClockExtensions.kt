@@ -1,7 +1,7 @@
 import kotlinx.datetime.Clock
 
 /**
- * Returns the [kotlinx.datetime.Instant] corresponding to the current time, according to this [Clock].
+ * @return The [kotlinx.datetime.Instant] corresponding to the current time, according to this [Clock].
  */
 fun Clock.thisInstant() = now()
 

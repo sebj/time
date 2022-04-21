@@ -7,7 +7,9 @@ private fun <OutUnit : TimeUnit, LimitValue : Comparable<LimitValue>> TimePeriod
     val start = firstInstant()
     val endValue = limitValueTransform(components)
     return generateSequence(TimePeriod(start, outUnit)) { timePeriod ->
-        timePeriod.next(outUnit).takeUnless { limitValueTransform(it.components) != endValue }
+        timePeriod
+            .applying(TimeDifference(count = 1, unit = outUnit))
+            .takeUnless { limitValueTransform(it.components) != endValue }
     }
 }
 

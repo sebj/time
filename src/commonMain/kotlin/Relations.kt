@@ -1,5 +1,6 @@
 /**
  * There are 13 possible ways in which two values may be related to each other.
+ *
  * See: [Allen's Interval](https://en.wikipedia.org/wiki/Allen%27s_interval_algebra)
  */
 enum class Relation {
@@ -152,22 +153,22 @@ enum class Relation {
     }
 
     /**
-     * Returns `true` if the relation describes two ranges that meet at any extreme.
+     * @return `true` if the relation describes two ranges that meet at any extreme.
      */
     val isMeeting: Boolean get() = meetings.contains(this)
 
     /**
-     * Returns `true` if the relation describes any kind of overlapping.
+     * @return `true` if the relation describes any kind of overlapping.
      */
     val isOverlapping: Boolean get() = overlappings.contains(this)
 
     /**
-     * Returns `true` if the relation describes disjointedness.
+     * @return `true` if the relation describes disjointedness.
      */
     val isDisjoint: Boolean get() = this == Before || this == After
 
     /**
-     * Returns `true` if the relation describes equality.
+     * @return `true` if the relation describes equality.
      */
     val isEqual: Boolean get() = this == Equal
 }
@@ -193,20 +194,20 @@ private fun <T : Comparable<T>> ClosedRange<T>.determineRelationship(other: Clos
 }
 
 fun TimePeriod<*>.before(other: TimePeriod<*>): Boolean {
-    val relation = range().determineRelationship(other.range())
+    val relation = range.determineRelationship(other.range)
     return relation == Relation.Before || relation == Relation.Meets
 }
 
-fun TimePeriod<*>.after(other: TimePeriod<*>) = other.before(this)
+inline fun TimePeriod<*>.after(other: TimePeriod<*>) = other.before(this)
 
 fun TimePeriod<*>.contains(other: TimePeriod<*>): Boolean {
-    val relation = range().determineRelationship(other.range())
+    val relation = range.determineRelationship(other.range)
     return relation == Relation.Contains || relation == Relation.IsStartedBy || relation == Relation.IsFinishedBy
 }
 
 fun TimePeriod<*>.isDuring(other: TimePeriod<*>): Boolean {
-    val relation = range().determineRelationship(other.range())
+    val relation = range.determineRelationship(other.range)
     return relation == Relation.During || relation == Relation.Starts || relation == Relation.Finishes
 }
 
-fun TimePeriod<*>.overlaps(other: TimePeriod<*>) = range().determineRelationship(other.range()).isOverlapping
+fun TimePeriod<*>.overlaps(other: TimePeriod<*>) = range.determineRelationship(other.range).isOverlapping
