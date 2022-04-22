@@ -15,7 +15,8 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
     internal val unit: Unit
 ) : Comparable<TimePeriod<Unit>> {
 
-    internal constructor(instant: Instant, unit: Unit) : this(instant.dateTimeComponents(unit).restrictComponents(unit), unit)
+    @Throws(MissingDateTimeComponentsException::class)
+    internal constructor(instant: Instant, unit: Unit) : this(instant.dateTimeComponents(unit).requireAndRestrict(unit), unit)
 
     companion object {
 
@@ -48,7 +49,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         )
 
         internal fun second(dateTimeComponents: DateTimeComponents) = TimePeriod(
-            components = dateTimeComponents.restrictComponents(Second),
+            components = dateTimeComponents.requireAndRestrict(Second),
             unit = Second
         )
         fun second(instant: Instant) = TimePeriod(
@@ -74,7 +75,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         )
 
         internal fun minute(dateTimeComponents: DateTimeComponents) = TimePeriod(
-            components = dateTimeComponents.restrictComponents(Minute),
+            components = dateTimeComponents.requireAndRestrict(Minute),
             unit = Minute
         )
         fun minute(instant: Instant) = TimePeriod(
@@ -98,7 +99,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         )
 
         internal fun hour(dateTimeComponents: DateTimeComponents) = TimePeriod(
-            components = dateTimeComponents.restrictComponents(Hour),
+            components = dateTimeComponents.requireAndRestrict(Hour),
             unit = Hour
         )
         fun hour(instant: Instant) = TimePeriod(
@@ -120,7 +121,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         )
 
         internal fun day(dateTimeComponents: DateTimeComponents) = TimePeriod(
-            components = dateTimeComponents.restrictComponents(Day),
+            components = dateTimeComponents.requireAndRestrict(Day),
             unit = Day
         )
         fun day(instant: Instant) = TimePeriod(
@@ -140,7 +141,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         )
 
         internal fun month(dateTimeComponents: DateTimeComponents) = TimePeriod(
-            components = dateTimeComponents.restrictComponents(Month),
+            components = dateTimeComponents.requireAndRestrict(Month),
             unit = Month
         )
         fun month(instant: Instant) = TimePeriod(
@@ -155,7 +156,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         )
 
         internal fun year(dateTimeComponents: DateTimeComponents) = TimePeriod(
-            components = dateTimeComponents.restrictComponents(Year),
+            components = dateTimeComponents.requireAndRestrict(Year),
             unit = Year
         )
         fun year(instant: Instant) = TimePeriod(

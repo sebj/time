@@ -1,5 +1,6 @@
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
+import kotlin.reflect.KProperty0
 
 data class DateTimeComponents internal constructor(
     val year: Int,
@@ -24,7 +25,7 @@ data class DateTimeComponents internal constructor(
     )
 }
 
-@Throws(IllegalStateException::class)
+@Throws(MissingDateTimeComponentsException::class)
 internal fun DateTimeComponents.toLocalDate(): LocalDate {
     if (month != null && dayOfMonth != null) {
         return LocalDate(
@@ -34,10 +35,10 @@ internal fun DateTimeComponents.toLocalDate(): LocalDate {
         )
     }
 
-    throw IllegalStateException("Missing year, month and/or day components")
+    throw MissingDateTimeComponentsException("Missing month and/or day components")
 }
 
-@Throws(IllegalStateException::class)
+@Throws(MissingDateTimeComponentsException::class)
 internal fun DateTimeComponents.toLocalDateTime(): LocalDateTime {
     if (month != null && dayOfMonth != null && hour != null) {
         return LocalDateTime(
@@ -51,15 +52,45 @@ internal fun DateTimeComponents.toLocalDateTime(): LocalDateTime {
         )
     }
 
-    throw IllegalStateException("Missing year, month, day and/or hour components")
+    throw MissingDateTimeComponentsException("Missing month, day, and/or hour components")
 }
 
-internal fun DateTimeComponents.restrictComponents(unit: TimeUnit) = when (unit) {
-    is Nanosecond -> this
-    is Second -> copy(nanosecond = null)
-    is Minute -> copy(second = null, nanosecond = null)
-    is Hour -> copy(minute = null, second = null, nanosecond = null)
-    is Day -> copy(hour = null, minute = null, second = null, nanosecond = null)
-    is Month -> copy(dayOfMonth = null, hour = null, minute = null, second = null, nanosecond = null)
-    else -> copy(month = null, dayOfMonth = null, hour = null, minute = null, second = null, nanosecond = null)
+@Throws(MissingDateTimeComponentsException::class)
+private inline fun <T> requireDateTimeComponents(vararg components: KProperty0<T?>) {
+    val missingComponents = components.filter { it.get() == null }.map { it.name }
+    if (missingComponents.isNotEmpty()) {
+        throw MissingDateTimeComponentsException("Missing components ${missingComponents.joinToString()}")
+    }
+}
+
+@Throws(MissingDateTimeComponentsException::class)
+internal fun DateTimeComponents.requireAndRestrict(unit: TimeUnit) = when (unit) {
+    is Nanosecond -> {
+        requireDateTimeComponents(::nanosecond, ::second, ::minute, ::hour, ::dayOfMonth, ::month, ::year)
+        this
+    }
+    is Second -> {
+        requireDateTimeComponents(::second, ::minute, ::hour, ::dayOfMonth, ::month, ::year)
+        copy(nanosecond = null)
+    }
+    is Minute -> {
+        requireDateTimeComponents(::minute, ::hour, ::dayOfMonth, ::month, ::year)
+        copy(second = null, nanosecond = null)
+    }
+    is Hour -> {
+        requireDateTimeComponents(::hour, ::dayOfMonth, ::month, ::year)
+        copy(minute = null, second = null, nanosecond = null)
+    }
+    is Day -> {
+        requireDateTimeComponents(::dayOfMonth, ::month, ::year)
+        copy(hour = null, minute = null, second = null, nanosecond = null)
+    }
+    is Month -> {
+        requireDateTimeComponents(::month, ::year)
+        copy(dayOfMonth = null, hour = null, minute = null, second = null, nanosecond = null)
+    }
+    else -> {
+        requireDateTimeComponents(::year)
+        copy(month = null, dayOfMonth = null, hour = null, minute = null, second = null, nanosecond = null)
+    }
 }
