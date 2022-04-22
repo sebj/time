@@ -12,5 +12,5 @@ data class TimeDifference<Unit : TimeUnit> internal constructor(internal val cou
     internal fun negated() = copy(count = -count)
 }
 
-inline operator fun <Unit : TimeUnit> TimePeriod<Unit>.plus(difference: TimeDifference<Unit>) = this.applying(difference)
+operator fun <Unit : TimeUnit> TimePeriod<Unit>.plus(difference: TimeDifference<Unit>) = this.applying(difference)
 operator fun <Unit : TimeUnit> TimePeriod<Unit>.minus(difference: TimeDifference<Unit>) = this.applying(difference.negated())

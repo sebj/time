@@ -1,4 +1,4 @@
-private fun <Unit : TimeUnit> TimePeriod<Unit>.offset(count: Int, unit: TimeUnit): TimePeriod<Unit> {
+fun <Unit : TimeUnit> TimePeriod<Unit>.offset(count: Int): TimePeriod<Unit> {
     if (count == 0) {
         return this
     }

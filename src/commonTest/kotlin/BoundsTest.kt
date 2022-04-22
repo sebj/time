@@ -8,7 +8,7 @@ class BoundsTest {
     private val clock = Clock.System
 
     @Test
-    fun testYearFirstMonth() {
+    fun yearFirstMonth() {
         val year = clock.thisYear()
         val month = year.firstMonth
         assertEquals(expected = year.year, actual = month.year)
@@ -16,7 +16,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testYearLastMonth() {
+    fun yearLastMonth() {
         val year = clock.thisYear()
         val month = year.lastMonth
         assertEquals(expected = year.year, actual = month.year)
@@ -24,7 +24,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testYearFirstDay() {
+    fun yearFirstDay() {
         val year = clock.thisYear()
         val day = year.firstDay
         assertEquals(expected = year.year, actual = day.year)
@@ -33,7 +33,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testYearLastDay() {
+    fun yearLastDay() {
         val year = clock.thisYear()
         val day = year.lastDay
         assertEquals(expected = year.year, actual = day.year)
@@ -42,7 +42,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testMonthFirstDay() {
+    fun monthFirstDay() {
         val month = clock.thisMonth()
         val day = month.firstDay
         assertEquals(expected = month.year, actual = day.year)
@@ -51,7 +51,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testMonthLastDay() {
+    fun monthLastDay() {
         val month = clock.thisMonth()
         val day = month.lastDay
         assertEquals(expected = month.year, actual = day.year)
@@ -59,7 +59,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testMonthFirstHour() {
+    fun monthFirstHour() {
         val month = clock.thisMonth()
         val hour = month.firstHour
         assertEquals(expected = month.year, actual = hour.year)
@@ -69,7 +69,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testMonthLastHour() {
+    fun monthLastHour() {
         val month = clock.thisMonth()
         val hour = month.lastHour
         assertEquals(expected = month.year, actual = hour.year)
@@ -78,7 +78,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testDayFirstHour() {
+    fun dayFirstHour() {
         val day = clock.today()
         val hour = day.firstHour
         assertEquals(expected = day.year, actual = hour.year)
@@ -88,7 +88,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testDayLastHour() {
+    fun dayLastHour() {
         val day = clock.today()
         val hour = day.lastHour
         assertEquals(expected = day.year, actual = hour.year)
@@ -98,7 +98,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testDayFirstMinute() {
+    fun dayFirstMinute() {
         val day = clock.today()
         val minute = day.firstMinute
         assertEquals(expected = day.year, actual = minute.year)
@@ -109,7 +109,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testDayLastMinute() {
+    fun dayLastMinute() {
         val day = clock.today()
         val minute = day.lastMinute
         assertEquals(expected = day.year, actual = minute.year)
@@ -120,7 +120,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testDayFirstSecond() {
+    fun dayFirstSecond() {
         val day = clock.today()
         val second = day.firstSecond
         assertEquals(expected = day.year, actual = second.year)
@@ -132,7 +132,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testDayLastSecond() {
+    fun dayLastSecond() {
         val day = clock.today()
         val second = day.lastSecond
         assertEquals(expected = day.year, actual = second.year)
@@ -144,7 +144,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testHourFirstMinute() {
+    fun hourFirstMinute() {
         val hour = clock.thisHour()
         val minute = hour.firstMinute
         assertEquals(expected = hour.year, actual = minute.year)
@@ -155,7 +155,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testHourLastMinute() {
+    fun hourLastMinute() {
         val hour = clock.thisHour()
         val minute = hour.lastMinute
         assertEquals(expected = hour.year, actual = minute.year)
@@ -166,7 +166,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testHourFirstSecond() {
+    fun hourFirstSecond() {
         val hour = clock.thisHour()
         val second = hour.firstSecond
         assertEquals(expected = hour.year, actual = second.year)
@@ -178,7 +178,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testHourLastSecond() {
+    fun hourLastSecond() {
         val hour = clock.thisHour()
         val second = hour.lastSecond
         assertEquals(expected = hour.year, actual = second.year)
@@ -190,7 +190,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testMinuteFirstSecond() {
+    fun minuteFirstSecond() {
         val minute = clock.thisMinute()
         val second = minute.firstSecond
         assertEquals(expected = minute.year, actual = second.year)
@@ -202,7 +202,7 @@ class BoundsTest {
     }
 
     @Test
-    fun testMinuteLastSecond() {
+    fun minuteLastSecond() {
         val minute = clock.thisMinute()
         val second = minute.lastSecond
         assertEquals(expected = minute.year, actual = second.year)
