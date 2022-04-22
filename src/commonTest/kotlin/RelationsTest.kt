@@ -1,5 +1,7 @@
 import kotlinx.datetime.Clock
+import kotlinx.datetime.Month
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -59,5 +61,79 @@ class RelationsTest {
         assertFalse(clock.previousMonth().contains(clock.thisSecond()))
         assertFalse(clock.previousMonth().contains(clock.thisMinute()))
         assertFalse(clock.previousMonth().contains(clock.today()))
+    }
+
+    @Test
+    fun meetsAndIsMetBy() {
+        val a = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 1)
+        val b = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 2)
+
+        val aToB = a.relation(b)
+        assertEquals(expected = Relation.Meets, actual = aToB)
+        assertTrue(a.before(b))
+
+        val bToA = b.relation(a)
+        assertEquals(expected = Relation.IsMetBy, actual = bToA)
+        assertTrue(b.after(a))
+    }
+
+    @Test
+    fun startsAndIsStartedBy() {
+        val a = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 1)
+        val b = TimePeriod.month(year = 2022, month = Month.JANUARY)
+
+        val aToB = a.relation(b)
+        assertEquals(expected = Relation.Starts, actual = aToB)
+        assertTrue(a.during(b))
+        assertFalse(b.during(a))
+
+        val bToA = b.relation(a)
+        assertEquals(expected = Relation.IsStartedBy, actual = bToA)
+        assertTrue(b.contains(a))
+        assertFalse(a.contains(b))
+    }
+
+    @Test
+    fun duringAndContains() {
+        val a = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 2)
+        val b = TimePeriod.month(year = 2022, month = Month.JANUARY)
+
+        val aToB = a.relation(b)
+        assertEquals(expected = Relation.During, actual = aToB)
+        assertTrue(a.during(b))
+        assertFalse(b.during(a))
+
+        val bToA = b.relation(a)
+        assertEquals(expected = Relation.Contains, actual = bToA)
+        assertTrue(b.contains(a))
+        assertFalse(a.contains(b))
+    }
+
+    @Test
+    fun finishesAndIsFinishedBy() {
+        val a = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 31)
+        val b = TimePeriod.month(year = 2022, month = Month.JANUARY)
+
+        val aToB = a.relation(b)
+        assertEquals(expected = Relation.Finishes, actual = aToB)
+        assertTrue(a.during(b))
+        assertFalse(b.during(a))
+
+        val bToA = b.relation(a)
+        assertEquals(expected = Relation.IsFinishedBy, actual = bToA)
+        assertTrue(b.contains(a))
+        assertFalse(a.contains(b))
+    }
+
+    @Test
+    fun equal() {
+        val a = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 31)
+        val b = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 31)
+
+        val aToB = a.relation(b)
+        assertEquals(expected = Relation.Equal, actual = aToB)
+
+        val bToA = b.relation(a)
+        assertEquals(expected = Relation.Equal, actual = bToA)
     }
 }

@@ -177,9 +177,9 @@ private fun <T : Comparable<T>> ClosedRange<T>.determineRelationship(other: Clos
     if (start < other.start) {
         if (endInclusive < other.start) { return Relation.Before }
         if (endInclusive == other.start) { return Relation.Meets }
-        if (endInclusive < other.start) { return Relation.Overlaps }
-        if (endInclusive == other.start) { return Relation.IsFinishedBy }
-        /* upperBound > other.upperBound */ return Relation.Contains
+        if (endInclusive < other.endInclusive) { return Relation.Overlaps }
+        if (endInclusive == other.endInclusive) { return Relation.IsFinishedBy }
+        /* endInclusive > other.endInclusive */ return Relation.Contains
     } else if (start == other.start) {
         if (endInclusive < other.endInclusive) { return Relation.Starts }
         if (endInclusive == other.endInclusive) { return Relation.Equal }
@@ -193,21 +193,23 @@ private fun <T : Comparable<T>> ClosedRange<T>.determineRelationship(other: Clos
     }
 }
 
+internal fun TimePeriod<*>.relation(other: TimePeriod<*>) = range.determineRelationship(other.range)
+
 fun TimePeriod<*>.before(other: TimePeriod<*>): Boolean {
-    val relation = range.determineRelationship(other.range)
+    val relation = this.relation(other)
     return relation == Relation.Before || relation == Relation.Meets
 }
 
-inline fun TimePeriod<*>.after(other: TimePeriod<*>) = other.before(this)
+fun TimePeriod<*>.after(other: TimePeriod<*>) = other.before(this)
 
 fun TimePeriod<*>.contains(other: TimePeriod<*>): Boolean {
-    val relation = range.determineRelationship(other.range)
+    val relation = this.relation(other)
     return relation == Relation.Contains || relation == Relation.IsStartedBy || relation == Relation.IsFinishedBy
 }
 
-fun TimePeriod<*>.isDuring(other: TimePeriod<*>): Boolean {
-    val relation = range.determineRelationship(other.range)
+fun TimePeriod<*>.during(other: TimePeriod<*>): Boolean {
+    val relation = this.relation(other)
     return relation == Relation.During || relation == Relation.Starts || relation == Relation.Finishes
 }
 
-fun TimePeriod<*>.overlaps(other: TimePeriod<*>) = range.determineRelationship(other.range).isOverlapping
+fun TimePeriod<*>.overlaps(other: TimePeriod<*>) = this.relation(other).isOverlapping
