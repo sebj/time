@@ -2,7 +2,10 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlin.reflect.KProperty0
 
-data class DateTimeComponents internal constructor(
+/**
+ * A date or time specified in terms of units.
+ */
+internal data class DateTimeComponents(
     val year: Int,
     val month: kotlinx.datetime.Month? = null,
     val dayOfMonth: Int? = null,

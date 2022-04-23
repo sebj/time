@@ -251,8 +251,15 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
     override fun compareTo(other: TimePeriod<Unit>) = components.compareTo(other.components)
 }
 
-fun <Unit : HourOrSmaller> TimePeriod<Unit>.toLocalDateTime(timeZone: TimeZone) = firstInstant().toLocalDateTime(timeZone)
-fun <Unit : DayOrSmaller> TimePeriod<Unit>.toLocalDate(timeZone: TimeZone) = firstInstant().toLocalDateTime(timeZone).date
+/**
+ * Constructs a [kotlinx.datetime.LocalDateTime] from a [TimePeriod] with [Hour] or smaller precision.
+ */
+fun <Unit : HourOrSmaller> TimePeriod<Unit>.toLocalDateTime(timeZone: TimeZone) = firstInstant.toLocalDateTime(timeZone)
+
+/**
+ * Constructs a [kotlinx.datetime.LocalDate] from a [TimePeriod] with [Day] or finer precision.
+ */
+fun <Unit : DayOrSmaller> TimePeriod<Unit>.toLocalDate(timeZone: TimeZone) = firstInstant.toLocalDateTime(timeZone).date
 
 private fun <Unit : TimeUnit> Instant.dateTimeComponents(unit: Unit): DateTimeComponents {
     val dateTime = toLocalDateTime(TimeZone.UTC)
