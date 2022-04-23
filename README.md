@@ -90,3 +90,17 @@ for (minute in minutesInThisHour) {
     // …
 }
 ```
+
+### Determining the Relationship Between TimePeriods
+
+```kotlin
+val clock = Clock.System
+
+val dayA: TimePeriod<Day> = ...
+val dayB: TimePeriod<Day> = ...
+val .. = dayA.after(dayB)
+
+val thisMonth = clock.thisMonth()
+val .. = dayA.during(thisMonth) // Equivalent to thisMonth.contains(dayA)
+
+```
