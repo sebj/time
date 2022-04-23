@@ -10,6 +10,15 @@ data class TimeDifference<Unit : TimeUnit> internal constructor(internal val cou
     }
 
     internal fun negated() = copy(count = -count)
+
+    override fun toString() = buildString {
+        append(TimeDifference::class.simpleName)
+        append(".")
+        append(unit::class.simpleName)
+        append("(count=")
+        append(count)
+        append(")")
+    }
 }
 
 /**

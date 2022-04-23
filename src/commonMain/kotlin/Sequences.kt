@@ -4,7 +4,7 @@ private fun <OutUnit : TimeUnit, LimitValue : Comparable<LimitValue>> TimePeriod
     outUnit: OutUnit,
     limitValueTransform: (DateTimeComponents) -> Comparable<LimitValue>?
 ): Sequence<TimePeriod<OutUnit>> {
-    val start = firstInstant()
+    val start = firstInstant
     val endValue = limitValueTransform(components)
     return generateSequence(TimePeriod(start, outUnit)) { timePeriod ->
         timePeriod

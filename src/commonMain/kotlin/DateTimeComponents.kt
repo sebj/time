@@ -15,6 +15,39 @@ internal data class DateTimeComponents(
     val nanosecond: Int? = null
 ) : Comparable<DateTimeComponents> {
 
+    @Throws(DateTimeComponentOutOfBoundsException::class)
+    internal fun validate() {
+        dayOfMonth?.also {
+            if (it < 1 || it > 31) {
+                throw DateTimeComponentOutOfBoundsException("Day not in valid range: $it is not in the range 1 to 31")
+            }
+        }
+
+        hour?.also {
+            if (it < 0 || it > 23) {
+                throw DateTimeComponentOutOfBoundsException("Hour not in valid range: $it is not in the range 0 to 23")
+            }
+        }
+
+        minute?.also {
+            if (it < 0 || it > 59) {
+                throw DateTimeComponentOutOfBoundsException("Minute not in valid range: $it is not in the range 0 to 59")
+            }
+        }
+
+        second?.also {
+            if (it < 0 || it > 59) {
+                throw DateTimeComponentOutOfBoundsException("Second not in valid range: $it is not in the range 0 to 59")
+            }
+        }
+
+        nanosecond?.also {
+            if (it < 0 || it > 1_000_000_000) {
+                throw DateTimeComponentOutOfBoundsException("Nanosecond not in valid range: $it is not in the range 0 to 1,000,000,000 (1e+9)")
+            }
+        }
+    }
+
     override fun compareTo(other: DateTimeComponents) = compareValuesBy(
         this,
         other,
@@ -26,6 +59,24 @@ internal data class DateTimeComponents(
         { it.second },
         { it.nanosecond }
     )
+
+    override fun toString() = buildString {
+        append(DateTimeComponents::class.simpleName)
+        append("(")
+
+        val components = buildList {
+            add("year=$year")
+            month?.let { add("month=$it") }
+            dayOfMonth?.let { add("dayOfMonth=$it") }
+            hour?.let { add("hour=$it") }
+            minute?.let { add("minute=$it") }
+            second?.let { add("second=$it") }
+            nanosecond?.let { add("nanosecond=$it") }
+        }.joinToString(separator = ", ")
+
+        append(components)
+        append(")")
+    }
 }
 
 @Throws(MissingDateTimeComponentsException::class)
@@ -59,7 +110,7 @@ internal fun DateTimeComponents.toLocalDateTime(): LocalDateTime {
 }
 
 @Throws(MissingDateTimeComponentsException::class)
-private inline fun <T> requireDateTimeComponents(vararg components: KProperty0<T?>) {
+private fun <T> requireComponents(vararg components: KProperty0<T?>) {
     val missingComponents = components.filter { it.get() == null }.map { it.name }
     if (missingComponents.isNotEmpty()) {
         throw MissingDateTimeComponentsException("Missing components ${missingComponents.joinToString()}")
@@ -69,31 +120,39 @@ private inline fun <T> requireDateTimeComponents(vararg components: KProperty0<T
 @Throws(MissingDateTimeComponentsException::class)
 internal fun DateTimeComponents.requireAndRestrict(unit: TimeUnit) = when (unit) {
     is Nanosecond -> {
-        requireDateTimeComponents(::nanosecond, ::second, ::minute, ::hour, ::dayOfMonth, ::month, ::year)
+        requireComponents(::nanosecond, ::second, ::minute, ::hour, ::dayOfMonth, ::month, ::year)
+        validate()
         this
     }
     is Second -> {
-        requireDateTimeComponents(::second, ::minute, ::hour, ::dayOfMonth, ::month, ::year)
+        requireComponents(::second, ::minute, ::hour, ::dayOfMonth, ::month, ::year)
+        validate()
         copy(nanosecond = null)
     }
     is Minute -> {
-        requireDateTimeComponents(::minute, ::hour, ::dayOfMonth, ::month, ::year)
+        requireComponents(::minute, ::hour, ::dayOfMonth, ::month, ::year)
+        validate()
         copy(second = null, nanosecond = null)
     }
     is Hour -> {
-        requireDateTimeComponents(::hour, ::dayOfMonth, ::month, ::year)
+        requireComponents(::hour, ::dayOfMonth, ::month, ::year)
+        validate()
         copy(minute = null, second = null, nanosecond = null)
     }
     is Day -> {
-        requireDateTimeComponents(::dayOfMonth, ::month, ::year)
+        requireComponents(::dayOfMonth, ::month, ::year)
+        validate()
         copy(hour = null, minute = null, second = null, nanosecond = null)
     }
     is Month -> {
-        requireDateTimeComponents(::month, ::year)
+        requireComponents(::month, ::year)
+        validate()
         copy(dayOfMonth = null, hour = null, minute = null, second = null, nanosecond = null)
     }
-    else -> {
-        requireDateTimeComponents(::year)
+    is Year -> {
+        requireComponents(::year)
+        validate()
         copy(month = null, dayOfMonth = null, hour = null, minute = null, second = null, nanosecond = null)
     }
+    else -> throw IllegalTimeUnitException("Unexpected unit $unit")
 }

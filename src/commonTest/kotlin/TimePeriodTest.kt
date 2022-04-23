@@ -88,4 +88,15 @@ class TimePeriodTest {
             actual = day.dayOfMonth
         )
     }
+
+    @Test
+    fun string() {
+        val a = clock.today().firstHour.hour
+        println(a.toString())
+        val day = TimePeriod.day(year = 2022, month = Month.APRIL, dayOfMonth = 22)
+        assertEquals(
+            expected = "TimePeriod.Day(year=2022, month=APRIL, dayOfMonth=22)",
+            actual = day.toString()
+        )
+    }
 }

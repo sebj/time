@@ -63,4 +63,13 @@ class DateTimeComponentsTest {
         assertEquals(expected = components.dayOfMonth, dateTime.dayOfMonth)
         assertEquals(expected = components.hour, dateTime.hour)
     }
+
+    @Test
+    fun string() {
+        val components = DateTimeComponents(year = 2022, month = Month.APRIL, dayOfMonth = 22)
+        assertEquals(
+            expected = "DateTimeComponents(year=2022, month=APRIL, dayOfMonth=22)",
+            actual = components.toString()
+        )
+    }
 }

@@ -11,7 +11,7 @@ import kotlin.time.Duration.Companion.nanoseconds
 import kotlin.time.Duration.Companion.seconds
 
 data class TimePeriod<Unit : TimeUnit> internal constructor(
-    val components: DateTimeComponents,
+    internal val components: DateTimeComponents,
     internal val unit: Unit
 ) : Comparable<TimePeriod<Unit>> {
 
@@ -167,7 +167,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
     }
 
     fun <DifferenceUnit : TimeUnit> applying(difference: TimeDifference<DifferenceUnit>): TimePeriod<Unit> {
-        val instant = firstInstant()
+        val instant = firstInstant
         return when (difference.unit) {
             is Nanosecond -> {
                 val newInstant = instant.plus(difference.count.nanoseconds)
@@ -202,34 +202,45 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
 
                 TimePeriod(newComponents, unit)
             }
-            else -> {
+            is Year -> {
                 val newComponents = components.copy(
                     year = components.year + difference.count
                 )
                 TimePeriod(newComponents, unit)
             }
+            else -> throw IllegalTimeUnitException("Unable to apply difference with unexpected unit ${difference.unit}")
         }
     }
 
-    fun firstInstant(): Instant {
-        val populatedComponents = components.copy(
-            month = components.month ?: kotlinx.datetime.Month.JANUARY,
-            dayOfMonth = components.dayOfMonth ?: 1,
-            hour = components.hour ?: 0,
-            minute = components.minute ?: 0,
-            second = components.second ?: 0,
-            nanosecond = components.nanosecond ?: 0
-        )
+    /**
+     * @return The first [Instant] known to occur within this [TimePeriod].
+     */
+    val firstInstant: Instant
+        get() {
+            val populatedComponents = components.copy(
+                month = components.month ?: kotlinx.datetime.Month.JANUARY,
+                dayOfMonth = components.dayOfMonth ?: 1,
+                hour = components.hour ?: 0,
+                minute = components.minute ?: 0,
+                second = components.second ?: 0,
+                nanosecond = components.nanosecond ?: 0
+            )
 
-        return populatedComponents.toLocalDateTime().toInstant(UtcOffset.ZERO)
-    }
+            return populatedComponents.toLocalDateTime().toInstant(UtcOffset.ZERO)
+        }
+
+    @Deprecated("It's impossible to know the last instant of a calendar value, just like it's impossible to know the last number before 1.0")
+    val lastInstant: Instant
+        get() {
+            throw NotImplementedError()
+        }
 
     /**
      * Retrieve the range of [Instant]s described by this [TimePeriod].
      */
     val range: ClosedRange<Instant>
         get() {
-            val start = firstInstant()
+            val start = firstInstant
 
             @Suppress("UNCHECKED_CAST")
             val unitLength = when (unit) {
@@ -239,16 +250,37 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
                 is Hour -> 1.hours
                 is Day -> 1.days
                 is Month -> (this as TimePeriod<Month>).days.count().days
-                else -> {
+                is Year -> {
                     (this as TimePeriod<Year>).months.fold(0) { daysSum, month -> daysSum + month.days.count() }.days
                 }
+                else -> throw IllegalTimeUnitException("Unexpected unit $unit")
             }
 
-            val end = firstInstant().plus(unitLength)
+            val end = start.plus(unitLength)
             return start..end
         }
 
     override fun compareTo(other: TimePeriod<Unit>) = components.compareTo(other.components)
+
+    override fun toString() = buildString {
+        append(TimePeriod::class.simpleName)
+        append(".")
+        append(unit::class.simpleName)
+        append("(")
+
+        val componentsString = buildList {
+            add("year=" + components.year)
+            components.month?.let { add("month=$it") }
+            components.dayOfMonth?.let { add("dayOfMonth=$it") }
+            components.hour?.let { add("hour=$it") }
+            components.minute?.let { add("minute=$it") }
+            components.second?.let { add("second=$it") }
+            components.nanosecond?.let { add("nanosecond=$it") }
+        }.joinToString(separator = ", ")
+
+        append(componentsString)
+        append(")")
+    }
 }
 
 /**
@@ -315,10 +347,11 @@ private fun <Unit : TimeUnit> Instant.dateTimeComponents(unit: Unit): DateTimeCo
                 month = dateTime.month
             )
         }
-        else -> {
+        is Year -> {
             DateTimeComponents(
                 year = dateTime.year
             )
         }
+        else -> throw IllegalTimeUnitException("Unexpected unit $unit")
     }
 }
