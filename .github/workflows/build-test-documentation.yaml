@@ -1,6 +1,6 @@
-name: Build and Test
+name: Build, Test and Deploy Documentation
 on:
-  pull_request:
+  push:
     branches: [main]
     paths-ignore:
       - '*.md'
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Build-and-Test:
+  Build-Test-Documentation:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -25,3 +25,13 @@ jobs:
 
       - name: Test with Gradle
         run: ./gradlew jvmTest
+
+      - name: Generate API documentation
+        run: ./gradlew dokkaHtml
+
+      - name: Deploy API documentation to Github Pages
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build/dokka/html
