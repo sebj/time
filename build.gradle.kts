@@ -105,6 +105,20 @@ kotlin {
     }
 }
 
+tasks.dokkaHtml.configure {
+    pluginsMapConfiguration.set(
+        mapOf(
+            "org.jetbrains.dokka.base.DokkaBase" to """{
+                "footerMessage": "© Copyright Sebastian Jachec"
+            }""".trimIndent(),
+            "org.jetbrains.dokka.versioning.VersioningPlugin" to """{ "version": "main" }""""""
+        )
+    )
+    dependencies {
+        dokkaHtmlPlugin("org.jetbrains.dokka:versioning-plugin:1.6.20")
+    }
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
