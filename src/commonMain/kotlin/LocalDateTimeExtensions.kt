@@ -17,8 +17,8 @@ private fun LocalDate.toDateTimeComponents() = DateTimeComponents(
     dayOfMonth = dayOfMonth
 )
 
-fun LocalDateTime.secondPeriod() = TimePeriod.day(toDateTimeComponents())
-fun LocalDateTime.minutePeriod() = TimePeriod.month(toDateTimeComponents())
+fun LocalDateTime.secondPeriod() = TimePeriod.second(toDateTimeComponents())
+fun LocalDateTime.minutePeriod() = TimePeriod.minute(toDateTimeComponents())
 fun LocalDateTime.hourPeriod() = TimePeriod.hour(toDateTimeComponents())
 fun LocalDateTime.dayPeriod() = TimePeriod.day(toDateTimeComponents())
 fun LocalDateTime.monthPeriod() = TimePeriod.month(toDateTimeComponents())
