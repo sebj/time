@@ -1,9 +1,10 @@
 # ⏱ Time
 
-[![MIT License](https://img.shields.io/github/license/sebj/time)](LICENSE)
-[![Build & Test](https://github.com/sebj/time/workflows/Build%20and%20Test/badge.svg)](https://github.com/sebj/time/actions/workflows/build-and-test.yml)
+[![MIT License](https://img.shields.io/github/license/sebj/time?color=lightgray)](LICENSE)
+[![Version 0.1.0](https://img.shields.io/github/v/release/sebj/time)](https://github.com/sebj/time/releases)
+[![Build, Test & Deploy Documentation](https://github.com/sebj/time/workflows/Build%2C%20Test%20and%20Deploy%20Documentation/badge.svg)](https://github.com/sebj/time/actions/workflows/build-test-documentation.yaml)
 
-A multiplatform Kotlin library filling in the gaps of [`kotlinx-datetime`](https://github.com/Kotlin/kotlinx-datetime) with additional time-safe APIs for time periods, as equivalents to those found in the Swift library of the same name([`time`](https://github.com/davedelong/time)).
+A Kotlin multiplatform library filling in the gaps of [`kotlinx-datetime`](https://github.com/Kotlin/kotlinx-datetime) with additional type-safe APIs for time periods, as equivalents to those found in the Swift library of the same name([`time`](https://github.com/davedelong/time)).
 
 Supported `TimePeriod` units:
 * Year
