@@ -108,10 +108,8 @@ kotlin {
 tasks.dokkaHtml.configure {
     pluginsMapConfiguration.set(
         mapOf(
-            "org.jetbrains.dokka.base.DokkaBase" to """{
-                "footerMessage": "© Copyright Sebastian Jachec"
-            }""".trimIndent(),
-            "org.jetbrains.dokka.versioning.VersioningPlugin" to """{ "version": "main" }""""""
+            "org.jetbrains.dokka.base.DokkaBase" to "{ \"footerMessage\": \"© Copyright Sebastian Jachec\" }",
+            "org.jetbrains.dokka.versioning.VersioningPlugin" to "{ \"version\": \"main\" }"
         )
     )
     dependencies {
