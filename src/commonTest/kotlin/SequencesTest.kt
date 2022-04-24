@@ -1,5 +1,6 @@
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Month
+import kotlinx.datetime.TimeZone
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -27,7 +28,7 @@ class SequencesTest {
 
     @Test
     fun monthDays() {
-        val month = TimePeriod.month(year = 2022, month = kotlinx.datetime.Month.FEBRUARY)
+        val month = TimePeriod.month(timeZone = TimeZone.UTC, year = 2022, month = kotlinx.datetime.Month.FEBRUARY)
         val days = month.days.toList()
         assertEquals(expected = 28, actual = days.count())
         assertEquals(expected = 1, actual = days.first().dayOfMonth)

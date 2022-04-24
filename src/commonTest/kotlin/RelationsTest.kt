@@ -1,5 +1,6 @@
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Month
+import kotlinx.datetime.TimeZone
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -8,6 +9,7 @@ import kotlin.test.assertTrue
 class RelationsTest {
 
     private val clock = Clock.System
+    private val timeZone = TimeZone.UTC
 
     @Test
     fun before() {
@@ -65,8 +67,8 @@ class RelationsTest {
 
     @Test
     fun meetsAndIsMetBy() {
-        val a = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 1)
-        val b = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 2)
+        val a = TimePeriod.day(timeZone = timeZone, year = 2022, month = Month.JANUARY, dayOfMonth = 1)
+        val b = TimePeriod.day(timeZone = timeZone, year = 2022, month = Month.JANUARY, dayOfMonth = 2)
 
         val aToB = a.relation(b)
         assertEquals(expected = Relation.Meets, actual = aToB)
@@ -79,8 +81,8 @@ class RelationsTest {
 
     @Test
     fun startsAndIsStartedBy() {
-        val a = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 1)
-        val b = TimePeriod.month(year = 2022, month = Month.JANUARY)
+        val a = TimePeriod.day(timeZone = timeZone, year = 2022, month = Month.JANUARY, dayOfMonth = 1)
+        val b = TimePeriod.month(timeZone = timeZone, year = 2022, month = Month.JANUARY)
 
         val aToB = a.relation(b)
         assertEquals(expected = Relation.Starts, actual = aToB)
@@ -95,8 +97,8 @@ class RelationsTest {
 
     @Test
     fun duringAndContains() {
-        val a = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 2)
-        val b = TimePeriod.month(year = 2022, month = Month.JANUARY)
+        val a = TimePeriod.day(timeZone = timeZone, year = 2022, month = Month.JANUARY, dayOfMonth = 2)
+        val b = TimePeriod.month(timeZone = timeZone, year = 2022, month = Month.JANUARY)
 
         val aToB = a.relation(b)
         assertEquals(expected = Relation.During, actual = aToB)
@@ -111,8 +113,8 @@ class RelationsTest {
 
     @Test
     fun finishesAndIsFinishedBy() {
-        val a = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 31)
-        val b = TimePeriod.month(year = 2022, month = Month.JANUARY)
+        val a = TimePeriod.day(timeZone = timeZone, year = 2022, month = Month.JANUARY, dayOfMonth = 31)
+        val b = TimePeriod.month(timeZone = timeZone, year = 2022, month = Month.JANUARY)
 
         val aToB = a.relation(b)
         assertEquals(expected = Relation.Finishes, actual = aToB)
@@ -127,8 +129,8 @@ class RelationsTest {
 
     @Test
     fun equal() {
-        val a = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 31)
-        val b = TimePeriod.day(year = 2022, month = Month.JANUARY, dayOfMonth = 31)
+        val a = TimePeriod.day(timeZone = timeZone, year = 2022, month = Month.JANUARY, dayOfMonth = 31)
+        val b = TimePeriod.day(timeZone = timeZone, year = 2022, month = Month.JANUARY, dayOfMonth = 31)
 
         val aToB = a.relation(b)
         assertEquals(expected = Relation.Equal, actual = aToB)

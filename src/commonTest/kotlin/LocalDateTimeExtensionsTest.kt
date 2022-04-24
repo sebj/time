@@ -1,4 +1,5 @@
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -16,10 +17,11 @@ class LocalDateTimeExtensionsTest {
     )
 
     private val date = dateTime.date
+    private val timeZone = TimeZone.UTC
 
     @Test
     fun dateTimeSecondPeriod() {
-        val period = dateTime.secondPeriod()
+        val period = dateTime.secondPeriod(timeZone)
         assertIs<TimePeriod<Second>>(period)
         assertEquals(expected = dateTime.year, actual = period.year)
         assertEquals(expected = dateTime.month, actual = period.month)
@@ -31,7 +33,7 @@ class LocalDateTimeExtensionsTest {
 
     @Test
     fun dateTimeMinutePeriod() {
-        val period = dateTime.minutePeriod()
+        val period = dateTime.minutePeriod(timeZone)
         assertIs<TimePeriod<Minute>>(period)
         assertEquals(expected = dateTime.year, actual = period.year)
         assertEquals(expected = dateTime.month, actual = period.month)
@@ -42,7 +44,7 @@ class LocalDateTimeExtensionsTest {
 
     @Test
     fun dateTimeHourPeriod() {
-        val period = dateTime.hourPeriod()
+        val period = dateTime.hourPeriod(timeZone)
         assertIs<TimePeriod<Hour>>(period)
         assertEquals(expected = dateTime.year, actual = period.year)
         assertEquals(expected = dateTime.month, actual = period.month)
@@ -52,7 +54,7 @@ class LocalDateTimeExtensionsTest {
 
     @Test
     fun dateTimeDayPeriod() {
-        val period = dateTime.dayPeriod()
+        val period = dateTime.dayPeriod(timeZone)
         assertIs<TimePeriod<Day>>(period)
         assertEquals(expected = dateTime.year, actual = period.year)
         assertEquals(expected = dateTime.month, actual = period.month)
@@ -61,7 +63,7 @@ class LocalDateTimeExtensionsTest {
 
     @Test
     fun dateTimeMonthPeriod() {
-        val period = dateTime.monthPeriod()
+        val period = dateTime.monthPeriod(timeZone)
         assertIs<TimePeriod<Month>>(period)
         assertEquals(expected = dateTime.year, actual = period.year)
         assertEquals(expected = dateTime.month, actual = period.month)
@@ -69,14 +71,14 @@ class LocalDateTimeExtensionsTest {
 
     @Test
     fun dateTimeYearPeriod() {
-        val period = dateTime.yearPeriod()
+        val period = dateTime.yearPeriod(timeZone)
         assertIs<TimePeriod<Year>>(period)
         assertEquals(expected = dateTime.year, actual = period.year)
     }
 
     @Test
     fun dateDayPeriod() {
-        val period = date.dayPeriod()
+        val period = date.dayPeriod(timeZone)
         assertIs<TimePeriod<Day>>(period)
         assertEquals(expected = dateTime.year, actual = period.year)
         assertEquals(expected = dateTime.month, actual = period.month)
@@ -85,7 +87,7 @@ class LocalDateTimeExtensionsTest {
 
     @Test
     fun dateMonthPeriod() {
-        val period = date.monthPeriod()
+        val period = date.monthPeriod(timeZone)
         assertIs<TimePeriod<Month>>(period)
         assertEquals(expected = dateTime.year, actual = period.year)
         assertEquals(expected = dateTime.month, actual = period.month)
@@ -93,7 +95,7 @@ class LocalDateTimeExtensionsTest {
 
     @Test
     fun dateYearPeriod() {
-        val period = date.yearPeriod()
+        val period = date.yearPeriod(timeZone)
         assertIs<TimePeriod<Year>>(period)
         assertEquals(expected = dateTime.year, actual = period.year)
     }

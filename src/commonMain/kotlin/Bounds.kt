@@ -1,8 +1,8 @@
 import kotlin.jvm.JvmName
 
-private fun <Unit : TimeUnit> TimePeriod<*>.first(unit: Unit) = TimePeriod(firstInstant, unit)
+private fun <Unit : TimeUnit> TimePeriod<*>.first(unit: Unit) = TimePeriod(timeZone, firstInstant, unit)
 private fun <Unit : TimeUnit> TimePeriod<*>.last(unit: Unit): TimePeriod<Unit> {
-    return TimePeriod(range.endInclusive, unit)
+    return TimePeriod(timeZone, range.endInclusive, unit)
         .applying(TimeDifference(-1, unit))
 }
 

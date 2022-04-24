@@ -1,5 +1,6 @@
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
 
 private fun LocalDateTime.toDateTimeComponents() = DateTimeComponents(
     year = year,
@@ -17,13 +18,13 @@ private fun LocalDate.toDateTimeComponents() = DateTimeComponents(
     dayOfMonth = dayOfMonth
 )
 
-fun LocalDateTime.secondPeriod() = TimePeriod.second(toDateTimeComponents())
-fun LocalDateTime.minutePeriod() = TimePeriod.minute(toDateTimeComponents())
-fun LocalDateTime.hourPeriod() = TimePeriod.hour(toDateTimeComponents())
-fun LocalDateTime.dayPeriod() = TimePeriod.day(toDateTimeComponents())
-fun LocalDateTime.monthPeriod() = TimePeriod.month(toDateTimeComponents())
-fun LocalDateTime.yearPeriod() = TimePeriod.year(toDateTimeComponents())
+fun LocalDateTime.secondPeriod(timeZone: TimeZone) = TimePeriod.second(timeZone, toDateTimeComponents())
+fun LocalDateTime.minutePeriod(timeZone: TimeZone) = TimePeriod.minute(timeZone, toDateTimeComponents())
+fun LocalDateTime.hourPeriod(timeZone: TimeZone) = TimePeriod.hour(timeZone, toDateTimeComponents())
+fun LocalDateTime.dayPeriod(timeZone: TimeZone) = TimePeriod.day(timeZone, toDateTimeComponents())
+fun LocalDateTime.monthPeriod(timeZone: TimeZone) = TimePeriod.month(timeZone, toDateTimeComponents())
+fun LocalDateTime.yearPeriod(timeZone: TimeZone) = TimePeriod.year(timeZone, toDateTimeComponents())
 
-fun LocalDate.dayPeriod() = TimePeriod.day(toDateTimeComponents())
-fun LocalDate.monthPeriod() = TimePeriod.month(toDateTimeComponents())
-fun LocalDate.yearPeriod() = TimePeriod.year(toDateTimeComponents())
+fun LocalDate.dayPeriod(timeZone: TimeZone) = TimePeriod.day(timeZone, toDateTimeComponents())
+fun LocalDate.monthPeriod(timeZone: TimeZone) = TimePeriod.month(timeZone, toDateTimeComponents())
+fun LocalDate.yearPeriod(timeZone: TimeZone) = TimePeriod.year(timeZone, toDateTimeComponents())

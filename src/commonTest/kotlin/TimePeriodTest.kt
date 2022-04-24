@@ -1,11 +1,5 @@
-import kotlinx.datetime.Clock
-import kotlinx.datetime.DateTimeUnit
-import kotlinx.datetime.LocalDate
+import kotlinx.datetime.*
 import kotlinx.datetime.Month
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.minus
-import kotlinx.datetime.toLocalDateTime
-import kotlinx.datetime.todayAt
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.time.Duration.Companion.days
@@ -13,27 +7,28 @@ import kotlin.time.Duration.Companion.days
 class TimePeriodTest {
 
     private val clock = Clock.System
+    private val timeZone = TimeZone.UTC
 
     @Test
     fun equality() {
         val clock = clock
-        assertEquals(clock.today(), clock.today())
-        assertEquals(clock.today(), clock.tomorrow().previousDay)
+        assertEquals(clock.today(timeZone), clock.today(timeZone))
+        assertEquals(clock.today(timeZone), clock.tomorrow(timeZone).previousDay)
     }
 
     @Test
     fun toLocalDate() {
         assertEquals(
-            expected = clock.todayAt(TimeZone.UTC),
-            actual = clock.today().toLocalDate(TimeZone.UTC)
+            expected = clock.todayAt(timeZone),
+            actual = clock.today(timeZone).toLocalDate()
         )
     }
 
     @Test
     fun toLocalDateTime() {
         val clock = clock
-        val expected = clock.thisInstant().toLocalDateTime(TimeZone.UTC)
-        val actual = clock.thisNanosecond().toLocalDateTime(TimeZone.UTC)
+        val expected = clock.thisInstant().toLocalDateTime(timeZone)
+        val actual = clock.thisNanosecond(timeZone).toLocalDateTime()
 
         assertEquals(expected = expected.date, actual = actual.date)
         assertEquals(expected = expected.hour, actual = actual.hour)
@@ -46,7 +41,7 @@ class TimePeriodTest {
     fun applyDaysDifference() {
         val timeZone = TimeZone.UTC
         val expectedTomorrow = clock.now().plus(1.days).toLocalDateTime(timeZone).date
-        val actualTomorrow = clock.thisHour().addingDays(1).toLocalDate(timeZone)
+        val actualTomorrow = clock.thisHour(timeZone).addingDays(1).toLocalDate()
 
         assertEquals(
             expected = expectedTomorrow,
@@ -60,7 +55,7 @@ class TimePeriodTest {
             .minus(12, DateTimeUnit.MONTH)
 
         val actualMonth = TimePeriod
-            .month(year = 2022, month = Month.APRIL)
+            .month(timeZone = timeZone, year = 2022, month = Month.APRIL)
             .subtractingMonths(12)
 
         assertEquals(
@@ -76,7 +71,7 @@ class TimePeriodTest {
 
     @Test
     fun nextMonth() {
-        val day = TimePeriod.day(year = 2022, month = Month.MARCH, dayOfMonth = 25).nextMonth
+        val day = TimePeriod.day(timeZone = timeZone, year = 2022, month = Month.MARCH, dayOfMonth = 25).nextMonth
 
         assertEquals(
             expected = Month.APRIL,
@@ -91,12 +86,27 @@ class TimePeriodTest {
 
     @Test
     fun string() {
-        val a = clock.today().firstHour.hour
-        println(a.toString())
-        val day = TimePeriod.day(year = 2022, month = Month.APRIL, dayOfMonth = 22)
+        val day = TimePeriod.day(timeZone = timeZone, year = 2022, month = Month.APRIL, dayOfMonth = 22)
         assertEquals(
-            expected = "TimePeriod.Day(year=2022, month=APRIL, dayOfMonth=22)",
+            expected = "TimePeriod.Day(timeZone=Z, year=2022, month=APRIL, dayOfMonth=22)",
             actual = day.toString()
+        )
+    }
+
+    @Test
+    fun convertTimeZone() {
+        val hour = TimePeriod.hour(
+            timeZone = TimeZone.of("Europe/London"),
+            year = 2022,
+            month = Month.APRIL,
+            dayOfMonth = 24,
+            hour = 18
+        )
+
+        val parisHour = hour.convertToTimeZone(TimeZone.of("Europe/Paris"))
+        assertEquals(
+            expected = 19,
+            actual = parisHour.hour
         )
     }
 }
