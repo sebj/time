@@ -4,8 +4,12 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    reviewers:
+      - "sebj"
 
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
       interval: "daily"
+    reviewers:
+      - "sebj"
