@@ -6,8 +6,14 @@ val <Unit : YearOrSmaller> TimePeriod<Unit>.year
 val <Unit : MonthOrSmaller> TimePeriod<Unit>.month
     get() = requireNotNull(components.month) { "A month TimePeriod must have a month value" }
 
+val <Unit : DayOrSmaller> TimePeriod<Unit>.dayOfYear
+    get() = toLocalDate().dayOfYear
+
 val <Unit : DayOrSmaller> TimePeriod<Unit>.dayOfMonth
     get() = requireNotNull(components.dayOfMonth) { "A day TimePeriod must have a dayOfMonth value" }
+
+val <Unit : DayOrSmaller> TimePeriod<Unit>.dayOfWeek
+    get() = toLocalDate().dayOfWeek
 
 val <Unit : HourOrSmaller> TimePeriod<Unit>.hour
     get() = requireNotNull(components.hour) { "An hour TimePeriod must have a hour value" }
