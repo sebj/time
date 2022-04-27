@@ -24,11 +24,6 @@ kotlin {
         }
     }
 
-    js(BOTH) {
-        nodejs()
-        browser()
-    }
-
     linuxX64()
     mingwX64()
 
@@ -64,13 +59,6 @@ kotlin {
             dependsOn(commonMain)
         }
         val jvmTest by getting {
-            dependsOn(commonTest)
-        }
-
-        val jsMain by getting {
-            dependsOn(commonMain)
-        }
-        val jsTest by getting {
             dependsOn(commonTest)
         }
 
