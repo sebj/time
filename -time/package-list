@@ -13,6 +13,8 @@ $dokka.location://before/TimePeriod[*]#TimePeriod[*]/PointingToDeclaration/-tim
 $dokka.location://contains/TimePeriod[*]#TimePeriod[*]/PointingToDeclaration/-time/[root]/contains.html
 $dokka.location://convertToTimeZone/TimePeriod[TypeParam(bounds=[TimeUnit])]#kotlinx.datetime.TimeZone/PointingToDeclaration/-time/[root]/convert-to-time-zone.html
 $dokka.location://dayOfMonth/TimePeriod[TypeParam(bounds=[DayOrSmaller])]#/PointingToDeclaration/-time/[root]/day-of-month.html
+$dokka.location://dayOfWeek/TimePeriod[TypeParam(bounds=[DayOrSmaller])]#/PointingToDeclaration/-time/[root]/day-of-week.html
+$dokka.location://dayOfYear/TimePeriod[TypeParam(bounds=[DayOrSmaller])]#/PointingToDeclaration/-time/[root]/day-of-year.html
 $dokka.location://dayPeriod/TimePeriod[TypeParam(bounds=[HourOrSmaller])]#/PointingToDeclaration/-time/[root]/day-period.html
 $dokka.location://dayPeriod/kotlinx.datetime.LocalDate#kotlinx.datetime.TimeZone/PointingToDeclaration/-time/[root]/day-period.html
 $dokka.location://dayPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/-time/[root]/day-period.html
