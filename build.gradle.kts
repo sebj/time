@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "me.sebj"
-version = "0.1.0"
+version = "0.2.0"
 
 repositories {
     mavenCentral()
@@ -110,7 +110,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "me.sebj"
             artifactId = "time"
-            version = "0.1.0"
+            version = "0.2.0"
 
             from(components["java"])
         }
