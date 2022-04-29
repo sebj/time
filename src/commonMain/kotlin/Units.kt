@@ -1,88 +1,51 @@
 /**
- * A marker interface for a unit of time.
- * @see Nanosecond
- * @see Second
- * @see Minute
- * @see Hour
- * @see Day
- * @see Month
- * @see Year
- */
-interface TimeUnit
-
-/**
  * A marker interface for units of time that are equivalent to or smaller than a nanosecond.
- * @see Nanosecond
+ * @see TimeUnit.Nanosecond
  */
 interface NanosecondOrSmaller : SecondOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than a second.
- * @see Second
+ * @see TimeUnit.Second
  */
 interface SecondOrSmaller : MinuteOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than a minute.
- * @see Minute
+ * @see TimeUnit.Minute
  */
 interface MinuteOrSmaller : HourOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than a hour.
- * @see Hour
+ * @see TimeUnit.Hour
  */
 interface HourOrSmaller : DayOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than a day.
- * @see Day
+ * @see TimeUnit.Day
  */
 interface DayOrSmaller : MonthOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than a month.
- * @see Month
+ * @see TimeUnit.Month
  */
 interface MonthOrSmaller : YearOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than a year.
- * @see Year
+ * @see TimeUnit.Year
  */
-interface YearOrSmaller : TimeUnit
+interface YearOrSmaller
 
-/**
- * The nanosecond time unit.
- */
-object Nanosecond : NanosecondOrSmaller
-
-/**
- * The second time unit.
- */
-object Second : SecondOrSmaller
-
-/**
- * The minute time unit.
- */
-object Minute : MinuteOrSmaller
-
-/**
- * The hour time unit.
- */
-object Hour : HourOrSmaller
-
-/**
- * The day time unit.
- */
-object Day : DayOrSmaller
-
-/**
- * The month time unit.
- */
-object Month : MonthOrSmaller
-
-/**
- * The year time unit.
- */
-object Year : YearOrSmaller
+sealed class TimeUnit private constructor() {
+    object Nanosecond : TimeUnit(), NanosecondOrSmaller
+    object Second : TimeUnit(), SecondOrSmaller
+    object Minute : TimeUnit(), MinuteOrSmaller
+    object Hour : TimeUnit(), HourOrSmaller
+    object Day : TimeUnit(), DayOrSmaller
+    object Month : TimeUnit(), MonthOrSmaller
+    object Year : TimeUnit(), YearOrSmaller
+}

@@ -119,40 +119,39 @@ private fun <T> requireComponents(vararg components: KProperty0<T?>) {
 
 @Throws(MissingDateTimeComponentsException::class)
 internal fun DateTimeComponents.requireAndRestrict(unit: TimeUnit) = when (unit) {
-    is Nanosecond -> {
+    is TimeUnit.Nanosecond -> {
         requireComponents(::nanosecond, ::second, ::minute, ::hour, ::dayOfMonth, ::month, ::year)
         validate()
         this
     }
-    is Second -> {
+    is TimeUnit.Second -> {
         requireComponents(::second, ::minute, ::hour, ::dayOfMonth, ::month, ::year)
         validate()
         copy(nanosecond = null)
     }
-    is Minute -> {
+    is TimeUnit.Minute -> {
         requireComponents(::minute, ::hour, ::dayOfMonth, ::month, ::year)
         validate()
         copy(second = null, nanosecond = null)
     }
-    is Hour -> {
+    is TimeUnit.Hour -> {
         requireComponents(::hour, ::dayOfMonth, ::month, ::year)
         validate()
         copy(minute = null, second = null, nanosecond = null)
     }
-    is Day -> {
+    is TimeUnit.Day -> {
         requireComponents(::dayOfMonth, ::month, ::year)
         validate()
         copy(hour = null, minute = null, second = null, nanosecond = null)
     }
-    is Month -> {
+    is TimeUnit.Month -> {
         requireComponents(::month, ::year)
         validate()
         copy(dayOfMonth = null, hour = null, minute = null, second = null, nanosecond = null)
     }
-    is Year -> {
+    is TimeUnit.Year -> {
         requireComponents(::year)
         validate()
         copy(month = null, dayOfMonth = null, hour = null, minute = null, second = null, nanosecond = null)
     }
-    else -> throw IllegalTimeUnitException("Unexpected unit $unit")
 }

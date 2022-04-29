@@ -1,5 +1,6 @@
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertIs
 
 class TimeDifferenceTest {
 
@@ -10,10 +11,7 @@ class TimeDifferenceTest {
             expected = -3,
             actual = difference.count
         )
-        assertEquals(
-            expected = Hour,
-            actual = difference.unit
-        )
+        assertIs<TimeUnit.Hour>(difference.unit)
     }
 
     @Test

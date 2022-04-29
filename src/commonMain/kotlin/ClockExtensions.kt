@@ -11,31 +11,31 @@ private fun <Unit : TimeUnit> Clock.thisPeriod(timeZone: TimeZone, unit: Unit) =
 /**
  * Retrieve the current year of the [Clock] and [TimeZone].
  */
-fun Clock.thisYear(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, Year)
+fun Clock.thisYear(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, TimeUnit.Year)
 /**
  * Retrieve the current month of the [Clock] and [TimeZone].
  */
-fun Clock.thisMonth(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, Month)
+fun Clock.thisMonth(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, TimeUnit.Month)
 /**
  * Retrieve the current day of the [Clock] and [TimeZone].
  */
-fun Clock.thisDay(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, Day)
+fun Clock.thisDay(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, TimeUnit.Day)
 /**
  * Retrieve the current hour of the [Clock] and [TimeZone].
  */
-fun Clock.thisHour(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, Hour)
+fun Clock.thisHour(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, TimeUnit.Hour)
 /**
  * Retrieve the current minute of the [Clock] and [TimeZone].
  */
-fun Clock.thisMinute(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, Minute)
+fun Clock.thisMinute(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, TimeUnit.Minute)
 /**
  * Retrieve the current second of the [Clock] and [TimeZone].
  */
-fun Clock.thisSecond(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, Second)
+fun Clock.thisSecond(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, TimeUnit.Second)
 /**
  * Retrieve the current nanosecond of the [Clock] and [TimeZone].
  */
-fun Clock.thisNanosecond(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, Nanosecond)
+fun Clock.thisNanosecond(timeZone: TimeZone = TimeZone.currentSystemDefault()) = thisPeriod(timeZone, TimeUnit.Nanosecond)
 
 /**
  * Retrieve the current day of the [Clock] and [TimeZone].

@@ -1,12 +1,12 @@
 data class TimeDifference<Unit : TimeUnit> internal constructor(internal val count: Int, internal val unit: Unit) {
     companion object {
-        fun nanoseconds(count: Int) = TimeDifference(count, Nanosecond)
-        fun seconds(count: Int) = TimeDifference(count, Second)
-        fun minutes(count: Int) = TimeDifference(count, Minute)
-        fun hours(count: Int) = TimeDifference(count, Hour)
-        fun days(count: Int) = TimeDifference(count, Day)
-        fun months(count: Int) = TimeDifference(count, Month)
-        fun years(count: Int) = TimeDifference(count, Year)
+        fun nanoseconds(count: Int) = TimeDifference(count, TimeUnit.Nanosecond)
+        fun seconds(count: Int) = TimeDifference(count, TimeUnit.Second)
+        fun minutes(count: Int) = TimeDifference(count, TimeUnit.Minute)
+        fun hours(count: Int) = TimeDifference(count, TimeUnit.Hour)
+        fun days(count: Int) = TimeDifference(count, TimeUnit.Day)
+        fun months(count: Int) = TimeDifference(count, TimeUnit.Month)
+        fun years(count: Int) = TimeDifference(count, TimeUnit.Year)
     }
 
     internal fun negated() = copy(count = -count)
