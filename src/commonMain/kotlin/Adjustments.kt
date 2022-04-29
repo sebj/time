@@ -3,7 +3,7 @@ fun <Unit : TimeUnit> TimePeriod<Unit>.offset(count: Int): TimePeriod<Unit> {
         return this
     }
 
-    return applying(TimeDifference(count, unit))
+    return applying(TimeDifference(count, smallestUnit))
 }
 
 // region Nanosecond

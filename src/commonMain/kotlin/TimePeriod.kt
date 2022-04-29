@@ -9,14 +9,14 @@ import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.nanoseconds
 import kotlin.time.Duration.Companion.seconds
 
-data class TimePeriod<Unit : TimeUnit> internal constructor(
+data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
     val timeZone: TimeZone,
     internal val components: DateTimeComponents,
-    internal val unit: Unit
-) : Comparable<TimePeriod<Unit>> {
+    internal val smallestUnit: SmallestUnit
+) : Comparable<TimePeriod<SmallestUnit>> {
 
     @Throws(MissingDateTimeComponentsException::class)
-    internal constructor(timeZone: TimeZone, instant: Instant, unit: Unit) : this(
+    internal constructor(timeZone: TimeZone, instant: Instant, unit: SmallestUnit) : this(
         timeZone,
         instant.dateTimeComponents(timeZone, unit),
         unit
@@ -59,7 +59,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         internal fun second(timeZone: TimeZone, dateTimeComponents: DateTimeComponents) = TimePeriod(
             timeZone,
             components = dateTimeComponents.requireAndRestrict(Second),
-            unit = Second
+            smallestUnit = Second
         )
         fun second(timeZone: TimeZone, instant: Instant) = TimePeriod(
             timeZone,
@@ -89,7 +89,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         internal fun minute(timeZone: TimeZone, dateTimeComponents: DateTimeComponents) = TimePeriod(
             timeZone,
             components = dateTimeComponents.requireAndRestrict(Minute),
-            unit = Minute
+            smallestUnit = Minute
         )
         fun minute(timeZone: TimeZone, instant: Instant) = TimePeriod(
             timeZone,
@@ -195,27 +195,27 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
         fun year(timeZone: TimeZone, year: Int) = year(timeZone, DateTimeComponents(year = year))
     }
 
-    fun <DifferenceUnit : TimeUnit> applying(difference: TimeDifference<DifferenceUnit>): TimePeriod<Unit> {
+    fun <DifferenceUnit : TimeUnit> applying(difference: TimeDifference<DifferenceUnit>): TimePeriod<SmallestUnit> {
         return when (difference.unit) {
             is Nanosecond -> {
                 val newInstant = approximateMidPoint.plus(difference.count.nanoseconds)
-                TimePeriod(timeZone, newInstant, unit)
+                TimePeriod(timeZone, newInstant, smallestUnit)
             }
             is Second -> {
                 val newInstant = approximateMidPoint.plus(difference.count.seconds)
-                TimePeriod(timeZone, newInstant, unit)
+                TimePeriod(timeZone, newInstant, smallestUnit)
             }
             is Minute -> {
                 val newInstant = approximateMidPoint.plus(difference.count.minutes)
-                TimePeriod(timeZone, newInstant, unit)
+                TimePeriod(timeZone, newInstant, smallestUnit)
             }
             is Hour -> {
                 val newInstant = approximateMidPoint.plus(difference.count.hours)
-                TimePeriod(timeZone, newInstant, unit)
+                TimePeriod(timeZone, newInstant, smallestUnit)
             }
             is Day -> {
                 val newInstant = approximateMidPoint.plus(difference.count.days)
-                TimePeriod(timeZone, newInstant, unit)
+                TimePeriod(timeZone, newInstant, smallestUnit)
             }
             is Month -> {
                 val month = requireNotNull(components.month)
@@ -228,13 +228,13 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
                     month = newMonth
                 )
 
-                TimePeriod(timeZone, newComponents, unit)
+                TimePeriod(timeZone, newComponents, smallestUnit)
             }
             is Year -> {
                 val newComponents = components.copy(
                     year = components.year + difference.count
                 )
-                TimePeriod(timeZone, newComponents, unit)
+                TimePeriod(timeZone, newComponents, smallestUnit)
             }
             else -> throw IllegalTimeUnitException("Unable to apply difference with unexpected unit ${difference.unit}")
         }
@@ -271,7 +271,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
             val start = firstInstant
 
             @Suppress("UNCHECKED_CAST")
-            val unitLength = when (unit) {
+            val unitLength = when (smallestUnit) {
                 is Nanosecond -> 1.nanoseconds
                 is Second -> 1.seconds
                 is Minute -> 1.minutes
@@ -281,7 +281,7 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
                 is Year -> {
                     (this as TimePeriod<Year>).months.fold(0) { daysSum, month -> daysSum + month.days.count() }.days
                 }
-                else -> throw IllegalTimeUnitException("Unexpected unit $unit")
+                else -> throw IllegalTimeUnitException("Unexpected unit $smallestUnit")
             }
 
             val end = start.plus(unitLength)
@@ -298,12 +298,12 @@ data class TimePeriod<Unit : TimeUnit> internal constructor(
             return if (start > midPoint) start else midPoint
         }
 
-    override fun compareTo(other: TimePeriod<Unit>) = components.compareTo(other.components)
+    override fun compareTo(other: TimePeriod<SmallestUnit>) = components.compareTo(other.components)
 
     override fun toString() = buildString {
         append(TimePeriod::class.simpleName)
         append(".")
-        append(unit::class.simpleName)
+        append(smallestUnit::class.simpleName)
         append("(")
 
         val componentsString = buildList {
@@ -339,7 +339,7 @@ fun <Unit : TimeUnit> TimePeriod<Unit>.convertToTimeZone(timeZone: TimeZone): Ti
     return if (timeZone == this.timeZone) {
         this
     } else {
-        TimePeriod(timeZone, approximateMidPoint, unit)
+        TimePeriod(timeZone, approximateMidPoint, smallestUnit)
     }
 }
 
