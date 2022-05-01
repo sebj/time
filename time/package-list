@@ -1,0 +1,191 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:////PointingToDeclaration/time/[root]/index.html
+$dokka.location://addingDays/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/adding-days.html
+$dokka.location://addingHours/TimePeriod[TypeParam(bounds=[HourOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/adding-hours.html
+$dokka.location://addingMinutes/TimePeriod[TypeParam(bounds=[MinuteOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/adding-minutes.html
+$dokka.location://addingMonths/TimePeriod[TypeParam(bounds=[MonthOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/adding-months.html
+$dokka.location://addingNanoseconds/TimePeriod[TypeParam(bounds=[NanosecondOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/adding-nanoseconds.html
+$dokka.location://addingSeconds/TimePeriod[TypeParam(bounds=[SecondOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/adding-seconds.html
+$dokka.location://addingYears/TimePeriod[TypeParam(bounds=[YearOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/adding-years.html
+$dokka.location://after/TimePeriod[*]#TimePeriod[*]/PointingToDeclaration/time/[root]/after.html
+$dokka.location://before/TimePeriod[*]#TimePeriod[*]/PointingToDeclaration/time/[root]/before.html
+$dokka.location://contains/TimePeriod[*]#TimePeriod[*]/PointingToDeclaration/time/[root]/contains.html
+$dokka.location://convertToTimeZone/TimePeriod[TypeParam(bounds=[TimeUnit])]#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/convert-to-time-zone.html
+$dokka.location://dayOfMonth/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/day-of-month.html
+$dokka.location://dayOfWeek/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/day-of-week.html
+$dokka.location://dayOfYear/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/day-of-year.html
+$dokka.location://dayPeriod/TimePeriod[TypeParam(bounds=[HourOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/day-period.html
+$dokka.location://dayPeriod/kotlinx.datetime.LocalDate#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/day-period.html
+$dokka.location://dayPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/day-period.html
+$dokka.location://days/TimePeriod[TimeUnit.Month]#/PointingToDeclaration/time/[root]/days.html
+$dokka.location://days/TimePeriod[TimeUnit.Year]#/PointingToDeclaration/time/[root]/days.html
+$dokka.location://during/TimePeriod[*]#TimePeriod[*]/PointingToDeclaration/time/[root]/during.html
+$dokka.location://firstDay/TimePeriod[TimeUnit.Month]#/PointingToDeclaration/time/[root]/first-day.html
+$dokka.location://firstDay/TimePeriod[TimeUnit.Year]#/PointingToDeclaration/time/[root]/first-day.html
+$dokka.location://firstHour/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/first-hour.html
+$dokka.location://firstHour/TimePeriod[TimeUnit.Month]#/PointingToDeclaration/time/[root]/first-hour.html
+$dokka.location://firstMinute/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/first-minute.html
+$dokka.location://firstMinute/TimePeriod[TimeUnit.Hour]#/PointingToDeclaration/time/[root]/first-minute.html
+$dokka.location://firstMonth/TimePeriod[TimeUnit.Year]#/PointingToDeclaration/time/[root]/first-month.html
+$dokka.location://firstSecond/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/first-second.html
+$dokka.location://firstSecond/TimePeriod[TimeUnit.Hour]#/PointingToDeclaration/time/[root]/first-second.html
+$dokka.location://firstSecond/TimePeriod[TimeUnit.Minute]#/PointingToDeclaration/time/[root]/first-second.html
+$dokka.location://hour/TimePeriod[TypeParam(bounds=[HourOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/hour.html
+$dokka.location://hourPeriod/TimePeriod[TypeParam(bounds=[MinuteOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/hour-period.html
+$dokka.location://hourPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/hour-period.html
+$dokka.location://hours/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/hours.html
+$dokka.location://hours/TimePeriod[TimeUnit.Month]#/PointingToDeclaration/time/[root]/hours.html
+$dokka.location://lastDay/TimePeriod[TimeUnit.Month]#/PointingToDeclaration/time/[root]/last-day.html
+$dokka.location://lastDay/TimePeriod[TimeUnit.Year]#/PointingToDeclaration/time/[root]/last-day.html
+$dokka.location://lastHour/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/last-hour.html
+$dokka.location://lastHour/TimePeriod[TimeUnit.Month]#/PointingToDeclaration/time/[root]/last-hour.html
+$dokka.location://lastMinute/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/last-minute.html
+$dokka.location://lastMinute/TimePeriod[TimeUnit.Hour]#/PointingToDeclaration/time/[root]/last-minute.html
+$dokka.location://lastMonth/TimePeriod[TimeUnit.Year]#/PointingToDeclaration/time/[root]/last-month.html
+$dokka.location://lastSecond/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/last-second.html
+$dokka.location://lastSecond/TimePeriod[TimeUnit.Hour]#/PointingToDeclaration/time/[root]/last-second.html
+$dokka.location://lastSecond/TimePeriod[TimeUnit.Minute]#/PointingToDeclaration/time/[root]/last-second.html
+$dokka.location://minus/TimePeriod[TypeParam(bounds=[TimeUnit])]#TimeDifference[TypeParam(bounds=[TimeUnit])]/PointingToDeclaration/time/[root]/minus.html
+$dokka.location://minute/TimePeriod[TypeParam(bounds=[MinuteOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/minute.html
+$dokka.location://minutePeriod/TimePeriod[TypeParam(bounds=[SecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/minute-period.html
+$dokka.location://minutePeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/minute-period.html
+$dokka.location://minutes/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/minutes.html
+$dokka.location://minutes/TimePeriod[TimeUnit.Hour]#/PointingToDeclaration/time/[root]/minutes.html
+$dokka.location://month/TimePeriod[TypeParam(bounds=[MonthOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/month.html
+$dokka.location://monthPeriod/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/month-period.html
+$dokka.location://monthPeriod/kotlinx.datetime.LocalDate#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/month-period.html
+$dokka.location://monthPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/month-period.html
+$dokka.location://months/TimePeriod[TimeUnit.Year]#/PointingToDeclaration/time/[root]/months.html
+$dokka.location://nanosecond/TimePeriod[TypeParam(bounds=[NanosecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/nanosecond.html
+$dokka.location://nextDay/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/next-day.html
+$dokka.location://nextDay/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/next-day.html
+$dokka.location://nextHour/TimePeriod[TypeParam(bounds=[HourOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/next-hour.html
+$dokka.location://nextHour/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/next-hour.html
+$dokka.location://nextMinute/TimePeriod[TypeParam(bounds=[MinuteOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/next-minute.html
+$dokka.location://nextMinute/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/next-minute.html
+$dokka.location://nextMonth/TimePeriod[TypeParam(bounds=[MonthOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/next-month.html
+$dokka.location://nextMonth/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/next-month.html
+$dokka.location://nextNanosecond/TimePeriod[TypeParam(bounds=[NanosecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/next-nanosecond.html
+$dokka.location://nextSecond/TimePeriod[TypeParam(bounds=[SecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/next-second.html
+$dokka.location://nextSecond/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/next-second.html
+$dokka.location://nextYear/TimePeriod[TypeParam(bounds=[YearOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/next-year.html
+$dokka.location://nextYear/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/next-year.html
+$dokka.location://offset/TimePeriod[TypeParam(bounds=[TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/offset.html
+$dokka.location://offset/kotlinx.datetime.Clock#kotlin.time.Duration/PointingToDeclaration/time/[root]/offset.html
+$dokka.location://overlaps/TimePeriod[*]#TimePeriod[*]/PointingToDeclaration/time/[root]/overlaps.html
+$dokka.location://plus/TimePeriod[TypeParam(bounds=[TimeUnit])]#TimeDifference[TypeParam(bounds=[TimeUnit])]/PointingToDeclaration/time/[root]/plus.html
+$dokka.location://previousDay/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-day.html
+$dokka.location://previousDay/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/previous-day.html
+$dokka.location://previousHour/TimePeriod[TypeParam(bounds=[HourOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-hour.html
+$dokka.location://previousHour/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/previous-hour.html
+$dokka.location://previousMinute/TimePeriod[TypeParam(bounds=[MinuteOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-minute.html
+$dokka.location://previousMinute/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/previous-minute.html
+$dokka.location://previousMonth/TimePeriod[TypeParam(bounds=[MonthOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-month.html
+$dokka.location://previousMonth/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/previous-month.html
+$dokka.location://previousNanosecond/TimePeriod[TypeParam(bounds=[NanosecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-nanosecond.html
+$dokka.location://previousSecond/TimePeriod[TypeParam(bounds=[SecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-second.html
+$dokka.location://previousSecond/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/previous-second.html
+$dokka.location://previousYear/TimePeriod[TypeParam(bounds=[YearOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-year.html
+$dokka.location://previousYear/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/previous-year.html
+$dokka.location://scaled/kotlinx.datetime.Clock#kotlin.Double/PointingToDeclaration/time/[root]/scaled.html
+$dokka.location://second/TimePeriod[TypeParam(bounds=[SecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/second.html
+$dokka.location://secondPeriod/TimePeriod[TypeParam(bounds=[NanosecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/second-period.html
+$dokka.location://secondPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/second-period.html
+$dokka.location://seconds/TimePeriod[TimeUnit.Hour]#/PointingToDeclaration/time/[root]/seconds.html
+$dokka.location://seconds/TimePeriod[TimeUnit.Minute]#/PointingToDeclaration/time/[root]/seconds.html
+$dokka.location://subtractingDays/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/subtracting-days.html
+$dokka.location://subtractingHours/TimePeriod[TypeParam(bounds=[HourOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/subtracting-hours.html
+$dokka.location://subtractingMinutes/TimePeriod[TypeParam(bounds=[MinuteOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/subtracting-minutes.html
+$dokka.location://subtractingMonths/TimePeriod[TypeParam(bounds=[MonthOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/subtracting-months.html
+$dokka.location://subtractingNanoseconds/TimePeriod[TypeParam(bounds=[NanosecondOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/subtracting-nanoseconds.html
+$dokka.location://subtractingSeconds/TimePeriod[TypeParam(bounds=[SecondOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/subtracting-seconds.html
+$dokka.location://subtractingYears/TimePeriod[TypeParam(bounds=[YearOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/subtracting-years.html
+$dokka.location://thisDay/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/this-day.html
+$dokka.location://thisHour/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/this-hour.html
+$dokka.location://thisInstant/kotlinx.datetime.Clock#/PointingToDeclaration/time/[root]/this-instant.html
+$dokka.location://thisMinute/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/this-minute.html
+$dokka.location://thisMonth/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/this-month.html
+$dokka.location://thisNanosecond/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/this-nanosecond.html
+$dokka.location://thisSecond/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/this-second.html
+$dokka.location://thisYear/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/this-year.html
+$dokka.location://toLocalDate/TimePeriod[TypeParam(bounds=[TimeUnit, DayOrSmaller])]#/PointingToDeclaration/time/[root]/to-local-date.html
+$dokka.location://toLocalDateTime/TimePeriod[TypeParam(bounds=[TimeUnit, HourOrSmaller])]#/PointingToDeclaration/time/[root]/to-local-date-time.html
+$dokka.location://today/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/today.html
+$dokka.location://tomorrow/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/tomorrow.html
+$dokka.location://year/TimePeriod[TypeParam(bounds=[YearOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/year.html
+$dokka.location://yearPeriod/TimePeriod[TypeParam(bounds=[MonthOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/year-period.html
+$dokka.location://yearPeriod/kotlinx.datetime.LocalDate#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/year-period.html
+$dokka.location://yearPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/year-period.html
+$dokka.location://yesterday/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/yesterday.html
+$dokka.location:/DateTimeComponentOutOfBoundsException///PointingToDeclaration/time/[root]/-date-time-component-out-of-bounds-exception/index.html
+$dokka.location:/DayOrSmaller///PointingToDeclaration/time/[root]/-day-or-smaller/index.html
+$dokka.location:/HourOrSmaller///PointingToDeclaration/time/[root]/-hour-or-smaller/index.html
+$dokka.location:/IllegalTimeUnitException///PointingToDeclaration/time/[root]/-illegal-time-unit-exception/index.html
+$dokka.location:/MinuteOrSmaller///PointingToDeclaration/time/[root]/-minute-or-smaller/index.html
+$dokka.location:/MissingDateTimeComponentsException///PointingToDeclaration/time/[root]/-missing-date-time-components-exception/index.html
+$dokka.location:/MonthOrSmaller///PointingToDeclaration/time/[root]/-month-or-smaller/index.html
+$dokka.location:/NanosecondOrSmaller///PointingToDeclaration/time/[root]/-nanosecond-or-smaller/index.html
+$dokka.location:/Relation.After///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-after/index.html
+$dokka.location:/Relation.Before///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-before/index.html
+$dokka.location:/Relation.Contains///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-contains/index.html
+$dokka.location:/Relation.During///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-during/index.html
+$dokka.location:/Relation.Equal///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-equal/index.html
+$dokka.location:/Relation.Finishes///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-finishes/index.html
+$dokka.location:/Relation.IsFinishedBy///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-is-finished-by/index.html
+$dokka.location:/Relation.IsMetBy///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-is-met-by/index.html
+$dokka.location:/Relation.IsOverlappedBy///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-is-overlapped-by/index.html
+$dokka.location:/Relation.IsStartedBy///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-is-started-by/index.html
+$dokka.location:/Relation.Meets///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-meets/index.html
+$dokka.location:/Relation.Overlaps///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-overlaps/index.html
+$dokka.location:/Relation.Starts///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-starts/index.html
+$dokka.location:/Relation///PointingToDeclaration/time/[root]/-relation/index.html
+$dokka.location:/Relation/isDisjoint/#/PointingToDeclaration/time/[root]/-relation/is-disjoint.html
+$dokka.location:/Relation/isEqual/#/PointingToDeclaration/time/[root]/-relation/is-equal.html
+$dokka.location:/Relation/isMeeting/#/PointingToDeclaration/time/[root]/-relation/is-meeting.html
+$dokka.location:/Relation/isOverlapping/#/PointingToDeclaration/time/[root]/-relation/is-overlapping.html
+$dokka.location:/SecondOrSmaller///PointingToDeclaration/time/[root]/-second-or-smaller/index.html
+$dokka.location:/TimeDifference.Companion///PointingToDeclaration/time/[root]/-time-difference/-companion/index.html
+$dokka.location:/TimeDifference.Companion/days/#kotlin.Int/PointingToDeclaration/time/[root]/-time-difference/-companion/days.html
+$dokka.location:/TimeDifference.Companion/hours/#kotlin.Int/PointingToDeclaration/time/[root]/-time-difference/-companion/hours.html
+$dokka.location:/TimeDifference.Companion/minutes/#kotlin.Int/PointingToDeclaration/time/[root]/-time-difference/-companion/minutes.html
+$dokka.location:/TimeDifference.Companion/months/#kotlin.Int/PointingToDeclaration/time/[root]/-time-difference/-companion/months.html
+$dokka.location:/TimeDifference.Companion/nanoseconds/#kotlin.Int/PointingToDeclaration/time/[root]/-time-difference/-companion/nanoseconds.html
+$dokka.location:/TimeDifference.Companion/seconds/#kotlin.Int/PointingToDeclaration/time/[root]/-time-difference/-companion/seconds.html
+$dokka.location:/TimeDifference.Companion/years/#kotlin.Int/PointingToDeclaration/time/[root]/-time-difference/-companion/years.html
+$dokka.location:/TimeDifference///PointingToDeclaration/time/[root]/-time-difference/index.html
+$dokka.location:/TimeDifference/toString/#/PointingToDeclaration/time/[root]/-time-difference/to-string.html
+$dokka.location:/TimePeriod.Companion///PointingToDeclaration/time/[root]/-time-period/-companion/index.html
+$dokka.location:/TimePeriod.Companion/day/#kotlinx.datetime.TimeZone#kotlin.Int#kotlinx.datetime.Month#kotlin.Int/PointingToDeclaration/time/[root]/-time-period/-companion/day.html
+$dokka.location:/TimePeriod.Companion/day/#kotlinx.datetime.TimeZone#kotlinx.datetime.Instant/PointingToDeclaration/time/[root]/-time-period/-companion/day.html
+$dokka.location:/TimePeriod.Companion/hour/#kotlinx.datetime.TimeZone#kotlin.Int#kotlinx.datetime.Month#kotlin.Int#kotlin.Int/PointingToDeclaration/time/[root]/-time-period/-companion/hour.html
+$dokka.location:/TimePeriod.Companion/hour/#kotlinx.datetime.TimeZone#kotlinx.datetime.Instant/PointingToDeclaration/time/[root]/-time-period/-companion/hour.html
+$dokka.location:/TimePeriod.Companion/minute/#kotlinx.datetime.TimeZone#kotlin.Int#kotlinx.datetime.Month#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/time/[root]/-time-period/-companion/minute.html
+$dokka.location:/TimePeriod.Companion/minute/#kotlinx.datetime.TimeZone#kotlinx.datetime.Instant/PointingToDeclaration/time/[root]/-time-period/-companion/minute.html
+$dokka.location:/TimePeriod.Companion/month/#kotlinx.datetime.TimeZone#kotlin.Int#kotlinx.datetime.Month/PointingToDeclaration/time/[root]/-time-period/-companion/month.html
+$dokka.location:/TimePeriod.Companion/month/#kotlinx.datetime.TimeZone#kotlinx.datetime.Instant/PointingToDeclaration/time/[root]/-time-period/-companion/month.html
+$dokka.location:/TimePeriod.Companion/nanosecond/#kotlinx.datetime.TimeZone#kotlin.Int#kotlinx.datetime.Month#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/time/[root]/-time-period/-companion/nanosecond.html
+$dokka.location:/TimePeriod.Companion/nanosecond/#kotlinx.datetime.TimeZone#kotlinx.datetime.Instant/PointingToDeclaration/time/[root]/-time-period/-companion/nanosecond.html
+$dokka.location:/TimePeriod.Companion/second/#kotlinx.datetime.TimeZone#kotlin.Int#kotlinx.datetime.Month#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/time/[root]/-time-period/-companion/second.html
+$dokka.location:/TimePeriod.Companion/second/#kotlinx.datetime.TimeZone#kotlinx.datetime.Instant/PointingToDeclaration/time/[root]/-time-period/-companion/second.html
+$dokka.location:/TimePeriod.Companion/year/#kotlinx.datetime.TimeZone#kotlin.Int/PointingToDeclaration/time/[root]/-time-period/-companion/year.html
+$dokka.location:/TimePeriod.Companion/year/#kotlinx.datetime.TimeZone#kotlinx.datetime.Instant/PointingToDeclaration/time/[root]/-time-period/-companion/year.html
+$dokka.location:/TimePeriod///PointingToDeclaration/time/[root]/-time-period/index.html
+$dokka.location:/TimePeriod/applying/#TimeDifference[TypeParam(bounds=[TimeUnit])]/PointingToDeclaration/time/[root]/-time-period/applying.html
+$dokka.location:/TimePeriod/compareTo/#TimePeriod[TypeParam(bounds=[TimeUnit])]/PointingToDeclaration/time/[root]/-time-period/compare-to.html
+$dokka.location:/TimePeriod/firstInstant/#/PointingToDeclaration/time/[root]/-time-period/first-instant.html
+$dokka.location:/TimePeriod/lastInstant/#/PointingToDeclaration/time/[root]/-time-period/last-instant.html
+$dokka.location:/TimePeriod/range/#/PointingToDeclaration/time/[root]/-time-period/range.html
+$dokka.location:/TimePeriod/timeZone/#/PointingToDeclaration/time/[root]/-time-period/time-zone.html
+$dokka.location:/TimePeriod/toString/#/PointingToDeclaration/time/[root]/-time-period/to-string.html
+$dokka.location:/TimeUnit.Day///PointingToDeclaration/time/[root]/-time-unit/-day/index.html
+$dokka.location:/TimeUnit.Hour///PointingToDeclaration/time/[root]/-time-unit/-hour/index.html
+$dokka.location:/TimeUnit.Minute///PointingToDeclaration/time/[root]/-time-unit/-minute/index.html
+$dokka.location:/TimeUnit.Month///PointingToDeclaration/time/[root]/-time-unit/-month/index.html
+$dokka.location:/TimeUnit.Nanosecond///PointingToDeclaration/time/[root]/-time-unit/-nanosecond/index.html
+$dokka.location:/TimeUnit.Second///PointingToDeclaration/time/[root]/-time-unit/-second/index.html
+$dokka.location:/TimeUnit.Year///PointingToDeclaration/time/[root]/-time-unit/-year/index.html
+$dokka.location:/TimeUnit///PointingToDeclaration/time/[root]/-time-unit/index.html
+$dokka.location:/YearOrSmaller///PointingToDeclaration/time/[root]/-year-or-smaller/index.html
+
+
