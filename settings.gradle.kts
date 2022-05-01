@@ -1,1 +1,1 @@
-rootProject.name = "Time"
+rootProject.name = "time"
