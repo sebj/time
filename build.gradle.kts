@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform") version "1.6.21"
     `maven-publish`
+    id("signing")
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
     id("org.jetbrains.dokka") version "1.6.21"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
@@ -105,14 +106,78 @@ tasks.dokkaHtml.configure {
     }
 }
 
+val dokkaOutputDir = "$buildDir/dokka"
+
+tasks.getByName<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
+    outputDirectory.set(file(dokkaOutputDir))
+}
+
+val deleteDokkaOutputDir by tasks.register<Delete>("deleteDokkaOutputDirectory") {
+    delete(dokkaOutputDir)
+}
+
+val javadocJar = tasks.register<Jar>("javadocJar") {
+    dependsOn(deleteDokkaOutputDir, tasks.dokkaHtml)
+    archiveClassifier.set("javadoc")
+    from(dokkaOutputDir)
+}
+
+val sonatypeUsername: String? = System.getenv("SONATYPE_USERNAME")
+val sonatypePassword: String? = System.getenv("SONATYPE_PASSWORD")
+
 publishing {
     publications {
-        create<MavenPublication>("maven") {
-            groupId = "me.sebj"
-            artifactId = "time"
-            version = "0.2.0"
+        repositories {
+            maven {
+                name = "oss"
+                val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+                val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+                url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
 
-            from(components["java"])
+                credentials {
+                    username = sonatypeUsername
+                    password = sonatypePassword
+                }
+            }
+        }
+
+        withType<MavenPublication> {
+            artifact(javadocJar)
+
+            pom {
+                name.set("time")
+                description.set("Type-safe time periods for the Kotlinx-datetime multiplatform date/time library")
+                url.set("https://github.com/sebj/time")
+
+                licenses {
+                    license {
+                        name.set("MIT")
+                        url.set("https://github.com/sebj/time/blob/main/LICENSE")
+                    }
+                }
+                issueManagement {
+                    system.set("GitHub")
+                    url.set("https://github.com/sebj/time/issues")
+                }
+                scm {
+                    connection.set("https://github.com/sebj/time.git")
+                    url.set("https://github.com/sebj/time")
+                }
+                developers {
+                    developer {
+                        name.set("Seb Jachec")
+                        email.set("hi@sebj.me")
+                    }
+                }
+            }
         }
     }
+}
+
+signing {
+    useInMemoryPgpKeys(
+        System.getenv("GPG_PRIVATE_KEY"),
+        System.getenv("GPG_PRIVATE_PASSWORD")
+    )
+    sign(publishing.publications)
 }
