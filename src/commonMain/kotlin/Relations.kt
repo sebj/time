@@ -195,7 +195,7 @@ private fun <T : Comparable<T>> ClosedRange<T>.determineRelationship(other: Clos
     }
 }
 
-internal fun TimePeriod<*>.relation(other: TimePeriod<*>) = range.determineRelationship(other.range)
+fun TimePeriod<*>.relation(other: TimePeriod<*>) = range.determineRelationship(other.range)
 
 fun TimePeriod<*>.before(other: TimePeriod<*>): Boolean {
     val relation = this.relation(other)
