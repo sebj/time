@@ -88,6 +88,7 @@ $dokka.location://previousSecond/TimePeriod[TypeParam(bounds=[SecondOrSmaller, T
 $dokka.location://previousSecond/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/previous-second.html
 $dokka.location://previousYear/TimePeriod[TypeParam(bounds=[YearOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-year.html
 $dokka.location://previousYear/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/previous-year.html
+$dokka.location://relation/TimePeriod[*]#TimePeriod[*]/PointingToDeclaration/time/[root]/relation.html
 $dokka.location://scaled/kotlinx.datetime.Clock#kotlin.Double/PointingToDeclaration/time/[root]/scaled.html
 $dokka.location://second/TimePeriod[TypeParam(bounds=[SecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/second.html
 $dokka.location://secondPeriod/TimePeriod[TypeParam(bounds=[NanosecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/second-period.html
