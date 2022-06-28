@@ -5,7 +5,7 @@ import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
 import kotlinx.datetime.toLocalDateTime
-import kotlinx.datetime.todayAt
+import kotlinx.datetime.todayIn
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.time.Duration.Companion.days
@@ -25,7 +25,7 @@ class TimePeriodTest {
     @Test
     fun toLocalDate() {
         assertEquals(
-            expected = clock.todayAt(timeZone),
+            expected = clock.todayIn(timeZone),
             actual = clock.today(timeZone).toLocalDate()
         )
     }
