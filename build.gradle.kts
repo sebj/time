@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.7.0"
+    kotlin("multiplatform") version "1.7.10"
     `maven-publish`
     id("signing")
     id("org.jetbrains.kotlinx.kover") version "0.5.1"
