@@ -1,7 +1,7 @@
 # ⏱ Time
 
 [![MIT License](https://img.shields.io/github/license/sebj/time?color=lightgray)](LICENSE)
-[![Version 0.3.2](https://img.shields.io/github/v/release/sebj/time)](https://github.com/sebj/time/releases)
+[![Version 0.4.0](https://img.shields.io/github/v/release/sebj/time)](https://github.com/sebj/time/releases)
 [![Build, Test & Deploy Documentation](https://github.com/sebj/time/workflows/Build%2C%20Test%20and%20Deploy%20Documentation/badge.svg)](https://github.com/sebj/time/actions/workflows/build-test-documentation.yaml)
 
 A Kotlin multiplatform library filling in the gaps of [`kotlinx-datetime`](https://github.com/Kotlin/kotlinx-datetime) with additional type-safe APIs for time periods, as equivalents to those found in the Swift library of the same name([`time`](https://github.com/davedelong/time)).
@@ -20,7 +20,7 @@ Supported `TimePeriod` units:
 Add the dependency to your Gradle build file:
 ```
 dependencies {
-    implementation("me.sebj:time:0.3.2")
+    implementation("me.sebj:time:0.4.0")
 }
 ```
 
