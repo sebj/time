@@ -2,7 +2,7 @@ plugins {
     kotlin("multiplatform") version "1.7.10"
     `maven-publish`
     id("signing")
-    id("org.jetbrains.kotlinx.kover") version "0.5.1"
+    id("org.jetbrains.kotlinx.kover") version "0.6.0"
     id("org.jetbrains.dokka") version "1.7.10"
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
 }
