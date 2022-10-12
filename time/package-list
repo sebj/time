@@ -145,6 +145,8 @@ $dokka.location:/Relation/isDisjoint/#/PointingToDeclaration/time/[root]/-relat
 $dokka.location:/Relation/isEqual/#/PointingToDeclaration/time/[root]/-relation/is-equal.html
 $dokka.location:/Relation/isMeeting/#/PointingToDeclaration/time/[root]/-relation/is-meeting.html
 $dokka.location:/Relation/isOverlapping/#/PointingToDeclaration/time/[root]/-relation/is-overlapping.html
+$dokka.location:/Relation/valueOf/#kotlin.String/PointingToDeclaration/time/[root]/-relation/value-of.html
+$dokka.location:/Relation/values/#/PointingToDeclaration/time/[root]/-relation/values.html
 $dokka.location:/SecondOrSmaller///PointingToDeclaration/time/[root]/-second-or-smaller/index.html
 $dokka.location:/TimeDifference.Companion///PointingToDeclaration/time/[root]/-time-difference/-companion/index.html
 $dokka.location:/TimeDifference.Companion/days/#kotlin.Int/PointingToDeclaration/time/[root]/-time-difference/-companion/days.html
