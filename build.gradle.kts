@@ -4,7 +4,7 @@ plugins {
     id("signing")
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
     id("org.jetbrains.dokka") version "1.7.20"
-    id("org.jlleitschuh.gradle.ktlint") version "11.1.0"
+    id("org.jlleitschuh.gradle.ktlint") version "11.2.0"
 }
 
 group = "me.sebj"
