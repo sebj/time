@@ -17,7 +17,7 @@ repositories {
 kotlin {
     jvm {
         compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
+            kotlinOptions.jvmTarget = JavaVersion.VERSION_18.toString()
         }
         withJava()
         testRuns["test"].executionTask.configure {
