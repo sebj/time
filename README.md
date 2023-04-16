@@ -3,6 +3,7 @@
 [![MIT License](https://img.shields.io/github/license/sebj/time?color=lightgray)](LICENSE)
 [![Version 0.4.5](https://img.shields.io/github/v/release/sebj/time)](https://github.com/sebj/time/releases)
 [![Build, Test & Deploy Documentation](https://github.com/sebj/time/workflows/Build%2C%20Test%20and%20Deploy%20Documentation/badge.svg)](https://github.com/sebj/time/actions/workflows/build-test-documentation.yaml)
+[![Follow @sebj@mastodon.social](https://img.shields.io/mastodon/follow/000921252?domain=https%3A%2F%2Fmastodon.social&style=plastic)](https://mastodon.social/@sebj)
 
 A Kotlin multiplatform library filling in the gaps of [`kotlinx-datetime`](https://github.com/Kotlin/kotlinx-datetime) with additional type-safe APIs for time periods, as equivalents to those found in the Swift library of the same name([`time`](https://github.com/davedelong/time)).
 
@@ -96,3 +97,7 @@ val thisMonth = clock.thisMonth()
 val .. = dayA.during(thisMonth) // Equivalent to thisMonth.contains(dayA)
 
 ```
+
+## ⚖️ License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
