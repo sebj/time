@@ -1,4 +1,7 @@
-data class TimeDifference<Unit : TimeUnit> internal constructor(internal val count: Int, internal val unit: Unit) {
+data class TimeDifference<SmallestUnit : TimeUnit> internal constructor(
+    internal val count: Int,
+    internal val smallestUnit: SmallestUnit
+) {
     companion object {
         fun nanoseconds(count: Int) = TimeDifference(count, TimeUnit.Nanosecond)
         fun seconds(count: Int) = TimeDifference(count, TimeUnit.Second)
@@ -14,7 +17,7 @@ data class TimeDifference<Unit : TimeUnit> internal constructor(internal val cou
     override fun toString() = buildString {
         append(TimeDifference::class.simpleName)
         append(".")
-        append(unit::class.simpleName)
+        append(smallestUnit::class.simpleName)
         append("(count=")
         append(count)
         append(")")

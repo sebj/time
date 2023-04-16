@@ -11,7 +11,7 @@ class TimeDifferenceTest {
             expected = -3,
             actual = difference.count
         )
-        assertIs<TimeUnit.Hour>(difference.unit)
+        assertIs<TimeUnit.Hour>(difference.smallestUnit)
     }
 
     @Test

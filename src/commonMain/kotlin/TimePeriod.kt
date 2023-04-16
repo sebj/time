@@ -196,7 +196,7 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
     }
 
     fun <DifferenceUnit : TimeUnit> applying(difference: TimeDifference<DifferenceUnit>): TimePeriod<SmallestUnit> {
-        return when (difference.unit) {
+        return when (difference.smallestUnit) {
             is TimeUnit.Nanosecond -> {
                 val newInstant = approximateMidPoint.plus(difference.count.nanoseconds)
                 TimePeriod(timeZone, newInstant, smallestUnit)
@@ -236,7 +236,7 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
                 )
                 TimePeriod(timeZone, newComponents, smallestUnit)
             }
-            else -> throw IllegalTimeUnitException("Unable to apply difference with unexpected unit ${difference.unit}")
+            else -> throw IllegalTimeUnitException("Unable to apply difference with unexpected unit ${difference.smallestUnit}")
         }
     }
 
