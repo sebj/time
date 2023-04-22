@@ -31,16 +31,16 @@ dependencies {
 
 ```kotlin
 val clock = Clock.System
-val now = clock.thisInstant()
-val today = clock.today()
-val month = clock.thisMonth()
+val now: Instant = clock.thisInstant()
+val today: TimePeriod<TimeUnit.Day> = clock.today()
+val month: TimePeriod<TimeUnit.Month> = clock.thisMonth()
 ```
 
 ### Retrieving Components
 
 Retrieve component values for a time period:
 ```kotlin
-val today: TimePeriod<Day> = Clock.System.today()
+val today: TimePeriod<TimeUnit.Day> = Clock.System.today()
 val year = today.year // Ex: 2022
 val month = today.month // Ex: APRIL
 val day = today.day // Ex: 18
@@ -50,18 +50,18 @@ val day = today.day // Ex: 18
 
 Retrieve larger less-precise time periods for a time period:
 ```kotlin
-val today: TimePeriod<Day> = Clock.System.today()
-val month: TimePeriod<Month> = today.monthPeriod
-val year: TimePeriod<Month> = today.yearPeriod
+val today: TimePeriod<TimeUnit.Day> = Clock.System.today()
+val month: TimePeriod<TimeUnit.Month> = today.monthPeriod
+val year: TimePeriod<TimeUnit.Year> = today.yearPeriod
 ```
 
 Retrieve smaller more-precise time periods for a time period:
 ```kotlin
 val clock = Clock.System
 
-val firstDayOfMonth: TimePeriod<Day> = clock.thisMonth().firstDay
-val lastHourOfDay: TimePeriod<Hour> = clock.today().lastHour
-val firstDayOfYear: TimePeriod<Day> = clock.thisYear().firstDay
+val firstDayOfMonth: TimePeriod<TimeUnit.Day> = clock.thisMonth().firstDay
+val lastHourOfDay: TimePeriod<TimeUnit.Hour> = clock.today().lastHour
+val firstDayOfYear: TimePeriod<TimeUnit.Day> = clock.thisYear().firstDay
 ```
 
 ### Iterating Over TimePeriods
@@ -69,14 +69,14 @@ val firstDayOfYear: TimePeriod<Day> = clock.thisYear().firstDay
 ```kotlin
 val clock = Clock.System
 
-val thisMonth = clock.thisMonth()
+val thisMonth: TimePeriod<TimeUnit.Month> = clock.thisMonth()
 val daysInThisMonth = thisMonth.days
 
 for (day in daysInThisMonth) {
     // …
 }
 
-val thisHour = clock.thisHour()
+val thisHour: TimePeriod<TimeUnit.Hour> = clock.thisHour()
 val minutesInThisHour = thisHour.minutes
 
 for (minute in minutesInThisHour) {
@@ -89,13 +89,12 @@ for (minute in minutesInThisHour) {
 ```kotlin
 val clock = Clock.System
 
-val dayA: TimePeriod<Day> = ...
-val dayB: TimePeriod<Day> = ...
-val .. = dayA.after(dayB)
+val dayA: TimePeriod<TimeUnit.Day> = ...
+val dayB: TimePeriod<TimeUnit.Day> = ...
+val ..: Boolean = dayA.after(dayB)
 
 val thisMonth = clock.thisMonth()
-val .. = dayA.during(thisMonth) // Equivalent to thisMonth.contains(dayA)
-
+val ..: Boolean = dayA.during(thisMonth) // Equivalent to thisMonth.contains(dayA)
 ```
 
 ## ⚖️ License
