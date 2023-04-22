@@ -7,6 +7,15 @@
 
 A Kotlin multiplatform library filling in the gaps of [`kotlinx-datetime`](https://github.com/Kotlin/kotlinx-datetime) with additional type-safe APIs for time periods, as equivalents to those found in the Swift library of the same name([`time`](https://github.com/davedelong/time)).
 
+Supported targets:
+* Apple
+  * iOS
+  * macOS
+  * tvOS
+  * watchOS
+* JVM
+* Linux
+
 Supported `TimePeriod` units:
 * Year
 * Month
@@ -27,7 +36,7 @@ dependencies {
 
 ## 💡 Usage Examples
 
-### Fetching the Current Time Period
+### Fetching The Current Time Period
 
 ```kotlin
 val clock = Clock.System
@@ -84,7 +93,7 @@ for (minute in minutesInThisHour) {
 }
 ```
 
-### Determining the Relationship Between TimePeriods
+### Determining The Relationship Between TimePeriods
 
 ```kotlin
 val clock = Clock.System
@@ -92,9 +101,10 @@ val clock = Clock.System
 val dayA: TimePeriod<TimeUnit.Day> = ...
 val dayB: TimePeriod<TimeUnit.Day> = ...
 val ..: Boolean = dayA.after(dayB)
+// Also: `before`, `overlaps`, or compare specific relationship using `relation` (see Relations.kt)
 
 val thisMonth = clock.thisMonth()
-val ..: Boolean = dayA.during(thisMonth) // Equivalent to thisMonth.contains(dayA)
+val ..: Boolean = dayA.during(thisMonth) // Equivalent to `thisMonth.contains(dayA)`
 ```
 
 ## ⚖️ License
