@@ -46,7 +46,13 @@ $dokka.location://lastMonth/TimePeriod[TimeUnit.Year]#/PointingToDeclaration/ti
 $dokka.location://lastSecond/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/last-second.html
 $dokka.location://lastSecond/TimePeriod[TimeUnit.Hour]#/PointingToDeclaration/time/[root]/last-second.html
 $dokka.location://lastSecond/TimePeriod[TimeUnit.Minute]#/PointingToDeclaration/time/[root]/last-second.html
-$dokka.location://minus/TimePeriod[TypeParam(bounds=[TimeUnit])]#TimeDifference[*]/PointingToDeclaration/time/[root]/minus.html
+$dokka.location://minus/TimePeriod[TimeUnit.Day]#TimeDifference[TypeParam(bounds=[DayOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/minus.html
+$dokka.location://minus/TimePeriod[TimeUnit.Hour]#TimeDifference[TypeParam(bounds=[HourOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/minus.html
+$dokka.location://minus/TimePeriod[TimeUnit.Minute]#TimeDifference[TypeParam(bounds=[MinuteOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/minus.html
+$dokka.location://minus/TimePeriod[TimeUnit.Month]#TimeDifference[TypeParam(bounds=[MonthOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/minus.html
+$dokka.location://minus/TimePeriod[TimeUnit.Nanosecond]#TimeDifference[TypeParam(bounds=[NanosecondOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/minus.html
+$dokka.location://minus/TimePeriod[TimeUnit.Second]#TimeDifference[TypeParam(bounds=[SecondOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/minus.html
+$dokka.location://minus/TimePeriod[TimeUnit.Year]#TimeDifference[TimeUnit.Year]/PointingToDeclaration/time/[root]/minus.html
 $dokka.location://minute/TimePeriod[TypeParam(bounds=[MinuteOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/minute.html
 $dokka.location://minutePeriod/TimePeriod[TypeParam(bounds=[SecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/minute-period.html
 $dokka.location://minutePeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/minute-period.html
@@ -74,7 +80,13 @@ $dokka.location://nextYear/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/Poin
 $dokka.location://offset/TimePeriod[TypeParam(bounds=[TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/offset.html
 $dokka.location://offset/kotlinx.datetime.Clock#kotlin.time.Duration/PointingToDeclaration/time/[root]/offset.html
 $dokka.location://overlaps/TimePeriod[*]#TimePeriod[*]/PointingToDeclaration/time/[root]/overlaps.html
-$dokka.location://plus/TimePeriod[TypeParam(bounds=[TimeUnit])]#TimeDifference[*]/PointingToDeclaration/time/[root]/plus.html
+$dokka.location://plus/TimePeriod[TimeUnit.Day]#TimeDifference[TypeParam(bounds=[DayOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/plus.html
+$dokka.location://plus/TimePeriod[TimeUnit.Hour]#TimeDifference[TypeParam(bounds=[HourOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/plus.html
+$dokka.location://plus/TimePeriod[TimeUnit.Minute]#TimeDifference[TypeParam(bounds=[MinuteOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/plus.html
+$dokka.location://plus/TimePeriod[TimeUnit.Month]#TimeDifference[TypeParam(bounds=[MonthOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/plus.html
+$dokka.location://plus/TimePeriod[TimeUnit.Nanosecond]#TimeDifference[TypeParam(bounds=[NanosecondOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/plus.html
+$dokka.location://plus/TimePeriod[TimeUnit.Second]#TimeDifference[TypeParam(bounds=[SecondOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/plus.html
+$dokka.location://plus/TimePeriod[TimeUnit.Year]#TimeDifference[TimeUnit.Year]/PointingToDeclaration/time/[root]/plus.html
 $dokka.location://previousDay/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-day.html
 $dokka.location://previousDay/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/previous-day.html
 $dokka.location://previousHour/TimePeriod[TypeParam(bounds=[HourOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-hour.html
@@ -120,12 +132,17 @@ $dokka.location://yearPeriod/kotlinx.datetime.LocalDate#kotlinx.datetime.TimeZon
 $dokka.location://yearPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/year-period.html
 $dokka.location://yesterday/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/yesterday.html
 $dokka.location:/DateTimeComponentOutOfBoundsException///PointingToDeclaration/time/[root]/-date-time-component-out-of-bounds-exception/index.html
+$dokka.location:/DayOrBigger///PointingToDeclaration/time/[root]/-day-or-bigger/index.html
 $dokka.location:/DayOrSmaller///PointingToDeclaration/time/[root]/-day-or-smaller/index.html
+$dokka.location:/HourOrBigger///PointingToDeclaration/time/[root]/-hour-or-bigger/index.html
 $dokka.location:/HourOrSmaller///PointingToDeclaration/time/[root]/-hour-or-smaller/index.html
 $dokka.location:/IllegalTimeUnitException///PointingToDeclaration/time/[root]/-illegal-time-unit-exception/index.html
+$dokka.location:/MinuteOrBigger///PointingToDeclaration/time/[root]/-minute-or-bigger/index.html
 $dokka.location:/MinuteOrSmaller///PointingToDeclaration/time/[root]/-minute-or-smaller/index.html
 $dokka.location:/MissingDateTimeComponentsException///PointingToDeclaration/time/[root]/-missing-date-time-components-exception/index.html
+$dokka.location:/MonthOrBigger///PointingToDeclaration/time/[root]/-month-or-bigger/index.html
 $dokka.location:/MonthOrSmaller///PointingToDeclaration/time/[root]/-month-or-smaller/index.html
+$dokka.location:/NanosecondOrBigger///PointingToDeclaration/time/[root]/-nanosecond-or-bigger/index.html
 $dokka.location:/NanosecondOrSmaller///PointingToDeclaration/time/[root]/-nanosecond-or-smaller/index.html
 $dokka.location:/Relation.After///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-after/index.html
 $dokka.location:/Relation.Before///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-before/index.html
@@ -147,6 +164,7 @@ $dokka.location:/Relation/isMeeting/#/PointingToDeclaration/time/[root]/-relati
 $dokka.location:/Relation/isOverlapping/#/PointingToDeclaration/time/[root]/-relation/is-overlapping.html
 $dokka.location:/Relation/valueOf/#kotlin.String/PointingToDeclaration/time/[root]/-relation/value-of.html
 $dokka.location:/Relation/values/#/PointingToDeclaration/time/[root]/-relation/values.html
+$dokka.location:/SecondOrBigger///PointingToDeclaration/time/[root]/-second-or-bigger/index.html
 $dokka.location:/SecondOrSmaller///PointingToDeclaration/time/[root]/-second-or-smaller/index.html
 $dokka.location:/TimeDifference.Companion///PointingToDeclaration/time/[root]/-time-difference/-companion/index.html
 $dokka.location:/TimeDifference.Companion/days/#kotlin.Int/PointingToDeclaration/time/[root]/-time-difference/-companion/days.html
