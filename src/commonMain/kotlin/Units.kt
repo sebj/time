@@ -2,79 +2,79 @@
  * A marker interface for units of time that are equivalent to or smaller than a nanosecond.
  * @see TimeUnit.Nanosecond
  */
-interface NanosecondOrSmaller : SecondOrSmaller
+internal interface NanosecondOrSmaller : SecondOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than a second.
  * @see TimeUnit.Second
  */
-interface SecondOrSmaller : MinuteOrSmaller
+internal interface SecondOrSmaller : MinuteOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than a minute.
  * @see TimeUnit.Minute
  */
-interface MinuteOrSmaller : HourOrSmaller
+internal interface MinuteOrSmaller : HourOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than an hour.
  * @see TimeUnit.Hour
  */
-interface HourOrSmaller : DayOrSmaller
+internal interface HourOrSmaller : DayOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than a day.
  * @see TimeUnit.Day
  */
-interface DayOrSmaller : MonthOrSmaller
+internal interface DayOrSmaller : MonthOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than a month.
  * @see TimeUnit.Month
  */
-interface MonthOrSmaller : YearOrSmaller
+internal interface MonthOrSmaller : YearOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or smaller than a year.
  * @see TimeUnit.Year
  */
-interface YearOrSmaller
+internal interface YearOrSmaller
 
 /**
  * A marker interface for units of time that are equivalent to or bigger than a nanosecond.
  * @see TimeUnit.Nanosecond
  */
-interface NanosecondOrBigger
+internal interface NanosecondOrBigger
 
 /**
  * A marker interface for units of time that are equivalent to or bigger than a second.
  * @see TimeUnit.Second
  */
-interface SecondOrBigger : NanosecondOrBigger
+internal interface SecondOrBigger : NanosecondOrBigger
 
 /**
  * A marker interface for units of time that are equivalent to or bigger than a minute.
  * @see TimeUnit.Minute
  */
-interface MinuteOrBigger : SecondOrBigger
+internal interface MinuteOrBigger : SecondOrBigger
 
 /**
  * A marker interface for units of time that are equivalent to or bigger than an hour.
  * @see TimeUnit.Hour
  */
-interface HourOrBigger : MinuteOrBigger
+internal interface HourOrBigger : MinuteOrBigger
 
 /**
  * A marker interface for units of time that are equivalent to or bigger than a day.
  * @see TimeUnit.Day
  */
-interface DayOrBigger : HourOrBigger
+internal interface DayOrBigger : HourOrBigger
 
 /**
  * A marker interface for units of time that are equivalent to or bigger than a month.
  * @see TimeUnit.Month
  */
-interface MonthOrBigger : DayOrBigger
+internal interface MonthOrBigger : DayOrBigger
 
 sealed class TimeUnit private constructor() {
     object Nanosecond : TimeUnit(), NanosecondOrSmaller, NanosecondOrBigger
