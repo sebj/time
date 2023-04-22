@@ -17,7 +17,7 @@ interface SecondOrSmaller : MinuteOrSmaller
 interface MinuteOrSmaller : HourOrSmaller
 
 /**
- * A marker interface for units of time that are equivalent to or smaller than a hour.
+ * A marker interface for units of time that are equivalent to or smaller than an hour.
  * @see TimeUnit.Hour
  */
 interface HourOrSmaller : DayOrSmaller

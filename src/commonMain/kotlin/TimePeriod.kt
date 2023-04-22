@@ -323,12 +323,12 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
 }
 
 /**
- * Constructs a [kotlinx.datetime.LocalDateTime] from a [TimePeriod] with [Hour] or smaller precision.
+ * Constructs a [kotlinx.datetime.LocalDateTime] from a [TimePeriod] with [HourOrSmaller] precision.
  */
 fun <Unit> TimePeriod<Unit>.toLocalDateTime() where Unit : TimeUnit, Unit : HourOrSmaller = firstInstant.toLocalDateTime(timeZone)
 
 /**
- * Constructs a [kotlinx.datetime.LocalDate] from a [TimePeriod] with [Day] or finer precision.
+ * Constructs a [kotlinx.datetime.LocalDate] from a [TimePeriod] with [DayOrSmaller] precision.
  */
 fun <Unit> TimePeriod<Unit>.toLocalDate() where Unit : TimeUnit, Unit : DayOrSmaller = firstInstant.toLocalDateTime(timeZone).date
 

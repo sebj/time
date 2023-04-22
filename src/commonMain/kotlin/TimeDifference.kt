@@ -27,9 +27,9 @@ data class TimeDifference<SmallestUnit : TimeUnit> internal constructor(
 /**
  * Adds a [TimeDifference] to this [TimePeriod].
  */
-operator fun <Unit : TimeUnit> TimePeriod<Unit>.plus(difference: TimeDifference<Unit>) = this.applying(difference)
+operator fun <Unit : TimeUnit> TimePeriod<Unit>.plus(difference: TimeDifference<*>) = this.applying(difference)
 
 /**
  * Subtracts a [TimeDifference] from this [TimePeriod].
  */
-operator fun <Unit : TimeUnit> TimePeriod<Unit>.minus(difference: TimeDifference<Unit>) = this.applying(difference.negated())
+operator fun <Unit : TimeUnit> TimePeriod<Unit>.minus(difference: TimeDifference<*>) = this.applying(difference.negated())
