@@ -46,7 +46,7 @@ $dokka.location://lastMonth/TimePeriod[TimeUnit.Year]#/PointingToDeclaration/ti
 $dokka.location://lastSecond/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/last-second.html
 $dokka.location://lastSecond/TimePeriod[TimeUnit.Hour]#/PointingToDeclaration/time/[root]/last-second.html
 $dokka.location://lastSecond/TimePeriod[TimeUnit.Minute]#/PointingToDeclaration/time/[root]/last-second.html
-$dokka.location://minus/TimePeriod[TypeParam(bounds=[TimeUnit])]#TimeDifference[TypeParam(bounds=[TimeUnit])]/PointingToDeclaration/time/[root]/minus.html
+$dokka.location://minus/TimePeriod[TypeParam(bounds=[TimeUnit])]#TimeDifference[*]/PointingToDeclaration/time/[root]/minus.html
 $dokka.location://minute/TimePeriod[TypeParam(bounds=[MinuteOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/minute.html
 $dokka.location://minutePeriod/TimePeriod[TypeParam(bounds=[SecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/minute-period.html
 $dokka.location://minutePeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/minute-period.html
@@ -74,7 +74,7 @@ $dokka.location://nextYear/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/Poin
 $dokka.location://offset/TimePeriod[TypeParam(bounds=[TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/offset.html
 $dokka.location://offset/kotlinx.datetime.Clock#kotlin.time.Duration/PointingToDeclaration/time/[root]/offset.html
 $dokka.location://overlaps/TimePeriod[*]#TimePeriod[*]/PointingToDeclaration/time/[root]/overlaps.html
-$dokka.location://plus/TimePeriod[TypeParam(bounds=[TimeUnit])]#TimeDifference[TypeParam(bounds=[TimeUnit])]/PointingToDeclaration/time/[root]/plus.html
+$dokka.location://plus/TimePeriod[TypeParam(bounds=[TimeUnit])]#TimeDifference[*]/PointingToDeclaration/time/[root]/plus.html
 $dokka.location://previousDay/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-day.html
 $dokka.location://previousDay/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/previous-day.html
 $dokka.location://previousHour/TimePeriod[TypeParam(bounds=[HourOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/previous-hour.html
