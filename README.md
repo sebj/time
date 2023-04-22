@@ -107,6 +107,19 @@ val thisMonth = clock.thisMonth()
 val ..: Boolean = dayA.during(thisMonth) // Equivalent to `thisMonth.contains(dayA)`
 ```
 
+### Adjusting TimePeriods
+```kotlin
+val today = Clock.System.today()
+val dayAfterTomorrow = today + TimeDifference.days(2)
+_ = today + TimeDifference.hours(1) // Compiler error – not implemented, as this is invalid
+_ = today + TimeDifference.minutes(1) // Compiler error – not implemented, as this is invalid
+
+val thisMonth = today.monthPeriod
+val monthBeforeLast = thisMonth - TimeDifference.months(2)
+_ = today - TimeDifference.nanoseconds(1) // Compiler error – not implemented, as this is invalid
+_ = today - TimeDifference.seconds(1) // Compiler error – not implemented, as this is invalid
+```
+
 ## ⚖️ License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
