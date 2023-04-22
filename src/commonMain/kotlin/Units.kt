@@ -40,12 +40,48 @@ interface MonthOrSmaller : YearOrSmaller
  */
 interface YearOrSmaller
 
+/**
+ * A marker interface for units of time that are equivalent to or bigger than a nanosecond.
+ * @see TimeUnit.Nanosecond
+ */
+interface NanosecondOrBigger
+
+/**
+ * A marker interface for units of time that are equivalent to or bigger than a second.
+ * @see TimeUnit.Second
+ */
+interface SecondOrBigger : NanosecondOrBigger
+
+/**
+ * A marker interface for units of time that are equivalent to or bigger than a minute.
+ * @see TimeUnit.Minute
+ */
+interface MinuteOrBigger : SecondOrBigger
+
+/**
+ * A marker interface for units of time that are equivalent to or bigger than an hour.
+ * @see TimeUnit.Hour
+ */
+interface HourOrBigger : MinuteOrBigger
+
+/**
+ * A marker interface for units of time that are equivalent to or bigger than a day.
+ * @see TimeUnit.Day
+ */
+interface DayOrBigger : HourOrBigger
+
+/**
+ * A marker interface for units of time that are equivalent to or bigger than a month.
+ * @see TimeUnit.Month
+ */
+interface MonthOrBigger : DayOrBigger
+
 sealed class TimeUnit private constructor() {
-    object Nanosecond : TimeUnit(), NanosecondOrSmaller
-    object Second : TimeUnit(), SecondOrSmaller
-    object Minute : TimeUnit(), MinuteOrSmaller
-    object Hour : TimeUnit(), HourOrSmaller
-    object Day : TimeUnit(), DayOrSmaller
-    object Month : TimeUnit(), MonthOrSmaller
-    object Year : TimeUnit(), YearOrSmaller
+    object Nanosecond : TimeUnit(), NanosecondOrSmaller, NanosecondOrBigger
+    object Second : TimeUnit(), SecondOrSmaller, SecondOrBigger
+    object Minute : TimeUnit(), MinuteOrSmaller, MinuteOrBigger
+    object Hour : TimeUnit(), HourOrSmaller, HourOrBigger
+    object Day : TimeUnit(), DayOrSmaller, DayOrBigger
+    object Month : TimeUnit(), MonthOrSmaller, MonthOrBigger
+    object Year : TimeUnit(), YearOrSmaller, MonthOrBigger
 }
