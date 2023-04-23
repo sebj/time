@@ -1,4 +1,4 @@
-fun <Unit : TimeUnit> TimePeriod<Unit>.offset(count: Int): TimePeriod<Unit> {
+public fun <Unit : TimeUnit> TimePeriod<Unit>.offset(count: Int): TimePeriod<Unit> {
     if (count == 0) {
         return this
     }
@@ -10,13 +10,13 @@ fun <Unit : TimeUnit> TimePeriod<Unit>.offset(count: Int): TimePeriod<Unit> {
 /**
  * Create a new [TimePeriod] by moving forward one nanosecond.
  */
-val <Unit> TimePeriod<Unit>.nextNanosecond where Unit : NanosecondOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.nextNanosecond: TimePeriod<Unit> where Unit : NanosecondOrSmaller, Unit : TimeUnit
     get() = addingNanoseconds(1)
 
 /**
  * Create a new [TimePeriod] by moving backward one nanosecond.
  */
-val <Unit> TimePeriod<Unit>.previousNanosecond where Unit : NanosecondOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.previousNanosecond: TimePeriod<Unit> where Unit : NanosecondOrSmaller, Unit : TimeUnit
     get() = subtractingNanoseconds(1)
 
 /**
@@ -24,7 +24,7 @@ val <Unit> TimePeriod<Unit>.previousNanosecond where Unit : NanosecondOrSmaller,
  *
  * @param count The number of nanoseconds by which to move forward.
  */
-fun <Unit> TimePeriod<Unit>.addingNanoseconds(count: Int) where Unit : NanosecondOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.addingNanoseconds(count: Int): TimePeriod<Unit> where Unit : NanosecondOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.nanoseconds(count))
 
 /**
@@ -32,20 +32,21 @@ fun <Unit> TimePeriod<Unit>.addingNanoseconds(count: Int) where Unit : Nanosecon
  *
  * @param count The number of nanoseconds by which to move backward.
  */
-fun <Unit> TimePeriod<Unit>.subtractingNanoseconds(count: Int) where Unit : NanosecondOrSmaller, Unit : TimeUnit = applying(TimeDifference.nanoseconds(-count))
+public fun <Unit> TimePeriod<Unit>.subtractingNanoseconds(count: Int): TimePeriod<Unit> where Unit : NanosecondOrSmaller, Unit : TimeUnit =
+    applying(TimeDifference.nanoseconds(-count))
 // endregion
 
 // region Second
 /**
  * Create a new [TimePeriod] by moving forward one second.
  */
-val <Unit> TimePeriod<Unit>.nextSecond where Unit : SecondOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.nextSecond: TimePeriod<Unit> where Unit : SecondOrSmaller, Unit : TimeUnit
     get() = addingSeconds(1)
 
 /**
  * Create a new [TimePeriod] by moving backward one second.
  */
-val <Unit> TimePeriod<Unit>.previousSecond where Unit : SecondOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.previousSecond: TimePeriod<Unit> where Unit : SecondOrSmaller, Unit : TimeUnit
     get() = subtractingSeconds(1)
 
 /**
@@ -53,7 +54,7 @@ val <Unit> TimePeriod<Unit>.previousSecond where Unit : SecondOrSmaller, Unit : 
  *
  * @param count The number of seconds by which to move forward.
  */
-fun <Unit> TimePeriod<Unit>.addingSeconds(count: Int) where Unit : SecondOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.addingSeconds(count: Int): TimePeriod<Unit> where Unit : SecondOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.seconds(count))
 
 /**
@@ -61,7 +62,7 @@ fun <Unit> TimePeriod<Unit>.addingSeconds(count: Int) where Unit : SecondOrSmall
  *
  * @param count The number of seconds by which to move backward.
  */
-fun <Unit> TimePeriod<Unit>.subtractingSeconds(count: Int) where Unit : SecondOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.subtractingSeconds(count: Int): TimePeriod<Unit> where Unit : SecondOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.seconds(-count))
 // endregion
 
@@ -69,13 +70,13 @@ fun <Unit> TimePeriod<Unit>.subtractingSeconds(count: Int) where Unit : SecondOr
 /**
  * Create a new [TimePeriod] by moving forward one minute.
  */
-val <Unit> TimePeriod<Unit>.nextMinute where Unit : MinuteOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.nextMinute: TimePeriod<Unit> where Unit : MinuteOrSmaller, Unit : TimeUnit
     get() = addingMinutes(1)
 
 /**
  * Create a new [TimePeriod] by moving backward one minute.
  */
-val <Unit> TimePeriod<Unit>.previousMinute where Unit : MinuteOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.previousMinute: TimePeriod<Unit> where Unit : MinuteOrSmaller, Unit : TimeUnit
     get() = subtractingMinutes(1)
 
 /**
@@ -83,7 +84,7 @@ val <Unit> TimePeriod<Unit>.previousMinute where Unit : MinuteOrSmaller, Unit : 
  *
  * @param count The number of minutes by which to move forward.
  */
-fun <Unit> TimePeriod<Unit>.addingMinutes(count: Int) where Unit : MinuteOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.addingMinutes(count: Int): TimePeriod<Unit> where Unit : MinuteOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.minutes(count))
 
 /**
@@ -91,7 +92,7 @@ fun <Unit> TimePeriod<Unit>.addingMinutes(count: Int) where Unit : MinuteOrSmall
  *
  * @param count The number of minutes by which to move backward.
  */
-fun <Unit> TimePeriod<Unit>.subtractingMinutes(count: Int) where Unit : MinuteOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.subtractingMinutes(count: Int): TimePeriod<Unit> where Unit : MinuteOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.minutes(-count))
 //endregion
 
@@ -99,13 +100,13 @@ fun <Unit> TimePeriod<Unit>.subtractingMinutes(count: Int) where Unit : MinuteOr
 /**
  * Create a new [TimePeriod] by moving forward one hour.
  */
-val <Unit> TimePeriod<Unit>.nextHour where Unit : HourOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.nextHour: TimePeriod<Unit> where Unit : HourOrSmaller, Unit : TimeUnit
     get() = addingHours(1)
 
 /**
  * Create a new [TimePeriod] by moving backward one hour.
  */
-val <Unit> TimePeriod<Unit>.previousHour where Unit : HourOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.previousHour: TimePeriod<Unit> where Unit : HourOrSmaller, Unit : TimeUnit
     get() = subtractingHours(1)
 
 /**
@@ -113,7 +114,7 @@ val <Unit> TimePeriod<Unit>.previousHour where Unit : HourOrSmaller, Unit : Time
  *
  * @param count The number of hours by which to move forward.
  */
-fun <Unit> TimePeriod<Unit>.addingHours(count: Int) where Unit : HourOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.addingHours(count: Int): TimePeriod<Unit> where Unit : HourOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.hours(count))
 
 /**
@@ -121,7 +122,7 @@ fun <Unit> TimePeriod<Unit>.addingHours(count: Int) where Unit : HourOrSmaller, 
  *
  * @param count The number of hours by which to move backward.
  */
-fun <Unit> TimePeriod<Unit>.subtractingHours(count: Int) where Unit : HourOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.subtractingHours(count: Int): TimePeriod<Unit> where Unit : HourOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.hours(-count))
 // endregion
 
@@ -129,13 +130,13 @@ fun <Unit> TimePeriod<Unit>.subtractingHours(count: Int) where Unit : HourOrSmal
 /**
  * Create a new [TimePeriod] by moving forward one day.
  */
-val <Unit> TimePeriod<Unit>.nextDay where Unit : DayOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.nextDay: TimePeriod<Unit> where Unit : DayOrSmaller, Unit : TimeUnit
     get() = addingDays(1)
 
 /**
  * Create a new [TimePeriod] by moving backward one day.
  */
-val <Unit> TimePeriod<Unit>.previousDay where Unit : DayOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.previousDay: TimePeriod<Unit> where Unit : DayOrSmaller, Unit : TimeUnit
     get() = subtractingDays(1)
 
 /**
@@ -143,7 +144,7 @@ val <Unit> TimePeriod<Unit>.previousDay where Unit : DayOrSmaller, Unit : TimeUn
  *
  * @param count The number of days by which to move forward.
  */
-fun <Unit> TimePeriod<Unit>.addingDays(count: Int) where Unit : DayOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.addingDays(count: Int): TimePeriod<Unit> where Unit : DayOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.days(count))
 
 /**
@@ -151,7 +152,7 @@ fun <Unit> TimePeriod<Unit>.addingDays(count: Int) where Unit : DayOrSmaller, Un
  *
  * @param count The number of days by which to move backward.
  */
-fun <Unit> TimePeriod<Unit>.subtractingDays(count: Int) where Unit : DayOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.subtractingDays(count: Int): TimePeriod<Unit> where Unit : DayOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.days(-count))
 //endregion
 
@@ -159,13 +160,13 @@ fun <Unit> TimePeriod<Unit>.subtractingDays(count: Int) where Unit : DayOrSmalle
 /**
  * Create a new [TimePeriod] by moving forward one month.
  */
-val <Unit> TimePeriod<Unit>.nextMonth where Unit : MonthOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.nextMonth: TimePeriod<Unit> where Unit : MonthOrSmaller, Unit : TimeUnit
     get() = addingMonths(1)
 
 /**
  * Create a new [TimePeriod] by moving backward one month.
  */
-val <Unit> TimePeriod<Unit>.previousMonth where Unit : MonthOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.previousMonth: TimePeriod<Unit> where Unit : MonthOrSmaller, Unit : TimeUnit
     get() = subtractingMonths(1)
 
 /**
@@ -173,7 +174,7 @@ val <Unit> TimePeriod<Unit>.previousMonth where Unit : MonthOrSmaller, Unit : Ti
  *
  * @param count The number of months by which to move forward.
  */
-fun <Unit> TimePeriod<Unit>.addingMonths(count: Int) where Unit : MonthOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.addingMonths(count: Int): TimePeriod<Unit> where Unit : MonthOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.months(count))
 
 /**
@@ -181,7 +182,7 @@ fun <Unit> TimePeriod<Unit>.addingMonths(count: Int) where Unit : MonthOrSmaller
  *
  * @param count The number of months by which to move backward.
  */
-fun <Unit> TimePeriod<Unit>.subtractingMonths(count: Int) where Unit : MonthOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.subtractingMonths(count: Int): TimePeriod<Unit> where Unit : MonthOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.months(-count))
 // endregion
 
@@ -189,13 +190,13 @@ fun <Unit> TimePeriod<Unit>.subtractingMonths(count: Int) where Unit : MonthOrSm
 /**
  * Create a new [TimePeriod] by moving forward one year.
  */
-val <Unit> TimePeriod<Unit>.nextYear where Unit : YearOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.nextYear: TimePeriod<Unit> where Unit : YearOrSmaller, Unit : TimeUnit
     get() = addingYears(1)
 
 /**
  * Create a new [TimePeriod] by moving backward one year.
  */
-val <Unit> TimePeriod<Unit>.previousYear where Unit : YearOrSmaller, Unit : TimeUnit
+public val <Unit> TimePeriod<Unit>.previousYear: TimePeriod<Unit> where Unit : YearOrSmaller, Unit : TimeUnit
     get() = subtractingYears(1)
 
 /**
@@ -203,7 +204,7 @@ val <Unit> TimePeriod<Unit>.previousYear where Unit : YearOrSmaller, Unit : Time
  *
  * @param count The number of years by which to move forward.
  */
-fun <Unit> TimePeriod<Unit>.addingYears(count: Int) where Unit : YearOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.addingYears(count: Int): TimePeriod<Unit> where Unit : YearOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.years(count))
 
 /**
@@ -211,6 +212,6 @@ fun <Unit> TimePeriod<Unit>.addingYears(count: Int) where Unit : YearOrSmaller, 
  *
  * @param count The number of years by which to move backward.
  */
-fun <Unit> TimePeriod<Unit>.subtractingYears(count: Int) where Unit : YearOrSmaller, Unit : TimeUnit =
+public fun <Unit> TimePeriod<Unit>.subtractingYears(count: Int): TimePeriod<Unit> where Unit : YearOrSmaller, Unit : TimeUnit =
     applying(TimeDifference.years(-count))
 // endregion

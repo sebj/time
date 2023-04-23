@@ -76,12 +76,12 @@ internal interface DayOrBigger : HourOrBigger
  */
 internal interface MonthOrBigger : DayOrBigger
 
-sealed class TimeUnit private constructor() {
-    object Nanosecond : TimeUnit(), NanosecondOrSmaller, NanosecondOrBigger
-    object Second : TimeUnit(), SecondOrSmaller, SecondOrBigger
-    object Minute : TimeUnit(), MinuteOrSmaller, MinuteOrBigger
-    object Hour : TimeUnit(), HourOrSmaller, HourOrBigger
-    object Day : TimeUnit(), DayOrSmaller, DayOrBigger
-    object Month : TimeUnit(), MonthOrSmaller, MonthOrBigger
-    object Year : TimeUnit(), YearOrSmaller, MonthOrBigger
+public sealed class TimeUnit private constructor() {
+    public object Nanosecond : TimeUnit(), NanosecondOrSmaller, NanosecondOrBigger
+    public object Second : TimeUnit(), SecondOrSmaller, SecondOrBigger
+    public object Minute : TimeUnit(), MinuteOrSmaller, MinuteOrBigger
+    public object Hour : TimeUnit(), HourOrSmaller, HourOrBigger
+    public object Day : TimeUnit(), DayOrSmaller, DayOrBigger
+    public object Month : TimeUnit(), MonthOrSmaller, MonthOrBigger
+    public object Year : TimeUnit(), YearOrSmaller, MonthOrBigger
 }

@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform") version "1.8.20"
     `maven-publish`
     id("signing")
+    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.13.1"
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
     id("org.jetbrains.dokka") version "1.8.10"
     id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
@@ -15,6 +16,8 @@ repositories {
 }
 
 kotlin {
+    explicitApi()
+
     jvm {
         compilations.all {
             kotlinOptions.jvmTarget = JavaVersion.VERSION_18.toString()

@@ -18,13 +18,29 @@ private fun LocalDate.toDateTimeComponents() = DateTimeComponents(
     dayOfMonth = dayOfMonth
 )
 
-fun LocalDateTime.secondPeriod(timeZone: TimeZone) = TimePeriod.second(timeZone, toDateTimeComponents())
-fun LocalDateTime.minutePeriod(timeZone: TimeZone) = TimePeriod.minute(timeZone, toDateTimeComponents())
-fun LocalDateTime.hourPeriod(timeZone: TimeZone) = TimePeriod.hour(timeZone, toDateTimeComponents())
-fun LocalDateTime.dayPeriod(timeZone: TimeZone) = TimePeriod.day(timeZone, toDateTimeComponents())
-fun LocalDateTime.monthPeriod(timeZone: TimeZone) = TimePeriod.month(timeZone, toDateTimeComponents())
-fun LocalDateTime.yearPeriod(timeZone: TimeZone) = TimePeriod.year(timeZone, toDateTimeComponents())
+public fun LocalDateTime.secondPeriod(timeZone: TimeZone): TimePeriod<TimeUnit.Second> =
+    TimePeriod.second(timeZone, toDateTimeComponents())
 
-fun LocalDate.dayPeriod(timeZone: TimeZone) = TimePeriod.day(timeZone, toDateTimeComponents())
-fun LocalDate.monthPeriod(timeZone: TimeZone) = TimePeriod.month(timeZone, toDateTimeComponents())
-fun LocalDate.yearPeriod(timeZone: TimeZone) = TimePeriod.year(timeZone, toDateTimeComponents())
+public fun LocalDateTime.minutePeriod(timeZone: TimeZone): TimePeriod<TimeUnit.Minute> =
+    TimePeriod.minute(timeZone, toDateTimeComponents())
+
+public fun LocalDateTime.hourPeriod(timeZone: TimeZone): TimePeriod<TimeUnit.Hour> =
+    TimePeriod.hour(timeZone, toDateTimeComponents())
+
+public fun LocalDateTime.dayPeriod(timeZone: TimeZone): TimePeriod<TimeUnit.Day> =
+    TimePeriod.day(timeZone, toDateTimeComponents())
+
+public fun LocalDateTime.monthPeriod(timeZone: TimeZone): TimePeriod<TimeUnit.Month> =
+    TimePeriod.month(timeZone, toDateTimeComponents())
+
+public fun LocalDateTime.yearPeriod(timeZone: TimeZone): TimePeriod<TimeUnit.Year> =
+    TimePeriod.year(timeZone, toDateTimeComponents())
+
+public fun LocalDate.dayPeriod(timeZone: TimeZone): TimePeriod<TimeUnit.Day> =
+    TimePeriod.day(timeZone, toDateTimeComponents())
+
+public fun LocalDate.monthPeriod(timeZone: TimeZone): TimePeriod<TimeUnit.Month> =
+    TimePeriod.month(timeZone, toDateTimeComponents())
+
+public fun LocalDate.yearPeriod(timeZone: TimeZone): TimePeriod<TimeUnit.Year> =
+    TimePeriod.year(timeZone, toDateTimeComponents())

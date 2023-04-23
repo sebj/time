@@ -5,7 +5,7 @@
  *
  * See: [Allen's Interval](https://en.wikipedia.org/wiki/Allen%27s_interval_algebra)
  */
-enum class Relation {
+public enum class Relation {
     /**
      * The first range occurs entirely before the second range.
      *
@@ -157,22 +157,22 @@ enum class Relation {
     /**
      * @return `true` if the relation describes two ranges that meet at any extreme.
      */
-    val isMeeting: Boolean get() = meetings.contains(this)
+    public val isMeeting: Boolean get() = meetings.contains(this)
 
     /**
      * @return `true` if the relation describes any kind of overlapping.
      */
-    val isOverlapping: Boolean get() = overlappings.contains(this)
+    public val isOverlapping: Boolean get() = overlappings.contains(this)
 
     /**
      * @return `true` if the relation describes disjointedness.
      */
-    val isDisjoint: Boolean get() = this == Before || this == After
+    public val isDisjoint: Boolean get() = this == Before || this == After
 
     /**
      * @return `true` if the relation describes equality.
      */
-    val isEqual: Boolean get() = this == Equal
+    public val isEqual: Boolean get() = this == Equal
 }
 
 private fun <T : Comparable<T>> ClosedRange<T>.determineRelationship(other: ClosedRange<T>): Relation {
@@ -195,23 +195,23 @@ private fun <T : Comparable<T>> ClosedRange<T>.determineRelationship(other: Clos
     }
 }
 
-fun TimePeriod<*>.relation(other: TimePeriod<*>) = range.determineRelationship(other.range)
+public fun TimePeriod<*>.relation(other: TimePeriod<*>): Relation = range.determineRelationship(other.range)
 
-fun TimePeriod<*>.before(other: TimePeriod<*>): Boolean {
+public fun TimePeriod<*>.before(other: TimePeriod<*>): Boolean {
     val relation = this.relation(other)
     return relation == Relation.Before || relation == Relation.Meets
 }
 
-fun TimePeriod<*>.after(other: TimePeriod<*>) = other.before(this)
+public fun TimePeriod<*>.after(other: TimePeriod<*>): Boolean = other.before(this)
 
-fun TimePeriod<*>.contains(other: TimePeriod<*>): Boolean {
+public fun TimePeriod<*>.contains(other: TimePeriod<*>): Boolean {
     val relation = this.relation(other)
     return relation == Relation.Contains || relation == Relation.IsStartedBy || relation == Relation.IsFinishedBy
 }
 
-fun TimePeriod<*>.during(other: TimePeriod<*>): Boolean {
+public fun TimePeriod<*>.during(other: TimePeriod<*>): Boolean {
     val relation = this.relation(other)
     return relation == Relation.During || relation == Relation.Starts || relation == Relation.Finishes
 }
 
-fun TimePeriod<*>.overlaps(other: TimePeriod<*>) = this.relation(other).isOverlapping
+public fun TimePeriod<*>.overlaps(other: TimePeriod<*>): Boolean = this.relation(other).isOverlapping

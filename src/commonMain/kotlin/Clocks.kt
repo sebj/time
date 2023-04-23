@@ -21,14 +21,14 @@ private class OffsetClock(private val offset: Duration, private val base: Clock)
  *
  * @param delta The delta by which to create an offset [Clock].
  */
-fun Clock.offset(delta: Duration): Clock = OffsetClock(delta, this)
+public fun Clock.offset(delta: Duration): Clock = OffsetClock(delta, this)
 
 /**
  * Scale a [Clock].
  *
  * @param factor The factor by which to speed up or slow down time.
  */
-fun Clock.scaled(factor: Double): Clock {
+public fun Clock.scaled(factor: Double): Clock {
     check(factor > 0) { "You cannot create a clock where time has stopped or flows backwards" }
     return ScaledClock(factor, this)
 }

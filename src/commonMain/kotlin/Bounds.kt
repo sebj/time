@@ -6,59 +6,59 @@ private fun <Unit : TimeUnit> TimePeriod<*>.last(unit: Unit): TimePeriod<Unit> {
         .applying(TimeDifference(-1, unit))
 }
 
-val TimePeriod<TimeUnit.Year>.firstMonth get() = first(TimeUnit.Month)
-val TimePeriod<TimeUnit.Year>.lastMonth get() = last(TimeUnit.Month)
+public val TimePeriod<TimeUnit.Year>.firstMonth: TimePeriod<TimeUnit.Month> get() = first(TimeUnit.Month)
+public val TimePeriod<TimeUnit.Year>.lastMonth: TimePeriod<TimeUnit.Month> get() = last(TimeUnit.Month)
 
 @get:JvmName("yearFirstDay")
-val TimePeriod<TimeUnit.Year>.firstDay get() = first(TimeUnit.Day)
+public val TimePeriod<TimeUnit.Year>.firstDay: TimePeriod<TimeUnit.Day> get() = first(TimeUnit.Day)
 
 @get:JvmName("yearLastDay")
-val TimePeriod<TimeUnit.Year>.lastDay get() = last(TimeUnit.Day)
+public val TimePeriod<TimeUnit.Year>.lastDay: TimePeriod<TimeUnit.Day> get() = last(TimeUnit.Day)
 
 @get:JvmName("monthFirstDay")
-val TimePeriod<TimeUnit.Month>.firstDay get() = first(TimeUnit.Day)
+public val TimePeriod<TimeUnit.Month>.firstDay: TimePeriod<TimeUnit.Day> get() = first(TimeUnit.Day)
 
 @get:JvmName("monthLastDay")
-val TimePeriod<TimeUnit.Month>.lastDay get() = last(TimeUnit.Day)
+public val TimePeriod<TimeUnit.Month>.lastDay: TimePeriod<TimeUnit.Day> get() = last(TimeUnit.Day)
 
 @get:JvmName("monthFirstHour")
-val TimePeriod<TimeUnit.Month>.firstHour get() = first(TimeUnit.Hour)
+public val TimePeriod<TimeUnit.Month>.firstHour: TimePeriod<TimeUnit.Hour> get() = first(TimeUnit.Hour)
 
 @get:JvmName("monthLastHour")
-val TimePeriod<TimeUnit.Month>.lastHour get() = last(TimeUnit.Hour)
+public val TimePeriod<TimeUnit.Month>.lastHour: TimePeriod<TimeUnit.Hour> get() = last(TimeUnit.Hour)
 
 @get:JvmName("dayFirstHour")
-val TimePeriod<TimeUnit.Day>.firstHour get() = first(TimeUnit.Hour)
+public val TimePeriod<TimeUnit.Day>.firstHour: TimePeriod<TimeUnit.Hour> get() = first(TimeUnit.Hour)
 
 @get:JvmName("dayLastHour")
-val TimePeriod<TimeUnit.Day>.lastHour get() = last(TimeUnit.Hour)
+public val TimePeriod<TimeUnit.Day>.lastHour: TimePeriod<TimeUnit.Hour> get() = last(TimeUnit.Hour)
 
 @get:JvmName("dayFirstMinute")
-val TimePeriod<TimeUnit.Day>.firstMinute get() = first(TimeUnit.Minute)
+public val TimePeriod<TimeUnit.Day>.firstMinute: TimePeriod<TimeUnit.Minute> get() = first(TimeUnit.Minute)
 
 @get:JvmName("dayLastMinute")
-val TimePeriod<TimeUnit.Day>.lastMinute get() = last(TimeUnit.Minute)
+public val TimePeriod<TimeUnit.Day>.lastMinute: TimePeriod<TimeUnit.Minute> get() = last(TimeUnit.Minute)
 
 @get:JvmName("dayFirstSecond")
-val TimePeriod<TimeUnit.Day>.firstSecond get() = first(TimeUnit.Second)
+public val TimePeriod<TimeUnit.Day>.firstSecond: TimePeriod<TimeUnit.Second> get() = first(TimeUnit.Second)
 
 @get:JvmName("dayLastSecond")
-val TimePeriod<TimeUnit.Day>.lastSecond get() = last(TimeUnit.Second)
+public val TimePeriod<TimeUnit.Day>.lastSecond: TimePeriod<TimeUnit.Second> get() = last(TimeUnit.Second)
 
 @get:JvmName("hourFirstMinute")
-val TimePeriod<TimeUnit.Hour>.firstMinute get() = first(TimeUnit.Minute)
+public val TimePeriod<TimeUnit.Hour>.firstMinute: TimePeriod<TimeUnit.Minute> get() = first(TimeUnit.Minute)
 
 @get:JvmName("hourLastMinute")
-val TimePeriod<TimeUnit.Hour>.lastMinute get() = last(TimeUnit.Minute)
+public val TimePeriod<TimeUnit.Hour>.lastMinute: TimePeriod<TimeUnit.Minute> get() = last(TimeUnit.Minute)
 
 @get:JvmName("hourFirstSecond")
-val TimePeriod<TimeUnit.Hour>.firstSecond get() = first(TimeUnit.Second)
+public val TimePeriod<TimeUnit.Hour>.firstSecond: TimePeriod<TimeUnit.Second> get() = first(TimeUnit.Second)
 
 @get:JvmName("hourLastSecond")
-val TimePeriod<TimeUnit.Hour>.lastSecond get() = last(TimeUnit.Second)
+public val TimePeriod<TimeUnit.Hour>.lastSecond: TimePeriod<TimeUnit.Second> get() = last(TimeUnit.Second)
 
 @get:JvmName("minuteFirstSecond")
-val TimePeriod<TimeUnit.Minute>.firstSecond get() = first(TimeUnit.Second)
+public val TimePeriod<TimeUnit.Minute>.firstSecond: TimePeriod<TimeUnit.Second> get() = first(TimeUnit.Second)
 
 @get:JvmName("minuteLastSecond")
-val TimePeriod<TimeUnit.Minute>.lastSecond get() = last(TimeUnit.Second)
+public val TimePeriod<TimeUnit.Minute>.lastSecond: TimePeriod<TimeUnit.Second> get() = last(TimeUnit.Second)

@@ -1,4 +1,6 @@
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
@@ -9,7 +11,7 @@ import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.nanoseconds
 import kotlin.time.Duration.Companion.seconds
 
-data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
+public data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
     val timeZone: TimeZone,
     internal val components: DateTimeComponents,
     internal val smallestUnit: SmallestUnit
@@ -22,19 +24,20 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
         unit
     )
 
-    companion object {
+    public companion object {
 
-        private fun nanosecond(timeZone: TimeZone, dateTimeComponents: DateTimeComponents) = TimePeriod(
-            timeZone,
-            dateTimeComponents,
-            TimeUnit.Nanosecond
-        )
-        fun nanosecond(timeZone: TimeZone, instant: Instant) = TimePeriod(
+        private fun nanosecond(timeZone: TimeZone, dateTimeComponents: DateTimeComponents): TimePeriod<TimeUnit.Nanosecond> =
+            TimePeriod(
+                timeZone,
+                dateTimeComponents,
+                TimeUnit.Nanosecond
+            )
+        public fun nanosecond(timeZone: TimeZone, instant: Instant): TimePeriod<TimeUnit.Nanosecond> = TimePeriod(
             timeZone,
             instant,
             TimeUnit.Nanosecond
         )
-        fun nanosecond(
+        public fun nanosecond(
             timeZone: TimeZone,
             year: Int,
             month: kotlinx.datetime.Month,
@@ -43,7 +46,7 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
             minute: Int,
             second: Int,
             nanosecond: Int
-        ) = nanosecond(
+        ): TimePeriod<TimeUnit.Nanosecond> = nanosecond(
             timeZone,
             DateTimeComponents(
                 year = year,
@@ -56,17 +59,18 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
             )
         )
 
-        internal fun second(timeZone: TimeZone, dateTimeComponents: DateTimeComponents) = TimePeriod(
-            timeZone,
-            components = dateTimeComponents.requireAndRestrict(TimeUnit.Second),
-            smallestUnit = TimeUnit.Second
-        )
-        fun second(timeZone: TimeZone, instant: Instant) = TimePeriod(
+        internal fun second(timeZone: TimeZone, dateTimeComponents: DateTimeComponents): TimePeriod<TimeUnit.Second> =
+            TimePeriod(
+                timeZone,
+                dateTimeComponents.requireAndRestrict(TimeUnit.Second),
+                TimeUnit.Second
+            )
+        public fun second(timeZone: TimeZone, instant: Instant): TimePeriod<TimeUnit.Second> = TimePeriod(
             timeZone,
             instant,
             TimeUnit.Second
         )
-        fun second(
+        public fun second(
             timeZone: TimeZone,
             year: Int,
             month: kotlinx.datetime.Month,
@@ -74,7 +78,7 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
             hour: Int,
             minute: Int,
             second: Int
-        ) = second(
+        ): TimePeriod<TimeUnit.Second> = second(
             timeZone,
             DateTimeComponents(
                 year = year,
@@ -86,24 +90,25 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
             )
         )
 
-        internal fun minute(timeZone: TimeZone, dateTimeComponents: DateTimeComponents) = TimePeriod(
-            timeZone,
-            components = dateTimeComponents.requireAndRestrict(TimeUnit.Minute),
-            smallestUnit = TimeUnit.Minute
-        )
-        fun minute(timeZone: TimeZone, instant: Instant) = TimePeriod(
+        internal fun minute(timeZone: TimeZone, dateTimeComponents: DateTimeComponents): TimePeriod<TimeUnit.Minute> =
+            TimePeriod(
+                timeZone,
+                dateTimeComponents.requireAndRestrict(TimeUnit.Minute),
+                TimeUnit.Minute
+            )
+        public fun minute(timeZone: TimeZone, instant: Instant): TimePeriod<TimeUnit.Minute> = TimePeriod(
             timeZone,
             instant,
             TimeUnit.Minute
         )
-        fun minute(
+        public fun minute(
             timeZone: TimeZone,
             year: Int,
             month: kotlinx.datetime.Month,
             dayOfMonth: Int,
             hour: Int,
             minute: Int
-        ) = minute(
+        ): TimePeriod<TimeUnit.Minute> = minute(
             timeZone,
             DateTimeComponents(
                 year = year,
@@ -114,23 +119,24 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
             )
         )
 
-        internal fun hour(timeZone: TimeZone, dateTimeComponents: DateTimeComponents) = TimePeriod(
-            timeZone,
-            dateTimeComponents.requireAndRestrict(TimeUnit.Hour),
-            TimeUnit.Hour
-        )
-        fun hour(timeZone: TimeZone, instant: Instant) = TimePeriod(
+        internal fun hour(timeZone: TimeZone, dateTimeComponents: DateTimeComponents): TimePeriod<TimeUnit.Hour> =
+            TimePeriod(
+                timeZone,
+                dateTimeComponents.requireAndRestrict(TimeUnit.Hour),
+                TimeUnit.Hour
+            )
+        public fun hour(timeZone: TimeZone, instant: Instant): TimePeriod<TimeUnit.Hour> = TimePeriod(
             timeZone,
             instant,
             TimeUnit.Hour
         )
-        fun hour(
+        public fun hour(
             timeZone: TimeZone,
             year: Int,
             month: kotlinx.datetime.Month,
             dayOfMonth: Int,
             hour: Int
-        ) = hour(
+        ): TimePeriod<TimeUnit.Hour> = hour(
             timeZone,
             DateTimeComponents(
                 year = year,
@@ -145,17 +151,17 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
             dateTimeComponents.requireAndRestrict(TimeUnit.Day),
             TimeUnit.Day
         )
-        fun day(timeZone: TimeZone, instant: Instant) = TimePeriod(
+        public fun day(timeZone: TimeZone, instant: Instant): TimePeriod<TimeUnit.Day> = TimePeriod(
             timeZone,
             instant,
             TimeUnit.Day
         )
-        fun day(
+        public fun day(
             timeZone: TimeZone,
             year: Int,
             month: kotlinx.datetime.Month,
             dayOfMonth: Int
-        ) = day(
+        ): TimePeriod<TimeUnit.Day> = day(
             timeZone,
             DateTimeComponents(
                 year = year,
@@ -164,38 +170,42 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
             )
         )
 
-        internal fun month(timeZone: TimeZone, dateTimeComponents: DateTimeComponents) = TimePeriod(
-            timeZone,
-            dateTimeComponents.requireAndRestrict(TimeUnit.Month),
-            TimeUnit.Month
-        )
-        fun month(timeZone: TimeZone, instant: Instant) = TimePeriod(
-            timeZone,
-            instant,
-            TimeUnit.Month
-        )
-        fun month(timeZone: TimeZone, year: Int, month: kotlinx.datetime.Month) = month(
-            timeZone,
-            DateTimeComponents(
-                year = year,
-                month = month
+        internal fun month(timeZone: TimeZone, dateTimeComponents: DateTimeComponents): TimePeriod<TimeUnit.Month> =
+            TimePeriod(
+                timeZone,
+                dateTimeComponents.requireAndRestrict(TimeUnit.Month),
+                TimeUnit.Month
             )
-        )
-
-        internal fun year(timeZone: TimeZone, dateTimeComponents: DateTimeComponents) = TimePeriod(
+        public fun month(timeZone: TimeZone, instant: Instant): TimePeriod<TimeUnit.Month> = TimePeriod(
             timeZone,
-            dateTimeComponents.requireAndRestrict(TimeUnit.Year),
-            TimeUnit.Year
+            instant,
+            TimeUnit.Month
         )
-        fun year(timeZone: TimeZone, instant: Instant) = TimePeriod(
+        public fun month(timeZone: TimeZone, year: Int, month: kotlinx.datetime.Month): TimePeriod<TimeUnit.Month> =
+            month(
+                timeZone,
+                DateTimeComponents(
+                    year = year,
+                    month = month
+                )
+            )
+
+        internal fun year(timeZone: TimeZone, dateTimeComponents: DateTimeComponents): TimePeriod<TimeUnit.Year> =
+            TimePeriod(
+                timeZone,
+                dateTimeComponents.requireAndRestrict(TimeUnit.Year),
+                TimeUnit.Year
+            )
+        public fun year(timeZone: TimeZone, instant: Instant): TimePeriod<TimeUnit.Year> = TimePeriod(
             timeZone,
             instant,
             TimeUnit.Year
         )
-        fun year(timeZone: TimeZone, year: Int) = year(timeZone, DateTimeComponents(year = year))
+        public fun year(timeZone: TimeZone, year: Int): TimePeriod<TimeUnit.Year> =
+            year(timeZone, DateTimeComponents(year = year))
     }
 
-    fun <DifferenceUnit : TimeUnit> applying(difference: TimeDifference<DifferenceUnit>): TimePeriod<SmallestUnit> {
+    public fun <DifferenceUnit : TimeUnit> applying(difference: TimeDifference<DifferenceUnit>): TimePeriod<SmallestUnit> {
         return when (difference.smallestUnit) {
             is TimeUnit.Nanosecond -> {
                 val newInstant = approximateMidPoint.plus(difference.count.nanoseconds)
@@ -298,9 +308,9 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
             return if (start > midPoint) start else midPoint
         }
 
-    override fun compareTo(other: TimePeriod<SmallestUnit>) = components.compareTo(other.components)
+    override fun compareTo(other: TimePeriod<SmallestUnit>): Int = components.compareTo(other.components)
 
-    override fun toString() = buildString {
+    override fun toString(): String = buildString {
         append(TimePeriod::class.simpleName)
         append(".")
         append(smallestUnit::class.simpleName)
@@ -325,17 +335,19 @@ data class TimePeriod<SmallestUnit : TimeUnit> internal constructor(
 /**
  * Constructs a [kotlinx.datetime.LocalDateTime] from a [TimePeriod] with [HourOrSmaller] precision.
  */
-fun <Unit> TimePeriod<Unit>.toLocalDateTime() where Unit : TimeUnit, Unit : HourOrSmaller = firstInstant.toLocalDateTime(timeZone)
+public fun <Unit> TimePeriod<Unit>.toLocalDateTime(): LocalDateTime where Unit : TimeUnit, Unit : HourOrSmaller =
+    firstInstant.toLocalDateTime(timeZone)
 
 /**
  * Constructs a [kotlinx.datetime.LocalDate] from a [TimePeriod] with [DayOrSmaller] precision.
  */
-fun <Unit> TimePeriod<Unit>.toLocalDate() where Unit : TimeUnit, Unit : DayOrSmaller = firstInstant.toLocalDateTime(timeZone).date
+public fun <Unit> TimePeriod<Unit>.toLocalDate(): LocalDate where Unit : TimeUnit, Unit : DayOrSmaller =
+    firstInstant.toLocalDateTime(timeZone).date
 
 /**
  * Construct a new [TimePeriod] by converting the receiver to a new [TimeZone].
  */
-fun <Unit : TimeUnit> TimePeriod<Unit>.convertToTimeZone(timeZone: TimeZone): TimePeriod<Unit> {
+public fun <Unit : TimeUnit> TimePeriod<Unit>.convertToTimeZone(timeZone: TimeZone): TimePeriod<Unit> {
     return if (timeZone == this.timeZone) {
         this
     } else {
