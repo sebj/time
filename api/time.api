@@ -131,6 +131,11 @@ public final class DerivedPeriodsKt {
 	public static final fun getYearPeriod (LTimePeriod;)LTimePeriod;
 }
 
+public final class DifferencesKt {
+	public static final fun difference (LTimePeriod;LTimePeriod;)LTimeDifference;
+	public static final fun minus (LTimePeriod;LTimePeriod;)LTimeDifference;
+}
+
 public final class IllegalTimeUnitException : java/lang/IllegalArgumentException {
 	public fun <init> ()V
 }
@@ -214,6 +219,13 @@ public final class TimeDifference$Companion {
 }
 
 public final class TimeDifferenceKt {
+	public static final fun getDays (LTimeDifference;)I
+	public static final fun getHours (LTimeDifference;)I
+	public static final fun getMinutes (LTimeDifference;)I
+	public static final fun getMonths (LTimeDifference;)I
+	public static final fun getNanoseconds (LTimeDifference;)I
+	public static final fun getSeconds (LTimeDifference;)I
+	public static final fun getYears (LTimeDifference;)I
 	public static final fun minusDay (LTimePeriod;LTimeDifference;)LTimePeriod;
 	public static final fun minusHour (LTimePeriod;LTimeDifference;)LTimePeriod;
 	public static final fun minusMinute (LTimePeriod;LTimeDifference;)LTimePeriod;

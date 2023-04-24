@@ -26,6 +26,14 @@ public data class TimeDifference<SmallestUnit : TimeUnit> internal constructor(
     }
 }
 
+public val TimeDifference<TimeUnit.Year>.years: Int get() = count
+public val TimeDifference<TimeUnit.Month>.months: Int get() = count
+public val TimeDifference<TimeUnit.Day>.days: Int get() = count
+public val TimeDifference<TimeUnit.Hour>.hours: Int get() = count
+public val TimeDifference<TimeUnit.Minute>.minutes: Int get() = count
+public val TimeDifference<TimeUnit.Second>.seconds: Int get() = count
+public val TimeDifference<TimeUnit.Nanosecond>.nanoseconds: Int get() = count
+
 // region Addition
 /**
  * Adds a [TimeDifference] to this [TimePeriod].
