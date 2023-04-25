@@ -1,7 +1,7 @@
 import kotlinx.datetime.Month
 
 @Throws(IllegalTimeUnitException::class)
-internal fun <Unit: TimeUnit> computeDifference(from: TimePeriod<Unit>, to: TimePeriod<Unit>): TimeDifference<Unit> {
+internal fun <Unit : TimeUnit> computeDifference(from: TimePeriod<Unit>, to: TimePeriod<Unit>): TimeDifference<Unit> {
     val durationDifference = to.approximateMidPoint - from.approximateMidPoint
 
     @Suppress("UNCHECKED_CAST")
@@ -50,10 +50,10 @@ internal fun <Unit: TimeUnit> computeDifference(from: TimePeriod<Unit>, to: Time
     }
 }
 
-public fun <Unit: TimeUnit> TimePeriod<Unit>.difference(to: TimePeriod<Unit>): TimeDifference<Unit> {
+public fun <Unit : TimeUnit> TimePeriod<Unit>.difference(to: TimePeriod<Unit>): TimeDifference<Unit> {
     return computeDifference(this, to)
 }
 
-public operator fun <Unit: TimeUnit> TimePeriod<Unit>.minus(other: TimePeriod<Unit>): TimeDifference<Unit> {
+public operator fun <Unit : TimeUnit> TimePeriod<Unit>.minus(other: TimePeriod<Unit>): TimeDifference<Unit> {
     return difference(other)
 }
