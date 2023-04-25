@@ -132,6 +132,7 @@ $dokka.location://thisSecond/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/Po
 $dokka.location://thisYear/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/this-year.html
 $dokka.location://toLocalDate/TimePeriod[TypeParam(bounds=[TimeUnit, DayOrSmaller])]#/PointingToDeclaration/time/[root]/to-local-date.html
 $dokka.location://toLocalDateTime/TimePeriod[TypeParam(bounds=[TimeUnit, HourOrSmaller])]#/PointingToDeclaration/time/[root]/to-local-date-time.html
+$dokka.location://toNSDateComponents/TimePeriod[*]#/PointingToDeclaration/time/[root]/to-n-s-date-components.html
 $dokka.location://today/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/today.html
 $dokka.location://tomorrow/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/tomorrow.html
 $dokka.location://year/TimePeriod[TypeParam(bounds=[YearOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/year.html
