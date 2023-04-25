@@ -18,8 +18,10 @@ $dokka.location://dayOfYear/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit]
 $dokka.location://dayPeriod/TimePeriod[TypeParam(bounds=[HourOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/day-period.html
 $dokka.location://dayPeriod/kotlinx.datetime.LocalDate#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/day-period.html
 $dokka.location://dayPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/day-period.html
+$dokka.location://days/TimeDifference[TimeUnit.Day]#/PointingToDeclaration/time/[root]/days.html
 $dokka.location://days/TimePeriod[TimeUnit.Month]#/PointingToDeclaration/time/[root]/days.html
 $dokka.location://days/TimePeriod[TimeUnit.Year]#/PointingToDeclaration/time/[root]/days.html
+$dokka.location://difference/TimePeriod[TypeParam(bounds=[TimeUnit])]#TimePeriod[TypeParam(bounds=[TimeUnit])]/PointingToDeclaration/time/[root]/difference.html
 $dokka.location://during/TimePeriod[*]#TimePeriod[*]/PointingToDeclaration/time/[root]/during.html
 $dokka.location://firstDay/TimePeriod[TimeUnit.Month]#/PointingToDeclaration/time/[root]/first-day.html
 $dokka.location://firstDay/TimePeriod[TimeUnit.Year]#/PointingToDeclaration/time/[root]/first-day.html
@@ -34,6 +36,7 @@ $dokka.location://firstSecond/TimePeriod[TimeUnit.Minute]#/PointingToDeclaration
 $dokka.location://hour/TimePeriod[TypeParam(bounds=[HourOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/hour.html
 $dokka.location://hourPeriod/TimePeriod[TypeParam(bounds=[MinuteOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/hour-period.html
 $dokka.location://hourPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/hour-period.html
+$dokka.location://hours/TimeDifference[TimeUnit.Hour]#/PointingToDeclaration/time/[root]/hours.html
 $dokka.location://hours/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/hours.html
 $dokka.location://hours/TimePeriod[TimeUnit.Month]#/PointingToDeclaration/time/[root]/hours.html
 $dokka.location://lastDay/TimePeriod[TimeUnit.Month]#/PointingToDeclaration/time/[root]/last-day.html
@@ -53,17 +56,21 @@ $dokka.location://minus/TimePeriod[TimeUnit.Month]#TimeDifference[TypeParam(boun
 $dokka.location://minus/TimePeriod[TimeUnit.Nanosecond]#TimeDifference[TypeParam(bounds=[NanosecondOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/minus.html
 $dokka.location://minus/TimePeriod[TimeUnit.Second]#TimeDifference[TypeParam(bounds=[SecondOrBigger, TimeUnit])]/PointingToDeclaration/time/[root]/minus.html
 $dokka.location://minus/TimePeriod[TimeUnit.Year]#TimeDifference[TimeUnit.Year]/PointingToDeclaration/time/[root]/minus.html
+$dokka.location://minus/TimePeriod[TypeParam(bounds=[TimeUnit])]#TimePeriod[TypeParam(bounds=[TimeUnit])]/PointingToDeclaration/time/[root]/minus.html
 $dokka.location://minute/TimePeriod[TypeParam(bounds=[MinuteOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/minute.html
 $dokka.location://minutePeriod/TimePeriod[TypeParam(bounds=[SecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/minute-period.html
 $dokka.location://minutePeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/minute-period.html
+$dokka.location://minutes/TimeDifference[TimeUnit.Minute]#/PointingToDeclaration/time/[root]/minutes.html
 $dokka.location://minutes/TimePeriod[TimeUnit.Day]#/PointingToDeclaration/time/[root]/minutes.html
 $dokka.location://minutes/TimePeriod[TimeUnit.Hour]#/PointingToDeclaration/time/[root]/minutes.html
 $dokka.location://month/TimePeriod[TypeParam(bounds=[MonthOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/month.html
 $dokka.location://monthPeriod/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/month-period.html
 $dokka.location://monthPeriod/kotlinx.datetime.LocalDate#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/month-period.html
 $dokka.location://monthPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/month-period.html
+$dokka.location://months/TimeDifference[TimeUnit.Month]#/PointingToDeclaration/time/[root]/months.html
 $dokka.location://months/TimePeriod[TimeUnit.Year]#/PointingToDeclaration/time/[root]/months.html
 $dokka.location://nanosecond/TimePeriod[TypeParam(bounds=[NanosecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/nanosecond.html
+$dokka.location://nanoseconds/TimeDifference[TimeUnit.Nanosecond]#/PointingToDeclaration/time/[root]/nanoseconds.html
 $dokka.location://nextDay/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/next-day.html
 $dokka.location://nextDay/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/next-day.html
 $dokka.location://nextHour/TimePeriod[TypeParam(bounds=[HourOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/next-hour.html
@@ -105,6 +112,7 @@ $dokka.location://scaled/kotlinx.datetime.Clock#kotlin.Double/PointingToDeclarat
 $dokka.location://second/TimePeriod[TypeParam(bounds=[SecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/second.html
 $dokka.location://secondPeriod/TimePeriod[TypeParam(bounds=[NanosecondOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/second-period.html
 $dokka.location://secondPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/second-period.html
+$dokka.location://seconds/TimeDifference[TimeUnit.Second]#/PointingToDeclaration/time/[root]/seconds.html
 $dokka.location://seconds/TimePeriod[TimeUnit.Hour]#/PointingToDeclaration/time/[root]/seconds.html
 $dokka.location://seconds/TimePeriod[TimeUnit.Minute]#/PointingToDeclaration/time/[root]/seconds.html
 $dokka.location://subtractingDays/TimePeriod[TypeParam(bounds=[DayOrSmaller, TimeUnit])]#kotlin.Int/PointingToDeclaration/time/[root]/subtracting-days.html
@@ -130,6 +138,7 @@ $dokka.location://year/TimePeriod[TypeParam(bounds=[YearOrSmaller, TimeUnit])]#/
 $dokka.location://yearPeriod/TimePeriod[TypeParam(bounds=[MonthOrSmaller, TimeUnit])]#/PointingToDeclaration/time/[root]/year-period.html
 $dokka.location://yearPeriod/kotlinx.datetime.LocalDate#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/year-period.html
 $dokka.location://yearPeriod/kotlinx.datetime.LocalDateTime#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/year-period.html
+$dokka.location://years/TimeDifference[TimeUnit.Year]#/PointingToDeclaration/time/[root]/years.html
 $dokka.location://yesterday/kotlinx.datetime.Clock#kotlinx.datetime.TimeZone/PointingToDeclaration/time/[root]/yesterday.html
 $dokka.location:/DateTimeComponentOutOfBoundsException///PointingToDeclaration/time/[root]/-date-time-component-out-of-bounds-exception/index.html
 $dokka.location:/IllegalTimeUnitException///PointingToDeclaration/time/[root]/-illegal-time-unit-exception/index.html
