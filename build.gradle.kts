@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "me.sebj"
-version = "0.4.5"
+version = "0.4.6"
 
 repositories {
     mavenCentral()
@@ -179,4 +179,9 @@ signing {
         System.getenv("GPG_PRIVATE_PASSWORD")
     )
     sign(publishing.publications)
+}
+
+// TODO: remove after https://youtrack.jetbrains.com/issue/KT-46466 is fixed
+project.tasks.withType(AbstractPublishToMaven::class.java).configureEach {
+    dependsOn(project.tasks.withType(Sign::class.java))
 }
