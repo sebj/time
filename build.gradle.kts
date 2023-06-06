@@ -101,7 +101,7 @@ tasks.dokkaHtml.configure {
         )
     )
     dependencies {
-        dokkaHtmlPlugin("org.jetbrains.dokka:versioning-plugin:1.8.10")
+        dokkaHtmlPlugin("org.jetbrains.dokka:versioning-plugin:1.8.20")
     }
 }
 
