@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.13.2"
     id("org.jetbrains.kotlinx.kover") version "0.7.2"
     id("org.jetbrains.dokka") version "1.8.20"
-    id("org.jlleitschuh.gradle.ktlint") version "11.4.2"
+    id("org.jlleitschuh.gradle.ktlint") version "11.5.0"
 }
 
 group = "me.sebj"
