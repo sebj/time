@@ -1,7 +1,7 @@
 # ⏱ Time
 
 [![MIT License](https://img.shields.io/github/license/sebj/time?color=lightgray)](LICENSE)
-[![Version 0.4.7](https://img.shields.io/github/v/release/sebj/time)](https://github.com/sebj/time/releases)
+[![Version 0.4.8](https://img.shields.io/github/v/release/sebj/time)](https://github.com/sebj/time/releases)
 [![Build, Test & Deploy Documentation](https://github.com/sebj/time/workflows/Build%2C%20Test%20and%20Deploy%20Documentation/badge.svg)](https://github.com/sebj/time/actions/workflows/build-test-documentation.yaml)
 [![Follow @sebj@mastodon.social](https://img.shields.io/mastodon/follow/000921252?domain=https%3A%2F%2Fmastodon.social&style=plastic)](https://mastodon.social/@sebj)
 
@@ -30,7 +30,7 @@ Supported `TimePeriod` units:
 Add the dependency to your Gradle build file:
 ```
 dependencies {
-    implementation("me.sebj:time:0.4.7")
+    implementation("me.sebj:time:0.4.8")
 }
 ```
 
