@@ -170,6 +170,7 @@ public final class Relation : java/lang/Enum {
 	public static final field Meets LRelation;
 	public static final field Overlaps LRelation;
 	public static final field Starts LRelation;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public final fun isDisjoint ()Z
 	public final fun isEqual ()Z
 	public final fun isMeeting ()Z

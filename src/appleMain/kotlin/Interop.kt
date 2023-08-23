@@ -1,3 +1,4 @@
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.UnsafeNumber
 import kotlinx.cinterop.convert
 import kotlinx.datetime.FixedOffsetTimeZone
@@ -8,6 +9,7 @@ import platform.Foundation.timeZoneForSecondsFromGMT
 import platform.Foundation.timeZoneWithAbbreviation
 import platform.Foundation.timeZoneWithName
 
+@ExperimentalForeignApi
 @UnsafeNumber(["ios_arm64: kotlin.Int", "ios_simulator_arm64: kotlin.Int", "ios_x64: kotlin.Int", "macos_arm64: kotlin.Int", "macos_x64: kotlin.Int", "tvos_arm64: kotlin.Int", "tvos_simulator_arm64: kotlin.Int", "tvos_x64: kotlin.Int", "watchos_arm32: kotlin.Int", "watchos_arm64: kotlin.Int", "watchos_simulator_arm64: kotlin.Int", "watchos_x64: kotlin.Int"])
 public fun TimePeriod<*>.toNSDateComponents(): NSDateComponents {
     val dateComponents = NSDateComponents()
@@ -32,6 +34,8 @@ public fun TimePeriod<*>.toNSDateComponents(): NSDateComponents {
  * `DateTimeException` to denote that lossy conversion would happen, as Darwin internally rounds the offsets to the
  * nearest minute.
  */
+@ExperimentalForeignApi
+@UnsafeNumber(["ios_arm64: kotlin.Int", "ios_simulator_arm64: kotlin.Int", "ios_x64: kotlin.Int", "macos_arm64: kotlin.Int", "macos_x64: kotlin.Int", "tvos_arm64: kotlin.Int", "tvos_simulator_arm64: kotlin.Int", "tvos_x64: kotlin.Int", "watchos_arm32: kotlin.Int", "watchos_arm64: kotlin.Int", "watchos_simulator_arm64: kotlin.Int", "watchos_x64: kotlin.Int"])
 private fun TimeZone.toNSTimeZone(): NSTimeZone = if (this is FixedOffsetTimeZone) {
     require(offset.totalSeconds % 60 == 0) {
         "NSTimeZone cannot represent fixed-offset time zones with offsets not expressed in whole minutes: $this"
