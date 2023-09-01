@@ -158,6 +158,7 @@ $dokka.location:/Relation.Meets///PointingToDeclaration/{"org.jetbrains.dokka.li
 $dokka.location:/Relation.Overlaps///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-overlaps/index.html
 $dokka.location:/Relation.Starts///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}time/[root]/-relation/-starts/index.html
 $dokka.location:/Relation///PointingToDeclaration/time/[root]/-relation/index.html
+$dokka.location:/Relation/entries/#/PointingToDeclaration/time/[root]/-relation/entries.html
 $dokka.location:/Relation/isDisjoint/#/PointingToDeclaration/time/[root]/-relation/is-disjoint.html
 $dokka.location:/Relation/isEqual/#/PointingToDeclaration/time/[root]/-relation/is-equal.html
 $dokka.location:/Relation/isMeeting/#/PointingToDeclaration/time/[root]/-relation/is-meeting.html
