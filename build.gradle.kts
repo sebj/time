@@ -2,7 +2,7 @@ plugins {
     kotlin("multiplatform") version "1.9.22"
     `maven-publish`
     id("signing")
-    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.13.2"
+    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.14.0"
     id("org.jetbrains.kotlinx.kover") version "0.7.5"
     id("org.jetbrains.dokka") version "1.9.10"
     id("org.jlleitschuh.gradle.ktlint") version "11.6.1"
