@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
     id("signing")
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.17.0"
-    id("org.jetbrains.kotlinx.kover") version "0.9.0"
+    id("org.jetbrains.kotlinx.kover") version "0.9.1"
     id("org.jetbrains.dokka") version "1.9.20"
     id("org.jlleitschuh.gradle.ktlint") version "11.6.1"
 }
