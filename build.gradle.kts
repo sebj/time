@@ -4,7 +4,7 @@ plugins {
     id("signing")
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.18.1"
     id("org.jetbrains.kotlinx.kover") version "0.9.3"
-    id("org.jetbrains.dokka") version "1.9.20"
+    id("org.jetbrains.dokka") version "2.1.0"
     id("org.jlleitschuh.gradle.ktlint") version "11.6.1"
 }
 
@@ -101,7 +101,7 @@ tasks.dokkaHtml.configure {
         )
     )
     dependencies {
-        dokkaHtmlPlugin("org.jetbrains.dokka:versioning-plugin:1.9.20")
+        dokkaHtmlPlugin("org.jetbrains.dokka:versioning-plugin:2.1.0")
     }
 }
 
